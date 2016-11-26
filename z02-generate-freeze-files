@@ -98,87 +98,88 @@ if [ ${1} == "oxane" ]; then
 
 else
 
-input_list=y0-input_list.txt
-input=$(head -n 1 y1-level_of_theory_basis_set.txt)
+    input_list=y0-input_list.txt
+    input=$(head -n 1 y1-level_of_theory_basis_set.txt)
 
-ls *.xyz > ${input_list}
+    ls *.xyz > ${input_list}
 
-for file_unedit in $( <$input_list); do
-                file=${file_unedit%.xyz}
+    for file_unedit in $( <$input_list); do
+                    file=${file_unedit%.xyz}
 
-                   ########                CREATES THE PBS FILE                #########
+                       ########                CREATES THE PBS FILE                #########
 
-                        PBS_file=PBS-${2}-${file}.txt # creates the PBS file
-                        run=${1}-${2}-${file} # creates the name of the run
+                            PBS_file=PBS-${2}-${file}.txt # creates the PBS file
+                            run=${1}-${2}-${file} # creates the name of the run
 
-                        # The following section insert the required information for the
-                        # PBS file.
-                        echo '#### PBS Preamble' > ${PBS_file}
-                        echo >> ${PBS_file}
-                        echo '# This file was created automatically.' >> ${PBS_file}
-                        echo >> ${PBS_file}
+                            # The following section insert the required information for the
+                            # PBS file.
+                            echo '#### PBS Preamble' > ${PBS_file}
+                            echo >> ${PBS_file}
+                            echo '# This file was created automatically.' >> ${PBS_file}
+                            echo >> ${PBS_file}
 
-                        echo "#PBS -N $run" >> ${PBS_file}
-                        echo '#PBS -M vicchio@umich.edu' >> ${PBS_file}
-                        echo '#PBS -m a' >> ${PBS_file}
-
-                        echo >> ${PBS_file}
-
-                        echo '#PBS -l nodes=1:ppn=2,pmem=10gb,walltime=03:30:00' >> ${PBS_file}
-                        echo "#PBS -j oe" >> ${PBS_file}
-                        echo "#PBS -o out-${2}-${file}.err" >> ${PBS_file}
-                        echo '#PBS -V' >> ${PBS_file}
-
-                        echo >> ${PBS_file}
-
-                        echo '#PBS -A hbmayes_fluxod' >> ${PBS_file}
-                            echo '#PBS -q fluxod' >> ${PBS_file}
-                            echo '#PBS -l qos=flux' >> ${PBS_file}
+                            echo "#PBS -N $run" >> ${PBS_file}
+                            echo '#PBS -M vicchio@umich.edu' >> ${PBS_file}
+                            echo '#PBS -m a' >> ${PBS_file}
 
                             echo >> ${PBS_file}
 
-                        echo '####  End PBS preamble' >> ${PBS_file}
+                            echo '#PBS -l nodes=1:ppn=2,pmem=10gb,walltime=03:30:00' >> ${PBS_file}
+                            echo "#PBS -j oe" >> ${PBS_file}
+                            echo "#PBS -o out-${2}-${file}.err" >> ${PBS_file}
+                            echo '#PBS -V' >> ${PBS_file}
 
-                        echo >> ${PBS_file}
-                        echo >> ${PBS_file}
+                            echo >> ${PBS_file}
 
-                        echo 'if [ -n "$PBS_O_WORKDIR" ]; then' >> ${PBS_file}
-                        echo 'cd $PBS_O_WORKDIR;' >> ${PBS_file}
-                        echo "fi" >> ${PBS_file}
+                            echo '#PBS -A hbmayes_fluxod' >> ${PBS_file}
+                                echo '#PBS -q fluxod' >> ${PBS_file}
+                                echo '#PBS -l qos=flux' >> ${PBS_file}
 
-                        echo >> ${PBS_file}
+                                echo >> ${PBS_file}
 
-                        # Load all modules below:
+                            echo '####  End PBS preamble' >> ${PBS_file}
 
-                        echo 'module load gaussian/09-revD01' >> ${PBS_file}
+                            echo >> ${PBS_file}
+                            echo >> ${PBS_file}
 
-                        # Put job commands here:
-                        echo >> ${PBS_file}
+                            echo 'if [ -n "$PBS_O_WORKDIR" ]; then' >> ${PBS_file}
+                            echo 'cd $PBS_O_WORKDIR;' >> ${PBS_file}
+                            echo "fi" >> ${PBS_file}
 
-                        echo "g09 <${file}.com> ${1}-${file}-${2}_${3}.log" >> ${PBS_file}
+                            echo >> ${PBS_file}
 
-                    ########                CREATES THE COM FILE                #########
+                            # Load all modules below:
 
-                        # This part of the script modifies the Gaussian Input (.com) file:
+                            echo 'module load gaussian/09-revD01' >> ${PBS_file}
 
-                        sed -i "1s/.*/%chk=\/scratch\/hbmayes_fluxod\/vicchio\/${1}-${2}_${3}\/${1}-${file}-${2}_${3}.chk/" ${file}.com
-                        sed -i "2s/.*/${input}/" ${file}.com
-                        sed -i "2s/$/\n/" ${file}.com
+                            # Put job commands here:
+                            echo >> ${PBS_file}
 
-                        sed -i '$d' ${file}.com
+                            echo "g09 <${file}.com> ${1}-${file}-${2}_${3}.log" >> ${PBS_file}
 
-                        sed -i '$s/$/\nD   1    2    3    4 F/' ${file}.com
-                        sed -i '$s/$/\nD   2    3    4    5 F/' ${file}.com
-                        sed -i '$s/$/\nD   3    4    5    6 F/' ${file}.com
-                        sed -i '$s/$/\nD   4    5    6    1 F/' ${file}.com
-                        sed -i '$s/$/\nD   5    6    1    2F/' ${file}.com
-                        sed -i '$s/$/\nD   6    1    2    3F/' ${file}.com
+                        ########                CREATES THE COM FILE                #########
 
-                        sed -i '$s/$/\n/' ${file}.com
-                        sed -i '$s/$/\n/' ${file}.com
+                            # This part of the script modifies the Gaussian Input (.com) file:
+
+                            sed -i "1s/.*/%chk=\/scratch\/hbmayes_fluxod\/vicchio\/${1}-${2}_${3}\/${1}-${file}-${2}_${3}.chk/" ${file}.com
+                            sed -i "2s/.*/${input}/" ${file}.com
+                            sed -i "2s/$/\n/" ${file}.com
+
+                            sed -i '$d' ${file}.com
+
+                            sed -i '$s/$/\nD   1    2    3    4 F/' ${file}.com
+                            sed -i '$s/$/\nD   2    3    4    5 F/' ${file}.com
+                            sed -i '$s/$/\nD   3    4    5    6 F/' ${file}.com
+                            sed -i '$s/$/\nD   4    5    6    1 F/' ${file}.com
+                            sed -i '$s/$/\nD   5    6    1    2F/' ${file}.com
+                            sed -i '$s/$/\nD   6    1    2    3F/' ${file}.com
+
+                            sed -i '$s/$/\n/' ${file}.com
+                            sed -i '$s/$/\n/' ${file}.com
 
 
 
+    done
 fi
 
 mkdir /scratch/hbmayes_fluxod/vicchio/${1}-${2}_${3}
