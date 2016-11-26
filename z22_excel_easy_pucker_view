@@ -1,0 +1,8 @@
+#!/usr/bin/bash
+
+# The following script makes it easy to view the
+# hartree output files.
+
+file_name=$1
+
+column -t -s ',' ${file_name} | awk '{print $1 "---" $18}'
