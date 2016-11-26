@@ -105,6 +105,7 @@ else
 
     for file_unedit in $( <$input_list); do
                     file=${file_unedit%.xyz}
+                    echo ${file}
 
                        ########                CREATES THE PBS FILE                #########
 
