@@ -99,7 +99,7 @@ if [ ${1} == "oxane" ]; then
 else
 
 input_list=y0-input_list.txt
-input=m062x\/6-31G(d)
+input=$(head -n 1 y1-level_of_theory_basis_set.txt)
 
 ls *.xyz > ${input_list}
 
