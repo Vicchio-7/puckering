@@ -171,6 +171,8 @@ for file_unedit in $( <$input_list); do
                         sed -i '$s/$/\nD   2    3    4    5 F/' ${file}.com
                         sed -i '$s/$/\nD   3    4    5    6 F/' ${file}.com
                         sed -i '$s/$/\nD   4    5    6    1 F/' ${file}.com
+                        sed -i '$s/$/\nD   5    6    1    2F/' ${file}.com
+                        sed -i '$s/$/\nD   6    1    2    3F/' ${file}.com
 
                         sed -i '$s/$/\n/' ${file}.com
                         sed -i '$s/$/\n/' ${file}.com
