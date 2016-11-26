@@ -162,8 +162,7 @@ else
 
                             # This part of the script modifies the Gaussian Input (.com) file:
 
-                            echo "%chk=\/scratch\/hbmayes_fluxod\/vicchio\/${1}-${2}_${3}\/${1}-${file}-${2}_${3}.chk" > ${file}.com
-                            #sed -i "1s/.*/%chk=\/scratch\/hbmayes_fluxod\/vicchio\/${1}-${2}_${3}\/${1}-${file}-${2}_${3}.chk/" ${file}.com
+                            sed -i "1s/.*/%chk=\/scratch\/hbmayes_fluxod\/vicchio\/${1}-${2}_${3}\/${1}-${file}-${2}_${3}.chk/" ${file}.com
                             sed -i "2s/.*/${input}/" ${file}.com
                             sed -i "2s/$/\n/" ${file}.com
 
@@ -184,6 +183,9 @@ else
     done
 fi
 
-mkdir /scratch/hbmayes_fluxod/vicchio/${1}-${2}_${3}
+new_directory=/scratch/hbmayes_fluxod/vicchio/${1}-${2}_${3}
 
+if [ ! -d "${new_directory}" ]; then
+	mkdir ${new_directory}
+fi
 
