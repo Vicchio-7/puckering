@@ -1,0 +1,35 @@
+#!/usr/bin/bash
+
+# Created by: Stephen P. Vicchio 
+
+# This script submits all PBS files named properly to Flux. 
+#
+# Note that the job type is just used to create the PBS file.
+# The job type will no alter the gaussian input file. 
+#
+
+run_type=$1
+
+if [[ ${run_type} == 'rerun' ]]; then 
+	for file_sub in $(find . \( ! -name . -prune \) -type f -iname 'PBS-*_rerun*'); do
+                qsub ${file_sub}
+	done
+else
+	for file_sub in $(find . \( ! -name . -prune \) -type f -iname 'PBS-*'); do
+		qsub ${file_sub} 
+	done
+fi 
+
+################ Old script #################
+# The following input is needed:
+# $1 - molecule 
+# $2 - job type (freeze, relax, TS) 
+# $3 - level of theory (B3LYP, am1, pbe)
+
+#input_list=y0-input_list.txt
+
+#for file in $( <$input_list); do 
+#
+#       qsub PBS-${2}-${file}.txt
+#
+#done
