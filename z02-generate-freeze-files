@@ -156,13 +156,14 @@ else
                             # Put job commands here:
                             echo >> ${PBS_file}
 
-                            echo "g09 <${file}.com> ${1}-${file}-${2}_${3}.log" >> ${PBS_file}
+                            echo "g09 <${file}.com> ${file}-${2}_${3}.log" >> ${PBS_file}
 
                         ########                CREATES THE COM FILE                #########
 
                             # This part of the script modifies the Gaussian Input (.com) file:
 
-                            sed -i "1s/.*/%chk=\/scratch\/hbmayes_fluxod\/vicchio\/${1}-${2}_${3}\/${1}-${file}-${2}_${3}.chk/" ${file}.com
+                            echo "%chk=\/scratch\/hbmayes_fluxod\/vicchio\/${1}-${2}_${3}\/${1}-${file}-${2}_${3}.chk" > ${file}.com
+                            #sed -i "1s/.*/%chk=\/scratch\/hbmayes_fluxod\/vicchio\/${1}-${2}_${3}\/${1}-${file}-${2}_${3}.chk/" ${file}.com
                             sed -i "2s/.*/${input}/" ${file}.com
                             sed -i "2s/$/\n/" ${file}.com
 
