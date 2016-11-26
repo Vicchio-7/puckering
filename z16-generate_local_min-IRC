@@ -1,0 +1,82 @@
+#!/usr/bin/bash
+
+# Created by: Stephen P. Vicchio 
+
+# The purpose of this script is to create a PBS for a job 
+# submission onto Flux. 
+#
+# The following input is needed:
+# $1 - molecule 
+# $2 - job type (freeze, relax, TS) 
+# $3 - level of theory (B3LYP, am1, pbe)
+# 
+# This script creates a COM file for Gaussian input (relaxed run)
+# and generates the necessary PBS file. The script deals with a 
+# tpl file, that can be found in the location listed below (tpl). 
+# If any error arise from the script, check on the tpl file. 
+
+
+input_files=$(ls ../7_prod-run_IRC/*.log > y0-input_list.txt)
+input_list=y0-input_list.txt
+level_of_theory=$(head -n 1 ../y4-level_of_theory_basis_set_optall.txt)
+
+tpl=/home/vicchio/puckering/oxane/tpl
+template_file=gaussian-chk_run-minIRC-tpl.txt
+
+molecule=$1
+test_type=$2
+short_level_of_theory=$3 
+
+
+mkdir /scratch/hbmayes_fluxod/vicchio/${1}-${2}_${3}
+
+while IFS= read -r cmd; do
+
+######## Organizes the file naming information
+	file_orgin_long=$(printf '%s\n' "$cmd" | cut -c 19-100 | sed 's/-$//' ) 
+	file_orgin=${file_orgin_long%.log}	
+        structure_id=$(printf '%s\n' "$cmd" | cut -c 25-60 | sed 's/-$//')
+	file_long=${structure_id}
+
+######## Moves over the checkpoint to create the new checkpoint file 
+
+if [[ ${file_long} == *"forward"* ]]; then 
+	structure_id_f=$(printf '%s\n' "${file_long}" | cut -c 1-3 | sed 's/-$//')
+	structure_id_s=""$structure_id_f""-f""
+
+       cp /scratch/hbmayes_fluxod/vicchio/${1}-IRC_${3}-forward/${1}-${structure_id_f}-freeze_${3}-IRC-f_${3}.chk /scratch/hbmayes_fluxod/vicchio/${1}-${2}_${3}/${1}-${structure_id_f}-freeze_${3}-IRC-f_${3}-minIRC-f_${3}.chk 
+		
+elif [[ ${file_long} == *"reverse"* ]]; then 
+	structure_id_r=$(printf '%s\n' "${file_long}" | cut -c 1-3 | sed 's/-$//')
+	structure_id_s=""$structure_id_r""-r""
+
+       cp /scratch/hbmayes_fluxod/vicchio/${1}-IRC_${3}-reverse/${1}-${structure_id_f}-freeze_${3}-IRC-r_${3}.chk /scratch/hbmayes_fluxod/vicchio/${1}-${2}_${3}/${1}-${structure_id_f}-freeze_${3}-IRC-r_${3}-minIRC-r_${3}.chk
+
+else 
+	echo "Something is wrong"
+fi 
+
+	file=${structure_id_s}	
+
+######## The section below updates the Gaussian Input File
+
+	sed -e "s/\$chkfile/${1}-${structure_id_f}-freeze_${3}-IRC-r_${3}-minIRC-r_${3}.chk/g" $tpl/${template_file} > ${file}.com 
+  	sed -e "s/\$folder/${molecule}-${test_type}_${3}/g" ${file}.com >> ${file}-temp1.com
+	sed -e "s/level_of_theory/${level_of_theory}/g" ${file}-temp1.com >> ${file}-temp.com
+
+	mv ${file}-temp.com ${file}.com 
+	
+	rm ${file}-temp1.com 
+
+######## The section below creates the PBS file for submission on flux
+
+	sed -e "s/molecule/${molecule}/g" $tpl/gaussian-PBS-tpl.txt > PBS-$2-${file}.txt 
+  	sed -e "s/study/${2}/g" PBS-$2-${file}.txt >> PBS-$2-${file}-temp1.txt
+	sed -e "s/level_of_theory_short/${short_level_of_theory}/g" PBS-$2-${file}-temp1.txt >> PBS-$2-${file}-temp2.txt
+	sed -e "s/conform/${file}/g" PBS-$2-${file}-temp2.txt > PBS-$2-${file}-temp3.txt
+ 	sed -e "s/gauss-log/${file_orgin}-minIRC_${short_level_of_theory}-${file}/g" PBS-${2}-${file}-temp3.txt > PBS-${2}-${file}.txt
+
+	
+	rm PBS-$2-${file}-temp*
+
+done < "${input_list}"

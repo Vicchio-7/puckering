@@ -1,0 +1,94 @@
+#!/usr/bin/bash
+
+# Created by: Stephen P. Vicchio 
+
+# The purpose of this script is to create a PBS for a job 
+# submission onto Flux. 
+#
+# The following input is needed:
+# $1 - molecule 
+# $2 - job type (freeze, relax, TS) 
+# $3 - level of theory (B3LYP, am1, pbe)
+# 
+# This script creates a COM file for Gaussian input (relaxed run)
+# and generates the necessary PBS file. The script deals with a 
+# tpl file, that can be found in the location listed below (tpl). 
+# If any error arise from the script, check on the tpl file. 
+
+level_of_theory=$(head -n 1 ../y0-level_of_theory_basis_set.txt)
+
+tpl=/home/vicchio/puckering/z_tpl/
+template_file_rerun=gaussian-chk_run-optall_localmin-tpl_rerun.txt
+
+molecule=$1
+test_type=$2
+short_level_of_theory=$3 
+
+input_list=out-failure-bxyl-optall-${short_level_of_theory}.txt
+new_directory=/scratch/hbmayes_fluxod/vicchio/${1}-${2}_${3}
+
+if [ ! -d "${new_directory}" ]; then 
+	mkdir ${new_directory}
+fi
+
+rm core*
+
+if [ ${molecule} == "oxane" ] ; then 
+
+	for file_unedit in $( <$input_list); do 
+
+		file=${file_unedit%.com}	
+
+######## Moves over the checkpoint to create the new checkpoint file 
+
+		cp /scratch/hbmayes_fluxod/vicchio/${1}-freeze_${3}/${1}-${file}-freeze_${3}.chk /scratch/hbmayes_fluxod/vicchio/${1}-${2}_${3}/${1}-${file}-freeze_${3}-${2}_${3}.chk 
+
+######## The section below updates the Gaussian Input File
+
+		sed -e "s/\$chkfile/${molecule}-${file}-freeze_${short_level_of_theory}-${test_type}_${short_level_of_theory}/g" $tpl/${template_file_oxane} > ${file}.com 
+  		sed -e "s/\$folder/${molecule}-${test_type}_${3}/g" ${file}.com >> ${file}-temp1.com
+		sed -e "s/level_of_theory/${level_of_theory}/g" ${file}-temp1.com >> ${file}-temp.com
+
+		mv ${file}-temp.com ${file}.com 
+	
+		rm ${file}-temp1.com 
+
+######## The section below creates the PBS file for submission on flux
+	
+		sed -e "s/molecule/${molecule}/g" $tpl/gaussian-PBS-tpl.txt > PBS-$2-${file}.txt 
+  		sed -e "s/study/${2}/g" PBS-$2-${file}.txt >> PBS-$2-${file}-temp1.txt
+		sed -e "s/level_of_theory_short/${short_level_of_theory}/g" PBS-$2-${file}-temp1.txt >> PBS-$2-${file}-temp2.txt
+		sed -e "s/conform/${file}/g" PBS-$2-${file}-temp2.txt > PBS-$2-${file}-temp3.txt
+ 		sed -e "s/gauss-log/${1}-${file}-freeze_${3}-${2}_${3}/g" PBS-${2}-${file}-temp3.txt > PBS-${2}-${file}.txt
+	
+		rm PBS-$2-${file}-temp*
+	done
+
+else 
+	for file_unedit in $( <$input_list); do
+		
+		file=$(echo -n ${file_unedit%-optall_${short_level_of_theory}.log} | cut -c 3- )	
+
+######## The section below updates the Gaussian Input File
+
+                sed -e "s/\$chkfile/${file}-${test_type}_${short_level_of_theory}.chk/g" ${tpl}/${template_file_rerun}  > ${file}-temp.com
+                sed -e "s/\$folder/${molecule}-${test_type}_${3}/g" ${file}-temp.com >> ${file}-temp2.com
+                sed -e "s/level_of_theory/${level_of_theory}/g" ${file}-temp2.com >> ${file}-temp-final.com
+
+                mv ${file}-temp-final.com ${file}_rerun.com
+
+                rm ${file}-temp*
+
+######## The section below creates the PBS file for submission on flux
+
+                sed -e "s/molecule/${molecule}/g" $tpl/gaussian-PBS-tpl.txt > PBS-$2-${file}.txt
+                sed -e "s/study/${2}/g" PBS-$2-${file}.txt >> PBS-$2-${file}-temp1.txt
+                sed -e "s/level_of_theory_short/${short_level_of_theory}/g" PBS-$2-${file}-temp1.txt >> PBS-$2-${file}-temp2.txt
+                sed -e "s/conform/${file}_rerun/g" PBS-$2-${file}-temp2.txt > PBS-$2-${file}-temp3.txt
+                sed -e "s/gauss-log/${file}-${2}_${3}/g" PBS-${2}-${file}-temp3.txt > PBS-${2}-${file}_rerun.txt
+
+                rm PBS-$2-${file}-temp*
+       		
+		qsub PBS-${2}-${file}_rerun.txt 
+	 done
+fi

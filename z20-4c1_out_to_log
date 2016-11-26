@@ -1,0 +1,14 @@
+#!/usr/bin/bash 
+
+# Converts files with the .out extension to .log
+
+z_no_touch_dirc=/home/vicchio/puckering/2_bxyl/z_initial-coordinates-NOtouch
+
+for log in $(find . -type f -iname '*.out'); do
+        filename="${log%.*}.log"
+	echo ${filename}
+	cat ${log} > ${filename}
+
+	cp ${filename} ${z_no_touch_dirc}/.
+done
+

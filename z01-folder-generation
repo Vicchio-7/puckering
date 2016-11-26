@@ -1,0 +1,84 @@
+#!/usr/bin/bash
+
+# Created by: Stephen P. Vicchio 
+
+# This script creates the correct production folders for a
+# given level of theory. 
+#
+
+level_of_theory_short=$2
+molecule_type=$1
+
+if [ "${molecule_type}" == 'oxane' ] ; then 
+	folder=1_oxane
+	status_build=0
+elif [ "${molecule_type}" == 'bxyl' ] ;  then 
+	folder=2_bxyl
+	status_build=0
+else 
+	echo
+	echo "The molecule type is not found in this script"
+	echo
+	status_build=1
+fi 
+
+
+
+if [ ${status_build} == 1 ]; then 
+	exit
+elif [ ${status_build} == 0 ] ; then 
+	
+	directory=~/puckering/${folder}/${level_of_theory_short}
+	
+	if [ -d ${directory} ] ; then 
+		echo
+		echo "This directory already exists for ${level_of_theory_short} in ${folder}..."
+		echo
+	else
+		mkdir ~/puckering/${folder}/${level_of_theory_short}
+
+		location=~/puckering/${folder}/${level_of_theory_short}
+
+		cd ${location}/
+
+		mkdir 0_initial-coordinates
+		mkdir 1_sample-files
+		mkdir 2_prod-run_freeze
+		mkdir 3_prod-run_relax
+		mkdir 4_prod-run_optall-local_min
+		mkdir 5_prod-run_TS
+		mkdir 6_prod-run_IRC
+		mkdir 7_prod-run_irc-localmin
+		echo 'insert level of theory here' > y1-level_of_theory_basis_set.txt
+		echo 'insert relaxed level of theory here' > y2-level_of_theory_basis_set_relax.txt
+		echo 'insert freq level of theory here' > y3-level_of_theory_basis_set_localmin.txt
+		echo 'insert basic level of theory here' > y0-level_of_theory_basis_set.txt
+
+	fi 
+
+
+	coordinate_directory=~/puckering/${folder}/z_initial-coordinates-NOtouch/
+	location=~/puckering/${folder}/${level_of_theory_short}/
+	
+	if [ ! -d ${coordinate_directory} ] ; then 
+		echo "Need the local coordinates to be added for the structure"
+		echo 
+		mkdir ${coordinate_directory} 
+	elif [ -n "$(find ${coordinate_directory} -prune -empty)" ] ; then		
+		echo "The directory exists for the initial coordinates,"
+		echo " but still doesn't contain the inital coordinates..."
+		echo
+	elif [ -s ${coordinate_directory} ] ; then 
+		echo "The xyz coordinates exist!"
+		
+		cp ${coordinate_directory}*.xyz ${location}/0_initial-coordinates/.
+
+		cd ${location}/0_initial-coordinates/
+		ls *.com > y0-input_list.txt
+
+		cd ${location}/
+		mv 0_initial-coordinates/y0-input_list.txt y0-input_list.txt
+
+	fi
+		
+fi

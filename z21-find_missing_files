@@ -1,0 +1,77 @@
+#!/usr/bin/bash 
+
+# This script is designed to ID the missing bxyl files for the puckering project.
+# Currently, several different puckers are missing files. I am trying to come up 
+# with a way to ensure that all of the puckers correctly located. 
+
+molecule=$1
+missing_pucker=$2
+
+new_directory=z_missing_files
+
+if [ ! -d "${new_directory}" ]; then
+	mkdir z_missing_files
+fi
+
+missing_pucker_log_files=z_log_files_${missing_pucker}
+missing_file_list=${new_directory}/z_missing_${missing_pucker}_files.txt
+
+if [ ${molecule} == "oxane" ]; then 
+	exit_status=0
+	files_per_pucker=1
+elif [ ${molecule} == "bxyl" ]; then 
+	exit_status=0
+	files_per_pucker=81
+else
+	exit_status=1
+fi 
+
+if [ ${exit_status} == "1" ]; then
+	echo
+	echo "Something isn't right with the script...the molecule"
+	echo "may not be found!"
+	echo
+	exit
+elif [ ${exit_status} == "0" ]; then 
+
+#### This part of the script finds all of the log files for the given pucker
+	ls *${missing_pucker}*.log | sort -V > ${missing_pucker_log_files}   
+
+#### This part of the script checks to make sure that the pucker is actually 
+#### missing files. 
+	log_file_count="$(cat ${missing_pucker_log_files} | wc -l)"
+	if [ ${log_file_count} == "81" ]; then 
+		echo
+		echo "The number of files is ${log_file_count}."
+		echo "The current pucker for ${molecule} has the correct number."
+		echo
+		rm ${missing_pucker_log_files}
+		exit
+#### If the pucker is missing a file, now the script IDs the missing puckers
+	else
+		echo "The following .log files are missing for the ${missing_pucker} in ${molecule}:" > ${missing_file_list}
+		num_files_missing=$( echo "${files_per_pucker}-${log_file_count}" | bc) 
+		echo
+		echo "The following pucker is missing ${num_files_missing} files."
+		echo
+		seq 81 > z_temp_files_count.txt
+
+		for log_count_number in $( <z_temp_files_count.txt); do
+			pucker_find=no
+			for log_file in $( <${missing_pucker_log_files}); do
+				log_file_check=${molecule}_${missing_pucker}_${log_count_number}.log
+				if [ "${log_file}" == "${log_file_check}" ]; then
+					pucker_find=yes
+				fi
+			done
+			echo ${log_file_check} ${pucker_find} 
+			
+			if [ ${pucker_find} == "no" ]; then 
+				echo ${log_file_check} >> ${missing_file_list}
+			fi
+
+		done
+	fi
+fi
+rm ${missing_pucker_log_files}
+rm z_temp_files_count.txt
