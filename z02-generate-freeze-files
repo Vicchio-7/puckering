@@ -170,7 +170,7 @@ else
 
                          sed -e "s/\$chkfile/${file}-${test_type}_${short_level_of_theory}.chk/g" ${file}-temp1.com >> ${file}-temp.com
                          sed -e "s/\$folder/${molecule}-${test_type}_${3}/g" ${file}-temp.com >> ${file}-temp2.com
-                         sed -e "s/\$orginal_file/${file_unedit}/g" ${file}-temp.com >> ${file}-temp3.com
+                         sed -e "s/\$orginal_file/${file_unedit}/g" ${file}-temp2.com >> ${file}-temp3.com
                          sed -e "s/level_of_theory/${level_of_theory}/g" ${file}-temp3.com >> ${file}-temp-final.com
 
                          mv ${file}-temp-final.com ${file}.com
