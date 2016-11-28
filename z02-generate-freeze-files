@@ -180,7 +180,7 @@ else
 
                          rm ${file}-temp*
 
-                         echo "" > ${file}.com
+                         echo "" >> ${file}.com
     done
 fi
 
