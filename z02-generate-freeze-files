@@ -162,7 +162,7 @@ else
 
                        # This part of the script modifies the Gaussian Input (.com) file:
 
-                            echo "lets place this in there"
+                            echo "lets place this in there" > ${file}.com
 
                             sed -i "1s/.*/%chk=\/scratch\/hbmayes_fluxod\/vicchio\/${1}-${2}_${3}\/${1}-${file}-${2}_${3}.chk/" ${file}.com
                             sed -i "2s/.*/${input}/" ${file}.com
