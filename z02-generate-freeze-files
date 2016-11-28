@@ -183,6 +183,8 @@ else
 
                         rm ${file}-temp*
 
+                        sed -i '$s/$/\n/' ${file}.com
+
                         sed -i '$s/$/\nD   1    2    3    4 F/' ${file}.com
                         sed -i '$s/$/\nD   2    3    4    5 F/' ${file}.com
                         sed -i '$s/$/\nD   3    4    5    6 F/' ${file}.com
