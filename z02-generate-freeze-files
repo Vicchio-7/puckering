@@ -112,9 +112,7 @@ else
 
     for file_unedit in $( <$input_list); do
                     file=${file_unedit%.xyz}
-                    echo ${file}
-
-                       ########                CREATES THE PBS FILE                #########
+                    ########                CREATES THE PBS FILE                #########
 
                             PBS_file=PBS-${2}-${file}.txt # creates the PBS file
                             run=${1}-${2}-${file} # creates the name of the run
@@ -169,18 +167,22 @@ else
 
                        # This part of the script modifies the Gaussian Input (.com) file:
 
+                        coordinates=$(cat ${file}.xyz)
+
+                        echo ${coordinates}
+
                         cat ${tpl}/${tpl_file} > ${file}-temp1.com
 
-                         sed -e "s/\$chkfile/${file}-${test_type}_${short_level_of_theory}.chk/g" ${file}-temp1.com >> ${file}-temp.com
-                         sed -e "s/\$folder/${molecule}-${test_type}_${3}/g" ${file}-temp.com >> ${file}-temp2.com
-                         sed -e "s/\$orginal_file/${file_unedit}/g" ${file}-temp2.com >> ${file}-temp3.com
-                         sed -e "s/level_of_theory/${level_of_theory}/g" ${file}-temp3.com >> ${file}-temp-final.com
+                        sed -e "s/\$chkfile/${file}-${test_type}_${short_level_of_theory}.chk/g" ${file}-temp1.com >> ${file}-temp.com
+                        sed -e "s/\$folder/${molecule}-${test_type}_${3}/g" ${file}-temp.com >> ${file}-temp2.com
+                        sed -e "s/\$orginal_file/${file_unedit}/g" ${file}-temp2.com >> ${file}-temp3.com
+                        sed -e "s/level_of_theory/${level_of_theory}/g" ${file}-temp3.com >> ${file}-temp-final.com
 
-                         mv ${file}-temp-final.com ${file}.com
+                        mv ${file}-temp-final.com ${file}.com
 
-                         rm ${file}-temp*
+                        rm ${file}-temp*
 
-                         echo "" >> ${file}.com
+                        echo "" >> ${file}.com
     done
 fi
 
