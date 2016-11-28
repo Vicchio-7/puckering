@@ -14,6 +14,9 @@
 # The script used the echo command to insert the necessary information
 # into a file. 
 
+molecule=$1
+test_type=$2
+level_of_theory_short=$3
 
 tpl=/home/vicchio/puckering/z_tpl
 tpl_file=gaussian-bxyl_hm_issue_freeze.txt
