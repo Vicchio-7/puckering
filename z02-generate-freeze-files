@@ -16,7 +16,7 @@
 
 molecule=$1
 test_type=$2
-level_of_theory_short=$3
+short_level_of_theory=$3
 
 tpl=/home/vicchio/puckering/z_tpl
 tpl_file=gaussian-bxyl_hm_issue_freeze.txt
@@ -180,8 +180,7 @@ else
 
                          rm ${file}-temp*
 
-
-
+                         echo "" > ${file}.com
     done
 fi
 
