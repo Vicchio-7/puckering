@@ -158,11 +158,11 @@ else
 
                             echo "g09 <${file}.com> ${file}-${2}_${3}.log" >> ${PBS_file}
 
-                        ########                CREATES THE COM FILE                #########
+                       ########                CREATES THE COM FILE                #########
 
-                            # This part of the script modifies the Gaussian Input (.com) file:
+                       # This part of the script modifies the Gaussian Input (.com) file:
 
-                            echo "lets place this in there" > ${file}.com
+                            echo "lets place this in there"
 
                             sed -i "1s/.*/%chk=\/scratch\/hbmayes_fluxod\/vicchio\/${1}-${2}_${3}\/${1}-${file}-${2}_${3}.chk/" ${file}.com
                             sed -i "2s/.*/${input}/" ${file}.com
@@ -179,8 +179,6 @@ else
 
                             sed -i '$s/$/\n/' ${file}.com
                             sed -i '$s/$/\n/' ${file}.com
-
-
 
     done
 fi
