@@ -15,7 +15,7 @@
 # into a file. 
 
 
-tpl=/home/vicchio/puckering/z_tpl/
+tpl=/home/vicchio/puckering/z_tpl
 tpl_file=gaussian-bxyl_hm_issue_freeze.txt
 
 if [ ${1} == "oxane" ]; then
@@ -165,6 +165,8 @@ else
                        ########                CREATES THE COM FILE                #########
 
                        # This part of the script modifies the Gaussian Input (.com) file:
+
+                        cat ${tpl}/${tpl_file} > ${file}-temp1.com
 
                          sed -e "s/\$chkfile/${file}-${test_type}_${short_level_of_theory}.chk/g" ${file}-temp1.com >> ${file}-temp.com
                          sed -e "s/\$folder/${molecule}-${test_type}_${3}/g" ${file}-temp.com >> ${file}-temp2.com
