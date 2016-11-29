@@ -14,7 +14,7 @@ if [[ ${run_type} == 'rerun' ]]; then
 	for file_sub in $(find . \( ! -name . -prune \) -type f -iname 'PBS-*_rerun*'); do
                 qsub ${file_sub}
 	done
-if [[ ${run_type} == 'none' ]]; then
+elif [[ ${run_type} == 'none' ]]; then
     keyword=$2
 	for file_sub in $(find . \( ! -name . -prune \) -type f -iname 'PBS-*_${keyword}*'); do
                 qsub ${file_sub}
@@ -24,17 +24,3 @@ else
 		qsub ${file_sub} 
 	done
 fi
-
-################ Old script #################
-# The following input is needed:
-# $1 - molecule 
-# $2 - job type (freeze, relax, TS) 
-# $3 - level of theory (B3LYP, am1, pbe)
-
-#input_list=y0-input_list.txt
-
-#for file in $( <$input_list); do 
-#
-#       qsub PBS-${2}-${file}.txt
-#
-#done
