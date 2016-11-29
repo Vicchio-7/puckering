@@ -28,7 +28,9 @@ if [ ! -f ${failure} ]; then
 
 	if [ ${molecule} == "oxane" ]; then 
 		z05-grab_xyz_oxane
-	fi 
+	elif [ ${molecule} == "bxyl" ]; then
+	    z05-grab_xyz_oxane bxyl
+	fi
 
 	xyz_cluster -s zdatafile-hartree-${molecule}_${short_level_of_theory}-cpsnap.csv -t 0.1
 
