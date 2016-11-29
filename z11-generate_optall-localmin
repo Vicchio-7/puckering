@@ -18,7 +18,7 @@
 input_list=../y0-input_list.txt
 level_of_theory=$(head -n 1 ../y0-level_of_theory_basis_set.txt)
 
-tpl=/home/vicchio/puckering/z_tpl/
+tpl=/home/vicchio/puckering/z_tpl
 template_file_oxane=gaussian-chk_run-optall_localmin-tpl_oxane.txt
 template_file_prefrozen=gaussian-chk_run-optall_localmin-tpl_prefrozen.txt
 
