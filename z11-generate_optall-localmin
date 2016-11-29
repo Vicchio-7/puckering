@@ -67,7 +67,7 @@ else
 ######## The section below updates the Gaussian Input File
 
 	    echo "I MADE IT HERE!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!" > temp.temp
-	    echo ${file}
+	    echo "My current file is ${file}"
 	    ls $tpl/${template_file_prefrozen}
 
 		head -n 2 $tpl/${template_file_prefrozen} > ${file}-temp1.com 
