@@ -66,7 +66,7 @@ else
 
 ######## The section below updates the Gaussian Input File
 
-	    echo "I MADE IT HERE!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
+	    echo "I MADE IT HERE!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!" > temp.temp
 		head -n 2 $tpl/${template_file_prefrozen} > ${file}-temp1.com 
 		echo >> ${file}-temp1.com
 		echo "From ${file_unedit}" >> ${file}-temp1.com
