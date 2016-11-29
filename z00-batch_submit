@@ -14,6 +14,11 @@ if [[ ${run_type} == 'rerun' ]]; then
 	for file_sub in $(find . \( ! -name . -prune \) -type f -iname 'PBS-*_rerun*'); do
                 qsub ${file_sub}
 	done
+if [[ ${run_type} == 'none' ]]; then
+    keyword=$2
+	for file_sub in $(find . \( ! -name . -prune \) -type f -iname 'PBS-*_${keyword}*'); do
+                qsub ${file_sub}
+	done
 else
 	for file_sub in $(find . \( ! -name . -prune \) -type f -iname 'PBS-*'); do
 		qsub ${file_sub} 

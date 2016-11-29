@@ -45,8 +45,8 @@
       <file leaf-file-name="z11-generate_optall-localmin" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/z11-generate_optall-localmin">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="133">
-              <caret line="69" column="41" lean-forward="false" selection-start-line="69" selection-start-column="41" selection-end-line="69" selection-end-column="41" />
+            <state relative-caret-position="208">
+              <caret line="85" column="70" lean-forward="false" selection-start-line="85" selection-start-column="70" selection-end-line="85" selection-end-column="70" />
               <folding />
             </state>
           </provider>
@@ -613,12 +613,12 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1480131549768</updated>
-      <workItem from="1480131551124" duration="12275000" />
+      <workItem from="1480131551124" duration="12405000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="12275000" />
+    <option name="totallyTimeSpent" value="12405000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -770,8 +770,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/z11-generate_optall-localmin">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="133">
-          <caret line="69" column="41" lean-forward="false" selection-start-line="69" selection-start-column="41" selection-end-line="69" selection-end-column="41" />
+        <state relative-caret-position="208">
+          <caret line="85" column="70" lean-forward="false" selection-start-line="85" selection-start-column="70" selection-end-line="85" selection-end-column="70" />
           <folding />
         </state>
       </provider>
