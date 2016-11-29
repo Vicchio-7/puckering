@@ -16,7 +16,6 @@ if [[ ${run_type} == 'rerun' ]]; then
 	done
 elif [[ ${run_type} == 'none' ]]; then
     keyword=$2
-    echo "PBS-*_${keyword}*"
 	for file_sub in $(find . \( ! -name . -prune \) -type f -iname "PBS-*${keyword}*"); do
                 qsub ${file_sub}
 	done
