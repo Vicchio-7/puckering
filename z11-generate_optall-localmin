@@ -67,6 +67,9 @@ else
 ######## The section below updates the Gaussian Input File
 
 	    echo "I MADE IT HERE!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!" > temp.temp
+	    echo ${file}
+	    ls $tpl/${template_file_prefrozen}
+
 		head -n 2 $tpl/${template_file_prefrozen} > ${file}-temp1.com 
 		echo >> ${file}-temp1.com
 		echo "From ${file_unedit}" >> ${file}-temp1.com
@@ -86,6 +89,8 @@ else
                 rm ${file}-temp*
 
 ######## The section below creates the PBS file for submission on flux
+
+                ls $tpl/gaussian-PBS-tpl.txt
 
                 sed -e "s/molecule/${molecule}/g" $tpl/gaussian-PBS-tpl.txt > PBS-$2-${file}.txt
                 sed -e "s/study/${2}/g" PBS-$2-${file}.txt >> PBS-$2-${file}-temp1.txt
