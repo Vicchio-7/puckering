@@ -24,7 +24,7 @@ z04-check-normal-termination ${molecule} ${test_type} ${short_level_of_theory}
 failure=out-failure-${1}-${2}-${3}.txt
 
 if [ ! -f ${failure} ]; then 
-	hartree cpsnap -d ../6_prod-run_TS/. > zdatafile-hartree-${molecule}_${short_level_of_theory}-cpsnap.csv
+	hartree cpsnap -d ${PWD} > zdatafile-hartree-${molecule}_${short_level_of_theory}-cpsnap.csv
 
 	if [ ${molecule} == "oxane" ]; then 
 		z05-grab_xyz_oxane
