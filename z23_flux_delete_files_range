@@ -1,0 +1,20 @@
+#!/usr/bin/bash
+
+# Created by: Stephen P. Vicchio
+
+# This script deletes a range of files on Flux.
+
+lowerbound=$1
+upperbound=$2
+
+total_files_to_delete=$( echo "${upperbound}-${lowerbound}" | bc )
+
+seq ${total_files_to_delete} > list_count.txt
+
+for file_number in ${list_count}.txt
+
+    current_file_delete=$( echo "${lowerbound}+${file_numner}-1" | bc )
+    echo ${current_file_delete}
+
+done
+
