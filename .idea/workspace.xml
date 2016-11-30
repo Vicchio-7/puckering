@@ -2,8 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ed68f2d3-7d18-4709-9142-bdbed46d01b2" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/z23_flux_delete_files_range" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/z23_flux_delete_files_range" afterPath="$PROJECT_DIR$/z23_flux_delete_files_range" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -35,8 +35,8 @@
       <file leaf-file-name="z23_flux_delete_files_range" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/z23_flux_delete_files_range">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="300">
-              <caret line="20" column="0" lean-forward="false" selection-start-line="20" selection-start-column="0" selection-end-line="20" selection-end-column="0" />
+            <state relative-caret-position="225">
+              <caret line="15" column="40" lean-forward="true" selection-start-line="15" selection-start-column="40" selection-end-line="15" selection-end-column="40" />
               <folding />
             </state>
           </provider>
@@ -626,12 +626,12 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1480131549768</updated>
-      <workItem from="1480131551124" duration="14611000" />
+      <workItem from="1480131551124" duration="14682000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="14611000" />
+    <option name="totallyTimeSpent" value="14682000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -807,8 +807,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/z23_flux_delete_files_range">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="300">
-          <caret line="20" column="0" lean-forward="false" selection-start-line="20" selection-start-column="0" selection-end-line="20" selection-end-column="0" />
+        <state relative-caret-position="225">
+          <caret line="15" column="40" lean-forward="true" selection-start-line="15" selection-start-column="40" selection-end-line="15" selection-end-column="40" />
           <folding />
         </state>
       </provider>

@@ -12,8 +12,10 @@ total_files_to_delete=$( echo "${upperbound}-${lowerbound}" | bc )
 seq ${total_files_to_delete} > list_count.txt
 
 for file_number in ${list_count}.txt
-
-    current_file_delete=$( echo "${lowerbound}+${file_number}-1" | bc )
+    echo ${file_number}
+    echo ${lowerbound}
+    current_file_delete=$( ${file_number} + ${lowerbound})
+#    current_file_delete=$( echo "${lowerbound}+${file_number}-1" | bc )
     echo ${current_file_delete}
 
 done
