@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+jar_location="${HOME}/scripts/"
+version="-1.1.9-SNAPSHOT"
+java -jar "${jar_location}hartree-cli${version}.jar" $@
+

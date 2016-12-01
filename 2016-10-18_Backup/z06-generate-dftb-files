@@ -1,0 +1,23 @@
+#!/usr/bin/bash
+
+# Created by: Stephen P. Vicchio 
+
+# The purpose of this script is to add the necessary dftb information to the end
+# of the Gaussian input (COM) file.  
+
+cp ../files_DTFB/y1-gaussian_input_information_dftb.txt .
+input=y1-gaussian_input_information_dftb.txt
+
+
+########                CREATES THE COM FILE                #########
+
+        # This part of the script modifies the Gaussian Input (.com) file:  
+
+for com in $(find . -type f -iname '*.com'); do
+
+	sed -i '$d' ${com} 
+
+	cat ${input} >> ${com}
+
+done 
+

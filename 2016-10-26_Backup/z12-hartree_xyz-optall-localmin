@@ -1,0 +1,37 @@
+#!/usr/bin/bash
+
+# Created by: Stephen P. Vicchio 
+
+# The purpose of this script is to create a PBS for a job 
+# submission onto Flux and local min run files.  
+#
+# The following input is needed:
+# $1 - molecule 
+# $2 - job type (freeze, relax, TS, emin) 
+# $3 - level of theory (B3LYP, am1, pbe)
+# 
+# This script creates a COM file for Gaussian input (relaxed run)
+# and generates the necessary PBS file. The script deals with a 
+# tpl file, that can be found in the location listed below (tpl). 
+# If any error arise from the script, check on the tpl file. 
+
+molecule=$1
+test_type=$2
+short_level_of_theory=$3
+
+z04-check-normal-termination ${molecule} ${test_type} ${short_level_of_theory}
+
+failure=out-failure-${1}-${2}-${3}.txt
+
+if [ ! -f ${failure} ]; then 
+ 	hartree cpsnap -d $PWD > z_hartree_out-unsorted-${molecule}-${short_level_of_theory}.csv
+	z05-grab_xyz_oxane	
+	xyz_cluster -s z_hartree_out-unsorted-${molecule}-${short_level_of_theory}.csv -t 0.1 
+else
+	echo 'There is a file that did not run properly!' 
+fi
+
+mv z_cluster_z_hartree_out-unsorted-${molecule}-${short_level_of_theory}.csv z_cluster-sorted-${molecule}-${short_level_of_theory}.csv
+ 
+
+ 

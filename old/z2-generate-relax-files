@@ -1,0 +1,55 @@
+#!/usr/bin/bash
+
+# Created by: Stephen P. Vicchio 
+
+# The purpose of this script is to create a PBS for a job 
+# submission onto Flux. 
+#
+# The following input is needed:
+# $1 - molecule 
+# $2 - job type (freeze, relax, TS) 
+# $3 - level of theory (B3LYP, am1, pbe)
+# 
+# This script creates a COM file for Gaussian input (relaxed run)
+# and generates the necessary PBS file. The script deals with a 
+# tpl file, that can be found in the location listed below (tpl). 
+# If any error arise from the script, check on the tpl file. 
+
+input_list=../y0-input_list.txt
+level_of_theory_replace=$(head -n 1 ../y1-level_of_theory_basis_set.txt)
+tpl=/home/vicchio/puckering/oxane/tpl
+
+molecule=$1
+test_type=$2
+short_level_of_theory=$3 
+
+echo 
+echo $molecule 
+echo ${level_of_theory_replace}
+echo 
+
+mkdir /scratch/hbmayes_fluxod/vicchio/${1}-${2}_{3}
+cp /scratch/hbmayes_fluxod/vicchio/${1}-freeze_${3}/*.chk /scratch/hbmayes_fluxod/vicchio/${1}-${2}_{3}/. 
+
+for file in $( <$input_list); do 
+	
+	# The section below updates the Gaussian Input File
+
+	sed -e "s/\$folder/insererwerwerwerwerewrwerwer/g" 
+	
+	sed -e "s/\$chkfile/${molecule}-${short_level_of_theory}-${file}/g" $tpl/gaussian-chk_run-tpl.txt > ${file}.com 
+  	sed -e "s/\$folder/${1}-${2}_${3}/g" ${file}.com >> ${file}-tempa.com
+	sed -e "s/level_of_theory/${level_of_theory_replace}/g" ${file}-tempa.com >> ${file}-temp.com
+
+	mv ${file}-temp.com ${file}.com 
+	
+	# The section below creates the PBS file for submission on flux
+	
+	sed -e "s/molecule/${molecule}/g" $tpl/gaussian-PBS-tpl.txt > PBS-$2-${file}.txt 
+  	sed -e "s/study/${2}/g" PBS-$2-${file}.txt >> PBS-$2-${file}-temp1.txt
+	sed -e "s/level_of_theory_short/${short_level_of_theory}/g" PBS-$2-${file}-temp1.txt >> PBS-$2-${file}-temp2.txt
+	sed -e "s/conform/${file}/g" PBS-$2-${file}-temp2.txt > PBS-$2-${file}.txt
+	
+	rm PBS-$2-${file}-temp*
+
+done

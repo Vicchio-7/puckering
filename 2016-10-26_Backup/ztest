@@ -1,0 +1,41 @@
+#!/usr/bin/bash 
+
+# Prints the filename and energy (if any) for each log file found starting
+# from the current directory.
+
+num_atoms=16
+buffer_lines=4
+lines_grab=$((num_atoms + buffer_lines))
+
+location=/home/vicchio/puckering/oxane/B3LYP/3_prod-run_relax
+
+cd $location 
+
+file=z_files_list_freq_runszdatafile-hartree-oxane_B3LYP-cpsnap.txt
+
+while IFS= read -r cmd; do 
+	var=$(printf '%s\n' "$cmd" | cut -c 7-9 | sed 's/-$//')
+	echo $var
+done < "$file"
+
+#while read -r line
+#do
+#
+#	hi=$(name="$line" | cut -c 7-9)
+#  
+#	echo "Name read form file - $name"
+#
+#done < "$file"
+
+#hile IFS='' read -r line || [[ -n "$line" ]]; do
+#	echo
+#	hi=$(cut -c 7-9 $line)
+# 	echo $hi
+#	sed 's/-$//' temp_text.txt > hi.txt	
+#done < "$file" 
+
+#cat hi.txt
+
+
+#cut -c 7-9 $line 
+#sed 's/-$//'

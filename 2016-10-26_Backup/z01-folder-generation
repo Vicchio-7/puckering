@@ -1,0 +1,36 @@
+#!/usr/bin/bash
+
+# Created by: Stephen P. Vicchio 
+
+# This script creates the correct production folders for a
+# given level of theory. 
+#
+
+level_of_theory_short=$1
+molecule=oxane
+
+# echo 'insert level of theory here' >
+
+mkdir ~/puckering/${molecule}/${level_of_theory_short}
+
+location=~/puckering/${molecule}/${level_of_theory_short}
+
+cd ${location}/
+
+mkdir 0_initial-coordinates
+mkdir 1_sample-files
+mkdir 2_prod-run_freeze
+mkdir 3_prod-run_relax
+mkdir 4_prod-run_local-min-energy
+
+cp ~/puckering/${molecule}/z_initial-coordinates-NOtouch/* ${location}/0_initial-coordinates/.
+
+cd ${location}/0_initial-coordinates/
+ls *.com > y0-input_list.txt
+
+cd ${location}/
+mv 0_initial-coordinates/y0-input_list.txt y0-input_list.txt
+
+echo 'insert level of theory here' > y1-level_of_theory_basis_set.txt
+echo 'insert relaxed level of theory here' > y2-level_of_theory_basis_set_relax.txt
+echo 'insert freq level of theory here' > y3-level_of_theory_basis_set_localmin.txt

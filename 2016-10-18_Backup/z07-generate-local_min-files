@@ -1,0 +1,58 @@
+#!/usr/bin/bash
+
+# Created by: Stephen P. Vicchio 
+
+# The purpose of this script is to create a PBS for a job 
+# submission onto Flux and local min run files.  
+#
+# The following input is needed:
+# $1 - molecule 
+# $2 - job type (freeze, relax, TS, emin) 
+# $3 - level of theory (B3LYP, am1, pbe)
+# 
+# This script creates a COM file for Gaussian input (relaxed run)
+# and generates the necessary PBS file. The script deals with a 
+# tpl file, that can be found in the location listed below (tpl). 
+# If any error arise from the script, check on the tpl file. 
+
+molecule=$1
+test_type=$2
+short_level_of_theory=$3
+ 
+input_list=../3_prod-run_relax/z_files_list_freq_runszdatafile-hartree-${1}_${3}-cpsnap.txt
+
+
+level_of_theory_localmin=$(head -n 1 ../y3-level_of_theory_basis_set_localmin.txt)
+
+tpl=/home/vicchio/puckering/oxane/tpl
+tpl_file=gaussian-chk_run-localmin-tpl.txt
+
+mkdir /scratch/hbmayes_fluxod/vicchio/${1}-${2}_${3}
+
+while IFS= read -r cmd; do
+       	structure_id=$(printf '%s\n' "$cmd" | cut -c 7-9 | sed 's/-$//')
+	echo ${structure_id}
+	file=${structure_id}	
+
+	cp /scratch/hbmayes_fluxod/vicchio/${1}-relax_${3}/${1}-${file}-freeze_${3}-relax_${3}.chk /scratch/hbmayes_fluxod/vicchio/${1}-${2}_${3}/${1}-${file}-freeze_${3}-relax_${3}-${2}_${3}.chk 
+
+	# The section below updates the Gaussian Input File
+
+	sed -e "s/\$chkfile/${molecule}-${file}-freeze_${short_level_of_theory}-relax_${short_level_of_theory}-${test_type}_${short_level_of_theory}/g" $tpl/${tpl_file} > ${file}.com 
+  	sed -e "s/\$folder/${molecule}-${test_type}_${3}/g" ${file}.com >> ${file}-temp1.com
+	sed -e "s/level_of_theory/${level_of_theory_localmin}/g" ${file}-temp1.com >> ${file}-temp.com
+
+	mv ${file}-temp.com ${file}.com 
+	rm ${file}-temp1.com 
+
+	# The section below creates the PBS file for submission on flux
+	
+	sed -e "s/molecule/${molecule}/g" $tpl/gaussian-PBS-tpl.txt > PBS-$2-${file}.txt 
+	sed -e "s/study/${2}/g" PBS-$2-${file}.txt >> PBS-$2-${file}-temp1.txt
+	sed -e "s/level_of_theory_short/${short_level_of_theory}/g" PBS-$2-${file}-temp1.txt >> PBS-$2-${file}-temp2.txt
+	sed -e "s/conform/${file}/g" PBS-$2-${file}-temp2.txt > PBS-$2-${file}-temp3.txt
+ 	sed -e "s/gauss-log/${1}-${file}-freeze_${3}-relax_${3}-${2}_${3}/g" PBS-${2}-${file}-temp3.txt > PBS-${2}-${file}.txt
+
+	rm PBS-$2-${file}-temp*
+
+done < "$input_list" 

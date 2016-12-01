@@ -1,0 +1,19 @@
+#!/bin/bash 
+
+echo
+echo '-----------------------------------------------' 
+echo
+
+
+input_information="Currently, I am operating on:"
+ 
+echo "Good morning, world"
+echo
+echo $input_information $HOSTNAME
+echo 
+echo '-----------------------------------------------'
+echo
+
+
+
+

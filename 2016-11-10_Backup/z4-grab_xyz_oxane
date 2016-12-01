@@ -1,0 +1,19 @@
+#!/usr/bin/bash 
+
+# Prints the filename and energy (if any) for each log file found starting
+# from the current directory.
+
+num_atoms=16
+buffer_lines=4
+lines_grab=$((num_atoms + buffer_lines))
+
+# For each file type ending in .log
+for log in $(find . -type f -iname '*.log'); do
+        filename="${log%.*}.xyz"
+        echo "     ${num_atoms}" > $filename
+        echo $log >> $filename
+        grep -A $lines_grab 'Input orientation:' $log | tail -${num_atoms} | awk '{print "  " $2 "  " $4 "  " $5 "  " $6}' >> $filename
+done
+
+
+
