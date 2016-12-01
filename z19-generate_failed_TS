@@ -89,6 +89,6 @@ else
 
                 rm PBS-$2-${file}-temp*
        		
-#		qsub PBS-${2}-${file}_rerun.txt 
+                qsub PBS-${2}-${file}_rerun.txt
 	 done
 fi
