@@ -1,0 +1,66 @@
+#!/usr/bin/bash
+
+#!/usr/bin/bash
+
+# Created by: Stephen P. Vicchio 
+
+# The purpose of this script is to check for normal 
+# termination of gaussian jobs. The script works by reading the
+# last line of the gaussian log file for a given run.  
+#
+# The following input is needed:
+# $1 - molecule 
+# $2 - job type (freeze, relax, TS) 
+# $3 - level of theory (B3LYP, am1, pbe)
+
+success=out-success-${1}-${2}-${3}.txt
+failure=out-failure-${1}-${2}-${3}.txt
+output=termination_status-${1}-${2}-${3}.txt 
+
+if [ -a $success ]; then 
+	rm $success
+fi 
+
+if [ -a $failure ]; then 
+	rm $failure
+fi 
+
+if [ -a $output  ]; then 
+	rm $output
+fi 
+
+for log in $(find . -maxdepth 1 -type f -iname '*.log'); do 
+
+	termination_status=$(tail -n 1 ${log%.*}.log | sed -e 's/ at.*//')
+
+#	echo "XX${termination_status}XX"
+#	size=${#termination_status}
+#	echo $size
+	
+	expect=' Normal termination of Gaussian 09'
+#	size=${#expect}
+#	echo $size
+	
+	if [ "$termination_status" = "${expect}" ]; then
+		echo ${log%.*}.log >> $success
+	else
+		echo ${log%.*}.log >> $failure
+	fi
+
+	echo ${log%.*} "--------" $termination_status | awk '{print " " $1 " " $2 " "$3" " $4 " "$5" " $6 " "$7}' >> $output
+	 
+done
+
+if [ -s ${failure} ]; then 
+	echo
+	echo 'The following runs were not completed as expected:'
+	cat -n ${failure}
+	echo
+else
+	echo 
+	echo 'All of the runs were completed properly!'
+	echo 
+	echo 'Carry On My Wayward Son'
+	echo
+fi
+	
