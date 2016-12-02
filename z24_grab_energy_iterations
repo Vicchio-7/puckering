@@ -12,7 +12,7 @@ file_to_search=$1
 file_name_edit=${file_to_search%.log}
 
 echo "The numbers below are the energy in A.U. for ${file_to_search}" > ${file_name_edit}.data
-echo "The numbers are in order of iteration."
+echo "The numbers are in order of iteration." >> ${file_name_edit}.data
 
-grep 'SCF Done:' ${file_to_search} | awk '{print " $1 " " " $2 "  " $4 "  " $5 "  " $6}' > ${file_name_edit}.data
+grep 'SCF Done:' ${file_to_search} | awk '{print $5 }' >> ${file_name_edit}.data
 
