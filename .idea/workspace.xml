@@ -2,9 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ed68f2d3-7d18-4709-9142-bdbed46d01b2" name="Default" comment="">
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.z01-folder-generation.swp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.z07-hartee_xyz_cluster.swp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.z5-check-normal_termination.swp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.ztest.swp" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/z19-generate_failed_TS" afterPath="$PROJECT_DIR$/z19-generate_failed_TS" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/z23_flux_delete_files_range" afterPath="$PROJECT_DIR$/z23_flux_delete_files_range" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/z24_grab_energy_iterations" afterPath="$PROJECT_DIR$/z24_grab_energy_iterations" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -53,21 +56,21 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="z20-4c1_out_to_log" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/z20-4c1_out_to_log">
+      <file leaf-file-name="z24_grab_energy_iterations" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/z24_grab_energy_iterations">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+            <state relative-caret-position="165">
+              <caret line="11" column="29" lean-forward="false" selection-start-line="11" selection-start-column="29" selection-end-line="11" selection-end-column="29" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="z19-generate_failed_TS" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/z19-generate_failed_TS">
+      <file leaf-file-name="z05-grab_xyz_oxane" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/z05-grab_xyz_oxane">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="753">
-              <caret line="91" column="16" lean-forward="false" selection-start-line="91" selection-start-column="16" selection-end-line="91" selection-end-column="16" />
+            <state relative-caret-position="490">
+              <caret line="33" column="139" lean-forward="false" selection-start-line="33" selection-start-column="12" selection-end-line="33" selection-end-column="139" />
               <folding />
             </state>
           </provider>
@@ -87,27 +90,7 @@
         <entry file="file://$PROJECT_DIR$/z02-generate-freeze-files">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="315">
-              <caret line="30" column="26" lean-forward="true" selection-start-line="30" selection-start-column="26" selection-end-line="30" selection-end-column="27" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="z21-find_missing_files" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/z21-find_missing_files">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-585">
-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="15" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="z18_total_runtime_check" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/z18_total_runtime_check">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="420">
-              <caret line="34" column="28" lean-forward="false" selection-start-line="34" selection-start-column="28" selection-end-line="34" selection-end-column="93" />
+              <caret line="30" column="26" lean-forward="false" selection-start-line="30" selection-start-column="26" selection-end-line="30" selection-end-column="27" />
               <folding />
             </state>
           </provider>
@@ -118,7 +101,11 @@
   <component name="FindInProjectRecents">
     <findStrings>
       <find>template_file_prefrozen</find>
+      <find>grep</find>
     </findStrings>
+    <dirStrings>
+      <dir>$PROJECT_DIR$</dir>
+    </dirStrings>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -142,6 +129,7 @@
         <option value="$PROJECT_DIR$/z18_total_runtime_check" />
         <option value="$PROJECT_DIR$/z23_flux_delete_files_range" />
         <option value="$PROJECT_DIR$/z19-generate_failed_TS" />
+        <option value="$PROJECT_DIR$/z24_grab_energy_iterations" />
       </list>
     </option>
   </component>
@@ -679,12 +667,12 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1480131549768</updated>
-      <workItem from="1480131551124" duration="15688000" />
+      <workItem from="1480131551124" duration="16624000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="15688000" />
+    <option name="totallyTimeSpent" value="16624000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -706,11 +694,11 @@
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32897604" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.10490856" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.10490856" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25150216" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32916266" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
@@ -770,26 +758,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/z15-generate_IRC">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-345">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/z11-generate_optall-localmin">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="208">
           <caret line="85" column="70" lean-forward="false" selection-start-line="85" selection-start-column="70" selection-end-line="85" selection-end-column="70" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/z05-grab_xyz_oxane">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="195">
-          <caret line="13" column="16" lean-forward="false" selection-start-line="13" selection-start-column="16" selection-end-line="13" selection-end-column="16" />
           <folding />
         </state>
       </provider>
@@ -829,7 +801,7 @@
     <entry file="file://$PROJECT_DIR$/z02-generate-freeze-files">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="315">
-          <caret line="30" column="26" lean-forward="true" selection-start-line="30" selection-start-column="26" selection-end-line="30" selection-end-column="27" />
+          <caret line="30" column="26" lean-forward="false" selection-start-line="30" selection-start-column="26" selection-end-line="30" selection-end-column="27" />
           <folding />
         </state>
       </provider>
@@ -860,8 +832,32 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/z19-generate_failed_TS">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="753">
-          <caret line="91" column="16" lean-forward="false" selection-start-line="91" selection-start-column="16" selection-end-line="91" selection-end-column="16" />
+        <state relative-caret-position="813">
+          <caret line="94" column="0" lean-forward="true" selection-start-line="94" selection-start-column="0" selection-end-line="94" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/z15-generate_IRC">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/z05-grab_xyz_oxane">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="490">
+          <caret line="33" column="139" lean-forward="false" selection-start-line="33" selection-start-column="12" selection-end-line="33" selection-end-column="139" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/z24_grab_energy_iterations">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="165">
+          <caret line="11" column="29" lean-forward="false" selection-start-line="11" selection-start-column="29" selection-end-line="11" selection-end-column="29" />
           <folding />
         </state>
       </provider>
