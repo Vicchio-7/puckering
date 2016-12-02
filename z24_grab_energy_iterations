@@ -7,10 +7,9 @@
 # The purpose of this script to collect information on change in energy as a function
 # of iteration number. Trying to get an idea of the energy surface for my molecules.
 
-
-
 file_to_search=$1
 
+file_name_edit=${file_to_search%.log}
 
-grep 'SCF Done:' ${file_to_search} | awk '{print "  " $2 "  " $4 "  " $5 "  " $6}' > z_testing_123.txt
+grep 'SCF Done:' ${file_to_search} | awk '{print " $1 " " " $2 "  " $4 "  " $5 "  " $6}' > ${file_name_edit}.data
 
