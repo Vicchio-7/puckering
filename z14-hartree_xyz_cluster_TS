@@ -22,24 +22,39 @@ short_level_of_theory=$3
 z04-check-normal-termination ${molecule} ${test_type} ${short_level_of_theory}
 
 failure=out-failure-${1}-${2}-${3}.txt
+results_location=/home/vicchio/puckering/zz_results
 
-if [ ! -f ${failure} ]; then 
-	hartree cpsnap -d ${PWD} > zdatafile-hartree-${molecule}_${short_level_of_theory}-cpsnap.csv
+if [ ! -f ${failure} ]; then
+	echo "No files failed! Performing hartree and xyz_cluster."
+	echo
+	echo "Please wait a few minutes............"
+	echo
 
-	if [ ${molecule} == "oxane" ]; then 
-		z05-grab_xyz_oxane
-	elif [ ${molecule} == "bxyl" ]; then
-	    z05-grab_xyz_oxane bxyl
+	if [[ ${molecule} == 'oxane' ]]; then
+		results_folder=1_oxane
+		hartree cpsnap -d $PWD > z_hartree_out-unsorted-${molecule}-${short_level_of_theory}.csv
+		z05-grab_xyz_oxane ${molecule}
+		xyz_cluster -s z_hartree_out-unsorted-${molecule}-${short_level_of_theory}.csv -t 0.1
+
+	elif [[ ${molecule} == 'bxyl' ]]; then
+		results_folder=2_bxyl
+		hartree cpsnap -d $PWD > z_hartree_out-unsorted-${molecule}-${short_level_of_theory}.csv
+		z05-grab_xyz_oxane ${molecule}
+		xyz_cluster -s z_hartree_out-unsorted-${molecule}-${short_level_of_theory}.csv -t 0.1 -r '0,8,12,16,4,7'
+
+	else
+		echo "Need to add the molecule to the script!"
 	fi
 
-	xyz_cluster -s zdatafile-hartree-${molecule}_${short_level_of_theory}-cpsnap.csv -t 0.1
-
-	mv z_cluster_zdatafile-hartree-${molecule}_${short_level_of_theory}-cpsnap.csv  z_cluster-sorted-TS-${molecule}-${short_level_of_theory}.csv
-	mv z_files_list_freq_runszdatafile-hartree-${molecule}_${short_level_of_theory}-cpsnap.txt z_list_cluster-sorted-TS-${molecule}-${short_level_of_theory}.txt
-
 else
-	echo 'There is a file that did not run properly!' 
+	echo 'There is a file that did not run properly!'
 fi
+
+mv z_cluster_z_hartree_out-unsorted-${molecule}-${short_level_of_theory}.csv z_cluster-sorted-TS-${molecule}-${short_level_of_theory}.csv
+
+cp z_cluster-sorted-TS-${molecule}-${short_level_of_theory}.csv /home/vicchio/puckering/zz_results/${results_folder}/.
+
+
 
 
 
