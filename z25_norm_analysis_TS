@@ -53,7 +53,28 @@ for file in ${input_list}; do
 
         cp ${scratch_dict}/${molecule}-TS_${level_theory}/${file_org}.chk ${scratch_dict}/${scratch_fold}/${new_filename}
 
-        cp ${tpl_dict}/${tpl_file} ${new_filename}
+        cp $
+
+        #### Creating the COM files for my jobs!
+
+        sed -e "s/\$chkfile/${file}-${test_type}_${short_level_of_theory}.chk/g" ${{tpl_dict}/${tpl_file} > ${new_filename}_temp.tmp
+        sed -e "s/\$folder/${molecule}-${test_type}_${level_theory}/g" ${new_filename}_temp.tmp >> ${new_filename}_temp2.tmp
+        sed -e "s/+leveltheory+/${level_of_theory}/g" ${new_filename}_temp2.tmp >> temp-final.tmp
+
+        mv temp-final.tmp ${new_filename}.com
+
+        rm *temp*
+
+
+        #### Creating the PBS for my norm jobs!
+        sed -e "s/molecule/${molecule}/g" $tpl/gaussian-PBS-tpl.txt > PBS-$2-${file}.txt
+        sed -e "s/study/${2}/g" PBS-$2-${file}.txt >> PBS-$2-${file}-temp1.txt
+        sed -e "s/level_of_theory_short/${short_level_of_theory}/g" PBS-$2-${file}-temp1.txt >> PBS-$2-${file}-temp2.txt
+        sed -e "s/conform/${file}/g" PBS-$2-${file}-temp2.txt > PBS-$2-${file}-temp3.txt
+        sed -e "s/gauss-log/${file}-${2}_${3}/g" PBS-${2}-${file}-temp3.txt > PBS-${2}-${file}.txt
+
+        rm PBS-$2-${file}-temp*
+
 
     fi
 done
