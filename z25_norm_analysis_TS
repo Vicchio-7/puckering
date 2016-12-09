@@ -22,7 +22,6 @@ elif [ "${molecule}" == 'bxyl' ] ;  then
 else
 	echo
 	echo "The molecule type is not found in this script"
-	echo
 	status_build=1
 fi
 
@@ -37,7 +36,12 @@ fi
 
 input_list=$( column -t -s ',' ${ts_hartree_file} | awk '{print $1}' )
 
-echo ${input_list}
+for file in ${input_list}; do
+
+echo ${file}
+
+done
+
 
 
 
