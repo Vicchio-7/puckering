@@ -38,7 +38,9 @@ input_list=$( column -t -s ',' ${ts_hartree_file} | awk '{print $1}' )
 
 for file in ${input_list}; do
 
-echo ${file}
+file1=${file
+
+echo ${file%"}
 
 done
 
