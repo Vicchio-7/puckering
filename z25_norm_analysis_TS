@@ -13,6 +13,7 @@ tpl_dict=/home/vicchio/puckering/z_tpl
 tpl_file=gaussian-norm_TS.tpl
 scratch_dict=/scratch/hbmayes_fluxod/vicchio
 scratch_fold=${molecule}-${job_type}_${level_theory}
+level_of_theory_real=$(head ../y0-level_of_theory_basis_set.txt)
 
 
 if [ "${molecule}" == 'oxane' ] ; then
@@ -49,15 +50,15 @@ for file in ${input_list}; do
 
    if [ "${file_org}" != "File" ]; then
 
-        new_filename=${file_org}_norm.com
+        new_filename=${file_org}_norm
 
         cp ${scratch_dict}/${molecule}-TS_${level_theory}/${file_org}.chk ${scratch_dict}/${scratch_fold}/${new_filename}
 
         #### Creating the COM files for my jobs!
 
-        sed -e "s/\$chkfile/${file}-${test_type}_${short_level_of_theory}.chk/g" ${tpl_dict}/${tpl_file} > ${new_filename}_temp.tmp
-        sed -e "s/\$folder/${molecule}-${test_type}_${level_theory}/g" ${new_filename}_temp.tmp >> ${new_filename}_temp2.tmp
-        sed -e "s/+leveltheory+/${level_of_theory}/g" ${new_filename}_temp2.tmp >> temp-final.tmp
+        sed -e "s/\$chkfile/${file}-${job_type}_${level_theory}.chk/g" ${tpl_dict}/${tpl_file} > ${new_filename}_temp.tmp
+        sed -e "s/\$folder/${molecule}-${job_type}_${level_theory}/g" ${new_filename}_temp.tmp >> ${new_filename}_temp2.tmp
+        sed -e "s/+leveltheory+/${level_of_theory_real}/g" ${new_filename}_temp2.tmp >> temp-final.tmp
 
         mv temp-final.tmp ${new_filename}.com
 
