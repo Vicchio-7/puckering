@@ -1,1 +1,43 @@
-asdasdasda`:
+#!/usr/bin/bash
+
+# Created by: Stephen P. Vicchio
+
+# The purpose of this script is generate the norm files for the different TS structures to perform an norm analysis.
+
+
+molecule=${1}
+job_type=${2}
+level_theory=${3}
+
+tpl_dict=/home/vicchio/puckering/z_tpl/
+tpl_file=gaussian-norm_TS.tpl
+
+
+if [ "${molecule}" == 'oxane' ] ; then
+    status_build=0
+    mole_folder=1_oxane
+elif [ "${molecule}" == 'bxyl' ] ;  then
+	status_build=0
+	mole_folder=2_bxyl
+else
+	echo
+	echo "The molecule type is not found in this script"
+	echo
+	status_build=1
+fi
+
+ts_hartree_file=/home/vicchio/puckering/zz_results/${mole_folder}/z_cluster-sorted-TS-${molecule}-${level_theory}.csv
+
+if [ ! -f "${ts_hartree_file}" ]; then
+	echo
+	echo "The hartree file for ${molecule} with ${level_theory} does not exist."
+	echo
+	exit
+fi
+
+input_list=$( column -t -s ',' ${ts_hartree_file} | awk '{print $1}' )
+
+echo ${input_list}
+
+
+

@@ -15,4 +15,3 @@ echo "The numbers below are the energy in A.U. for ${file_to_search}" > ${file_n
 echo "The numbers are in order of iteration." >> ${file_name_edit}.data
 
 grep 'SCF Done:' ${file_to_search} | awk '{print $5 }' >> ${file_name_edit}.data
-
