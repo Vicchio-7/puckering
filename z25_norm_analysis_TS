@@ -11,6 +11,8 @@ level_theory=${3}
 
 tpl_dict=/home/vicchio/puckering/z_tpl
 tpl_file=gaussian-norm_TS.tpl
+scratch_dict=/scratch/hbmayes_fluxod/vicchio
+scratch_fold=${molecule}-${job_type}_${level_of_theory}
 
 
 if [ "${molecule}" == 'oxane' ] ; then
@@ -34,15 +36,21 @@ if [ ! -f "${ts_hartree_file}" ]; then
 	exit
 fi
 
+if [ ! -d "${scratch_dict}/${scratch_fold}" ]; then
+    mkdir ${scratch_dict}/${scratch_fold}
+fi
+
 input_list=$( column -t -s ',' ${ts_hartree_file} | awk '{print $1}' )
 
 for file in ${input_list}; do
 
     file1=${file%.log\"}
-    file2=${file1##\"}
-    new_filename=${file2}_norm.com
+    file_org=${file1##\"}
+    new_filename=${file_org}_norm.com
 
-    cp ${tpl_dict}/${tpl_file} ${new_filename}
+    echo ${scratch_dict}/${molecule}-TS-${level_of_theory}/${file_org} ${scratch_dict}/${scratch_fold}/${new_filename}
+
+    echo ${tpl_dict}/${tpl_file} ${new_filename}
 
 
 done
