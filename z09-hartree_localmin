@@ -28,3 +28,4 @@ if [ ! -f ${failure} ]; then
 else
 	echo 'There is a file that did not run properly!' 
 fi 
+

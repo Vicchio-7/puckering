@@ -28,3 +28,4 @@ fi
 
 ear
 _cluster -s zdatafile-hartree-${molecule}_${short_level_of_theory}-cpsnap.csv -t 0.1
+

@@ -12,3 +12,4 @@ for log in $(find . -type f -iname '*.out'); do
 	cp ${filename} ${z_no_touch_dirc}/.
 done
 
+

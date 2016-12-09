@@ -95,3 +95,4 @@ while IFS= read -r cmd; do
 	rm ${file}.com
 
 done < "${input_list}"
+

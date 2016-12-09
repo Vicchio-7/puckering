@@ -55,3 +55,4 @@ mv z_cluster_z_hartree_out-unsorted-${molecule}-${short_level_of_theory}.csv z_c
  
 cp z_cluster-sorted-localmin-${molecule}-${short_level_of_theory}.csv /home/vicchio/puckering/zz_results/${results_folder}/. 
  
+
