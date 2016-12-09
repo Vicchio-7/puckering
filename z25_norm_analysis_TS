@@ -9,7 +9,7 @@ molecule=${1}
 job_type=${2}
 level_theory=${3}
 
-tpl_dict=/home/vicchio/puckering/z_tpl/
+tpl_dict=/home/vicchio/puckering/z_tpl
 tpl_file=gaussian-norm_TS.tpl
 
 
@@ -38,9 +38,11 @@ input_list=$( column -t -s ',' ${ts_hartree_file} | awk '{print $1}' )
 
 for file in ${input_list}; do
 
-file1=${file%"}
+    file1=${file%.log}
 
-echo ${file1}
+    echo ${file1}
+
+    echo ${tpl_dict}/${tpl_file} ${file1}
 
 done
 
