@@ -52,7 +52,7 @@ for file in ${input_list}; do
 
         new_filename=${file_org}_norm
 
-        cp ${scratch_dict}/${molecule}-TS_${level_theory}/${file_org}.chk ${scratch_dict}/${scratch_fold}/${new_filename}
+        cp ${scratch_dict}/${molecule}-TS_${level_theory}/${file_org}.chk ${scratch_dict}/${scratch_fold}/${new_filename}.chk
 
         #### Creating the COM files for my jobs!
 
