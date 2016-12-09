@@ -56,7 +56,7 @@ for file in ${input_list}; do
 
         #### Creating the COM files for my jobs!
 
-        sed -e "s/\$chkfile/${file}-${job_type}_${level_theory}.chk/g" ${tpl_dict}/${tpl_file} > ${new_filename}_temp.tmp
+        sed -e "s/\$chkfile/${new_filename}.chk/g" ${tpl_dict}/${tpl_file} > ${new_filename}_temp.tmp
         sed -e "s/\$folder/${molecule}-${job_type}_${level_theory}/g" ${new_filename}_temp.tmp >> ${new_filename}_temp2.tmp
         sed -e "s/+leveltheory+/${level_of_theory_real}/g" ${new_filename}_temp2.tmp >> temp-final.tmp
 
@@ -66,7 +66,7 @@ for file in ${input_list}; do
 
 
         #### Creating the PBS for my norm jobs!
-        sed -e "s/molecule/${molecule}/g" $tpl/gaussian-PBS-tpl.txt > PBS-$2-${file}.txt
+        sed -e "s/molecule/${molecule}/g" ${tpl_dict}/gaussian-PBS-tpl.txt > PBS-$2-${file}.txt
         sed -e "s/study/${2}/g" PBS-$2-${file}.txt >> PBS-$2-${file}-temp1.txt
         sed -e "s/level_of_theory_short/${short_level_of_theory}/g" PBS-$2-${file}-temp1.txt >> PBS-$2-${file}-temp2.txt
         sed -e "s/conform/${file}/g" PBS-$2-${file}-temp2.txt > PBS-$2-${file}-temp3.txt

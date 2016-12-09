@@ -65,8 +65,8 @@
       <file leaf-file-name="z25_norm_analysis_TS" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/z25_norm_analysis_TS">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="105">
-              <caret line="15" column="31" lean-forward="false" selection-start-line="15" selection-start-column="31" selection-end-line="15" selection-end-column="31" />
+            <state relative-caret-position="750">
+              <caret line="58" column="42" lean-forward="false" selection-start-line="58" selection-start-column="42" selection-end-line="58" selection-end-column="42" />
               <folding />
             </state>
           </provider>
@@ -667,12 +667,12 @@
       <workItem from="1480131551124" duration="18289000" />
       <workItem from="1480792228541" duration="775000" />
       <workItem from="1481039468636" duration="697000" />
-      <workItem from="1481308808863" duration="5544000" />
+      <workItem from="1481308808863" duration="5601000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="25305000" />
+    <option name="totallyTimeSpent" value="25362000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -940,8 +940,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/z25_norm_analysis_TS">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="15" column="31" lean-forward="false" selection-start-line="15" selection-start-column="31" selection-end-line="15" selection-end-column="31" />
+        <state relative-caret-position="750">
+          <caret line="58" column="42" lean-forward="false" selection-start-line="58" selection-start-column="42" selection-end-line="58" selection-end-column="42" />
           <folding />
         </state>
       </provider>
