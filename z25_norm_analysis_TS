@@ -38,9 +38,11 @@ input_list=$( column -t -s ',' ${ts_hartree_file} | awk '{print $1}' )
 
 for file in ${input_list}; do
 
-    file1=${!\"@file%.log\"}
+    file1=${file%.log\"}
 
-    echo ${file1}
+    file2=${file1##\"}
+
+    echo ${file2}
 
     echo ${tpl_dict}/${tpl_file} ${file1}
 
