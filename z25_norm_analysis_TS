@@ -48,9 +48,9 @@ for file in ${input_list}; do
     file_org=${file1##\"}
     new_filename=${file_org}_norm.com
 
-    echo ${scratch_dict}/${molecule}-TS_${level_theory}/${file_org}.chk ${scratch_dict}/${scratch_fold}/${new_filename}
+    cp ${scratch_dict}/${molecule}-TS_${level_theory}/${file_org}.chk ${scratch_dict}/${scratch_fold}/${new_filename}
 
-    echo ${tpl_dict}/${tpl_file} ${new_filename}
+    cp ${tpl_dict}/${tpl_file} ${new_filename}
 
 
 done
