@@ -12,7 +12,7 @@ level_theory=${3}
 tpl_dict=/home/vicchio/puckering/z_tpl
 tpl_file=gaussian-norm_TS.tpl
 scratch_dict=/scratch/hbmayes_fluxod/vicchio
-scratch_fold=${molecule}-${job_type}_${level_of_theory}
+scratch_fold=${molecule}-${job_type}_${level_theory}
 
 
 if [ "${molecule}" == 'oxane' ] ; then
@@ -48,7 +48,7 @@ for file in ${input_list}; do
     file_org=${file1##\"}
     new_filename=${file_org}_norm.com
 
-    echo ${scratch_dict}/${molecule}-TS-${level_of_theory}/${file_org} ${scratch_dict}/${scratch_fold}/${new_filename}
+    echo ${scratch_dict}/${molecule}-TS-${level_theory}/${file_org} ${scratch_dict}/${scratch_fold}/${new_filename}
 
     echo ${tpl_dict}/${tpl_file} ${new_filename}
 
