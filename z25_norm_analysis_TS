@@ -66,13 +66,13 @@ for file in ${input_list}; do
 
 
         #### Creating the PBS for my norm jobs!
-        sed -e "s/molecule/${molecule}/g" ${tpl_dict}/gaussian-PBS-tpl.txt > PBS-$2-${file}.txt
-        sed -e "s/study/${2}/g" PBS-$2-${file}.txt >> PBS-$2-${file}-temp1.txt
-        sed -e "s/level_of_theory_short/${short_level_of_theory}/g" PBS-$2-${file}-temp1.txt >> PBS-$2-${file}-temp2.txt
-        sed -e "s/conform/${file}/g" PBS-$2-${file}-temp2.txt > PBS-$2-${file}-temp3.txt
-        sed -e "s/gauss-log/${file}-${2}_${3}/g" PBS-${2}-${file}-temp3.txt > PBS-${2}-${file}.txt
+        sed -e "s/molecule/${molecule}/g" ${tpl_dict}/gaussian-PBS-tpl.txt > PBS-$2-${new_filename}.txt
+        sed -e "s/study/${2}/g" PBS-$2-${file}.txt >> PBS-temp1.txt
+        sed -e "s/level_of_theory_short/${short_level_of_theory}/g" PBS-temp1.txt >> PBS-temp2.txt
+        sed -e "s/conform/${file}/g" PBS-temp2.txt > PBS-temp3.txt
+        sed -e "s/gauss-log/${file}-${2}_${3}/g" PBS-temp3.txt > PBS-${2}-${new_filename}.txt
 
-        rm PBS-$2-${file}-temp*
+        rm PBS-temp*
 
 
     fi
