@@ -39,12 +39,11 @@ input_list=$( column -t -s ',' ${ts_hartree_file} | awk '{print $1}' )
 for file in ${input_list}; do
 
     file1=${file%.log\"}
-
     file2=${file1##\"}
+    new_filename=${file2}_norm.com
 
-    echo ${file2}
+    cp ${tpl_dict}/${tpl_file} ${new_filename}
 
-    echo ${tpl_dict}/${tpl_file} ${file1}
 
 done
 
