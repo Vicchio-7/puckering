@@ -48,7 +48,7 @@ for file in ${input_list}; do
     file_org=${file1##\"}
     new_filename=${file_org}_norm.com
 
-    echo ${scratch_dict}/${molecule}-TS-${level_theory}/${file_org} ${scratch_dict}/${scratch_fold}/${new_filename}
+    echo ${scratch_dict}/${molecule}-TS-${level_theory}/${file_org}.log ${scratch_dict}/${scratch_fold}/${new_filename}
 
     echo ${tpl_dict}/${tpl_file} ${new_filename}
 
