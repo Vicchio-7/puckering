@@ -47,7 +47,7 @@ for file in ${input_list}; do
     file1=${file%.log\"}
     file_org=${file1##\"}
 
-   if [${file} == ${file_org} ]; then
+   if [ "${file}" == "${file_org}" ]; then
         echo ${file} ${file_org}
    fi
 
