@@ -155,6 +155,33 @@ else
 
             rm PBS-temp*
 
+            new_filenamer=${file_org}-ircr
+
+            ########## IRC Information for the Forward Direction ##########
+
+            ######## Moves over the checkpoint to create the new checkpoint file
+
+            cp /scratch/hbmayes_fluxod/vicchio/${1}-TS_${3}/${file_org}.chk /scratch/hbmayes_fluxod/vicchio/${1}-${2}_${3}-reverse/${new_filenamer}_${3}.chk
+
+            ######## The section below updates the Gaussian Input File
+
+            sed -e "s/\$chkfile/${new_filenamer}_${3}.chk/g" $tpl/${template_file_reverse} > file-temp.com
+            sed -e "s/\$folder/${molecule}-${test_type}_${3}-reverse/g" file-temp.com >> file-temp1.com
+            sed -e "s/level_of_theory/${level_of_theory}/g" file-temp1.com >> file-temp2.com
+
+            mv file-temp2.com ${new_filenamer}.com
+
+            rm file-temp*.com
+
+            ######## The section below creates the PBS file for submission on flux
+
+            sed -e "s/molecule/${molecule}/g" $tpl/gaussian-PBS-tpl.txt > PBS-temp1.txt
+            sed -e "s/study/${2}/g" PBS-temp1.txt >> PBS-temp2.txt
+            sed -e "s/level_of_theory_short/${short_level_of_theory}/g" PBS-temp2.txt >> PBS-temp3.txt
+            sed -e "s/conform/${new_filenamer}/g" PBS-temp3.txt > PBS-temp4.txt
+            sed -e "s/gauss-log/${1}-${new_filenamer}_${3}/g" PBS-temp4.txt > PBS-${2}-${new_filenamer}.txt
+
+            rm PBS-temp*
         fi
     done
 fi
