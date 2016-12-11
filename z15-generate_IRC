@@ -21,7 +21,7 @@ short_level_of_theory=$3
 
 level_of_theory=$(head -n 1 ../y0-level_of_theory_basis_set.txt)
 
-tpl=/home/vicchio/puckering/oxane/tpl
+tpl=/home/vicchio/puckering/z_tpl
 template_file_forward=gaussian-chk_run-IRC-forward.txt
 template_file_reverse=gaussian-chk_run-IRC-reverse.txt
 
