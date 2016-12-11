@@ -127,13 +127,13 @@ else
 
        if [ "${file_org}" != "File" ]; then
 
-            new_filenamef=${file_org}_ircf
+            new_filenamef=${file_org}-ircf
 
             ########## IRC Information for the Forward Direction ##########
 
             ######## Moves over the checkpoint to create the new checkpoint file
 
-            echo /scratch/hbmayes_fluxod/vicchio/${1}-TS_${3}/${new_filenamef}.chk /scratch/hbmayes_fluxod/vicchio/${1}-${2}_${3}-forward/${new_filenamef}-${2}-f_${3}.chk
+            echo /scratch/hbmayes_fluxod/vicchio/${1}-TS_${3}/${file_org}.chk /scratch/hbmayes_fluxod/vicchio/${1}-${2}_${3}-forward/${new_filenamef}_${3}.chk
 
             ######## The section below updates the Gaussian Input File
 
@@ -154,9 +154,6 @@ else
             sed -e "s/gauss-log/${1}-${new_filenamef}-f-${3}/g" PBS-temp4.txt > PBS-${2}-${new_filenamef}.txt
 
             rm PBS-temp*
-
-
-
 
 
 
