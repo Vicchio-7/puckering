@@ -127,21 +127,21 @@ else
 
        if [ "${file_org}" != "File" ]; then
 
-            new_filename=${file_org}_norm
+            new_filenamef=${file_org}_ircf
 
             ########## IRC Information for the Forward Direction ##########
 
             ######## Moves over the checkpoint to create the new checkpoint file
 
-            echo /scratch/hbmayes_fluxod/vicchio/${1}-TS_${3}/${new_filename}.chk /scratch/hbmayes_fluxod/vicchio/${1}-${2}_${3}-forward/${new_filename}-${2}-f_${3}.chk
+            echo /scratch/hbmayes_fluxod/vicchio/${1}-TS_${3}/${new_filenamef}.chk /scratch/hbmayes_fluxod/vicchio/${1}-${2}_${3}-forward/${new_filenamef}-${2}-f_${3}.chk
 
             ######## The section below updates the Gaussian Input File
 
-            sed -e "s/\$chkfile/${new_filename}-${2}-f_${3}.chk/g" $tpl/${template_file_forward} > file-temp.com
+            sed -e "s/\$chkfile/${new_filenamef}-${2}-f_${3}.chk/g" $tpl/${template_file_forward} > file-temp.com
             sed -e "s/\$folder/${molecule}-${test_type}_${3}-forward/g" file-temp.com >> file-temp1.com
             sed -e "s/level_of_theory/${level_of_theory}/g" file-temp1.com >> file-temp2.com
 
-            mv file-temp2.com ${new_filename}-f.com
+            mv file-temp2.com ${new_filenamef}-f.com
 
             rm file-temp*.com
 
@@ -150,8 +150,8 @@ else
             sed -e "s/molecule/${molecule}/g" $tpl/gaussian-PBS-tpl.txt > PBS-temp1.txt
             sed -e "s/study/${2}/g" PBS-temp1.txt >> PBS-temp2.txt
             sed -e "s/level_of_theory_short/${short_level_of_theory}/g" PBS-temp2.txt >> PBS-temp3.txt
-            sed -e "s/conform/${new_filename}-f/g" PBS-temp3.txt > PBS-temp4.txt
-            sed -e "s/gauss-log/${1}-${new_filename}-f-${3}/g" PBS-temp4.txt > PBS-${2}-${file}-f.txt
+            sed -e "s/conform/${new_filenamef}-f/g" PBS-temp3.txt > PBS-temp4.txt
+            sed -e "s/gauss-log/${1}-${new_filenamef}-f-${3}/g" PBS-temp4.txt > PBS-${2}-${new_filenamef}.txt
 
             rm PBS-temp*
 
