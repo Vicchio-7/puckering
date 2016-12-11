@@ -25,6 +25,16 @@ tpl=/home/vicchio/puckering/oxane/tpl
 template_file_forward=gaussian-chk_run-IRC-forward.txt
 template_file_reverse=gaussian-chk_run-IRC-reverse.txt
 
+if [ "${molecule}" == 'oxane' ] ; then
+    mole_folder=1_oxane
+elif [ "${molecule}" == 'bxyl' ] ;  then
+	mole_folder=2_bxyl
+else
+	echo
+	echo "The molecule type is not found in this script"
+fi
+
+
 ts_hartree_file=/home/vicchio/puckering/zz_results/${mole_folder}/z_cluster-sorted-TS-${molecule}-${short_level_of_theory}.csv
 
 
