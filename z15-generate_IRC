@@ -25,10 +25,19 @@ tpl=/home/vicchio/puckering/oxane/tpl
 template_file_forward=gaussian-chk_run-IRC-forward.txt
 template_file_reverse=gaussian-chk_run-IRC-reverse.txt
 
-ts_hartree_file=/home/vicchio/puckering/zz_results/${mole_folder}/z_cluster-sorted-TS-${molecule}-${level_theory}.csv
+ts_hartree_file=/home/vicchio/puckering/zz_results/${mole_folder}/z_cluster-sorted-TS-${molecule}-${short_level_of_theory}.csv
 
-mkdir /scratch/hbmayes_fluxod/vicchio/${1}-${2}_${3}-forward
-mkdir /scratch/hbmayes_fluxod/vicchio/${1}-${2}_${3}-reverse
+
+irc_forward=/scratch/hbmayes_fluxod/vicchio/${1}-${2}_${3}-forward
+irc_backward=/scratch/hbmayes_fluxod/vicchio/${1}-${2}_${3}-reverse
+
+if [ ! -d ${irc_forward} ]; then
+    mkdir ${irc_forward}
+fi
+
+if [ ! -d ${irc_backward} ]; then
+    mkdir ${irc_backward}
+fi
 
 if [ ${molecule} == "oxane" ] ; then
 
