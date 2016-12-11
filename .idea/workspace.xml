@@ -2,9 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ed68f2d3-7d18-4709-9142-bdbed46d01b2" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/z07" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/z25_norm_analysis_TS" afterPath="$PROJECT_DIR$/z25_norm_analysis_TS" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/z15-generate_IRC" afterPath="$PROJECT_DIR$/z15-generate_IRC" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -23,16 +22,6 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="z02-generate-freeze-files" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/z02-generate-freeze-files">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="60">
-              <caret line="4" column="56" lean-forward="false" selection-start-line="4" selection-start-column="56" selection-end-line="4" selection-end-column="56" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="z05-grab_xyz_oxane" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/z05-grab_xyz_oxane">
           <provider selected="true" editor-type-id="text-editor">
@@ -53,21 +42,31 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="z12-hartree_xyz-optall-localmin" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/z12-hartree_xyz-optall-localmin">
+      <file leaf-file-name="z15-generate_IRC" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/z15-generate_IRC">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="345">
-              <caret line="23" column="36" lean-forward="false" selection-start-line="23" selection-start-column="36" selection-end-line="23" selection-end-column="36" />
+            <state relative-caret-position="136">
+              <caret line="116" column="163" lean-forward="true" selection-start-line="116" selection-start-column="163" selection-end-line="116" selection-end-column="163" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="z25_norm_analysis_TS" pinned="false" current-in-tab="true">
+      <file leaf-file-name="z25_norm_analysis_TS" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/z25_norm_analysis_TS">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="764">
-              <caret line="73" column="0" lean-forward="true" selection-start-line="73" selection-start-column="0" selection-end-line="73" selection-end-column="0" />
+            <state relative-caret-position="450">
+              <caret line="30" column="11" lean-forward="false" selection-start-line="30" selection-start-column="0" selection-end-line="30" selection-end-column="117" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="z11-generate_optall-localmin" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/z11-generate_optall-localmin">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="131">
+              <caret line="31" column="37" lean-forward="true" selection-start-line="31" selection-start-column="0" selection-end-line="31" selection-end-column="37" />
               <folding />
             </state>
           </provider>
@@ -98,7 +97,6 @@
         <option value="$PROJECT_DIR$/z00-batch_submit.sh" />
         <option value="$PROJECT_DIR$/zzzzzz_flux" />
         <option value="$PROJECT_DIR$/z22_excel_easy_pucker_view" />
-        <option value="$PROJECT_DIR$/z11-generate_optall-localmin" />
         <option value="$PROJECT_DIR$/z00-batch_submit" />
         <option value="$PROJECT_DIR$/z18_total_runtime_check" />
         <option value="$PROJECT_DIR$/z19-generate_failed_TS" />
@@ -109,6 +107,8 @@
         <option value="$PROJECT_DIR$/z25_TS_norm_check" />
         <option value="$PROJECT_DIR$/z24_grab_energy_iterations" />
         <option value="$PROJECT_DIR$/z25_norm_analysis_TS" />
+        <option value="$PROJECT_DIR$/z11-generate_optall-localmin" />
+        <option value="$PROJECT_DIR$/z15-generate_IRC" />
       </list>
     </option>
   </component>
@@ -122,10 +122,9 @@
     <treeState />
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="1280" />
     <option name="y" value="22" />
-    <option name="width" value="1337" />
-    <option name="height" value="1131" />
+    <option name="width" value="1280" />
+    <option name="height" value="737" />
   </component>
   <component name="ProjectView">
     <navigator currentView="ProjectPane" proportions="" version="1">
@@ -668,12 +667,12 @@
       <workItem from="1480131551124" duration="18289000" />
       <workItem from="1480792228541" duration="775000" />
       <workItem from="1481039468636" duration="697000" />
-      <workItem from="1481308808863" duration="7011000" />
+      <workItem from="1481308808863" duration="8323000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="26772000" />
+    <option name="totallyTimeSpent" value="28084000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -685,8 +684,8 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="1280" y="22" width="1337" height="1131" extended-state="0" />
-    <editor active="false" />
+    <frame x="0" y="22" width="1280" height="737" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32917318" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -696,9 +695,9 @@
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32897604" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.19441772" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.07286822" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.07413127" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.0815832" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -812,13 +811,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/z11-generate_optall-localmin">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="208">
-          <caret line="85" column="70" lean-forward="false" selection-start-line="85" selection-start-column="70" selection-end-line="85" selection-end-column="70" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/z18_total_runtime_check">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="420">
@@ -851,13 +843,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="813">
           <caret line="94" column="0" lean-forward="true" selection-start-line="94" selection-start-column="0" selection-end-line="94" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/z15-generate_IRC">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
       </provider>
     </entry>
@@ -941,8 +926,24 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/z25_norm_analysis_TS">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="764">
-          <caret line="73" column="0" lean-forward="true" selection-start-line="73" selection-start-column="0" selection-end-line="73" selection-end-column="0" />
+        <state relative-caret-position="450">
+          <caret line="30" column="11" lean-forward="false" selection-start-line="30" selection-start-column="0" selection-end-line="30" selection-end-column="117" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/z11-generate_optall-localmin">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="131">
+          <caret line="31" column="37" lean-forward="true" selection-start-line="31" selection-start-column="0" selection-end-line="31" selection-end-column="37" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/z15-generate_IRC">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="116" column="163" lean-forward="true" selection-start-line="116" selection-start-column="163" selection-end-line="116" selection-end-column="163" />
           <folding />
         </state>
       </provider>
