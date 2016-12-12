@@ -1,1 +1,16 @@
-sdasdas
+#!/usr/bin/bash
+
+# Created by: Stephen P. Vicchio
+
+# The purpose of this script is to show the normal mode analysis from gaussian in a way
+# that can be easiler seen.
+#
+
+out_dirct=9_hartree_norm
+
+if [ ! -d ../${out_dirct} ]; then
+    mkdir ../9_hartree_norm
+fi
+
+hartree norm -d ../8_norm/. -o ../9_hartree_norm/.
+
