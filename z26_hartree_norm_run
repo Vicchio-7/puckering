@@ -14,8 +14,6 @@ results_dirct=/home/vicchio/puckering/zz_results/2_bxyl
 new_results=${molecule}-${job_type}-${level_theory}
 out_dirct=9_hartree_norm
 
-
-
 if [ "${molecule}" == 'oxane' ] ; then
     status_build=0
     mole_folder=1_oxane
@@ -52,3 +50,21 @@ elif [ ${status_build} == "0" ]; then
     cp ../9_hartree_norm/*.txt ${results_dirct}/${new_results}/hartree-files
     cp ../8_norm/*.log ${results_dirct}/${new_results}/log-files
 fi
+
+# This part of the script will now look at the different outputs to ID which structures matter.
+
+ts_hartree_file=/home/vicchio/puckering/zz_results/${mole_folder}/z_cluster-sorted-TS-${molecule}-${level_theory}.csv
+
+input_list=$( column -t -s ',' ${ts_hartree_file} | awk '{print $1}' )
+
+for file in ${input_list}; do
+
+    file1=${file%.log\"}
+    file_org=${file1##\"}
+
+   if [ "${file_org}" != "File" ]; then
+
+        cat ${file_org}-norm.txt | head -n 15 | tail -n 10
+
+   fi
+done
