@@ -43,5 +43,5 @@ elif [ ${status_build} == "0" ]; then
 
     hartree norm -d ../8_norm/. -o ../9_hartree_norm/.
 
-    cp ../9_hartree_norm/*.log ${results_dirct}/${new_results}/.
+    cp ../9_hartree_norm/*.txt ${results_dirct}/${new_results}/.
 fi
