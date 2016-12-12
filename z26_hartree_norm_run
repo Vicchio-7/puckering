@@ -64,7 +64,9 @@ for file in ${input_list}; do
 
    if [ "${file_org}" != "File" ]; then
 
-        cat ../9_hartree_norm/${file_org}_norm-norm.txt | head -n 15 | tail -n 10
-
+        raw_data=$(cat ../9_hartree_norm/${file_org}_norm-norm.txt | head -n 15 | tail -n 10)
+        echo ""
+        echo ${raw_data}
+        echo
    fi
 done
