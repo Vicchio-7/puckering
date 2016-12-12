@@ -43,5 +43,9 @@ elif [ ${status_build} == "0" ]; then
 
     hartree norm -d ../8_norm/. -o ../9_hartree_norm/.
 
+    if [ ! -d ${results_dirct}/${new_results}/ ]; then
+        mkdir ${results_dirct}/${new_results}/
+    fi
+
     cp ../9_hartree_norm/*.txt ${results_dirct}/${new_results}/
 fi
