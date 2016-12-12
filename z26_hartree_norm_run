@@ -29,13 +29,13 @@ else
 fi
 
 
-if [ ${exit_status} == "1" ]; then
+if [ ${status_build} == "1" ]; then
 	echo
 	echo "Something isn't right with the script...the molecule"
 	echo "may not be found!"
 	echo
 	exit
-elif [ ${exit_status} == "0" ]; then
+elif [ ${status_build} == "0" ]; then
 
     if [ ! -d ../${out_dirct} ]; then
         mkdir ../9_hartree_norm
