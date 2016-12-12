@@ -6,11 +6,42 @@
 # that can be easiler seen.
 #
 
+molecule=${1}
+job_type=${2}
+level_theory=${3}
+
+results_dirct=/home/vicchio/puckering/zz_results/2_bxyl
+new_results=${molecule}-${job_type}-${level_theory}
 out_dirct=9_hartree_norm
 
-if [ ! -d ../${out_dirct} ]; then
-    mkdir ../9_hartree_norm
+
+
+if [ "${molecule}" == 'oxane' ] ; then
+    status_build=0
+    mole_folder=1_oxane
+elif [ "${molecule}" == 'bxyl' ] ;  then
+	status_build=0
+	mole_folder=2_bxyl
+else
+	echo
+	echo "The molecule type is not found in this script"
+	status_build=1
 fi
 
-hartree norm -d ../8_norm/. -o ../9_hartree_norm/.
 
+if [ ${exit_status} == "1" ]; then
+	echo
+	echo "Something isn't right with the script...the molecule"
+	echo "may not be found!"
+	echo
+	exit
+elif [ ${exit_status} == "0" ]; then
+
+    if [ ! -d ../${out_dirct} ]; then
+        mkdir ../9_hartree_norm
+    fi
+
+    hartree norm -d ../8_norm/. -o ../9_hartree_norm/.
+
+    echo ../9_hartree_norm/*.log ${results_dirct}/${new_results}
+fi
