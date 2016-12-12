@@ -76,7 +76,7 @@ for file in ${input_list}; do
 
    if [ "${file_org}" != "File" ]; then
 
-        cp ${file_org} /home/vicchio/puckering/zz_results/${results_folder}/z_${molecule}-${test_type}-${short_level_of_theory}/.
+        cp ${file_org}.log /home/vicchio/puckering/zz_results/${results_folder}/z_${molecule}-${test_type}-${short_level_of_theory}/.
    fi
 done
 
