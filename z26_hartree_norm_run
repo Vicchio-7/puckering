@@ -48,4 +48,5 @@ elif [ ${status_build} == "0" ]; then
     fi
 
     cp ../9_hartree_norm/*.txt ${results_dirct}/${new_results}/
+    cp ../8_norm/*.log ${results_dirct}/${new_results}/
 fi
