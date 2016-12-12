@@ -150,7 +150,7 @@ else
             sed -e "s/molecule/${molecule}/g" $tpl/gaussian-PBS-tpl.txt > PBS-temp1.txt
             sed -e "s/study/${2}/g" PBS-temp1.txt >> PBS-temp2.txt
             sed -e "s/level_of_theory_short/${short_level_of_theory}/g" PBS-temp2.txt >> PBS-temp3.txt
-            sed -e "s/conform/${new_filenamef}-f/g" PBS-temp3.txt > PBS-temp4.txt
+            sed -e "s/conform/${new_filenamef}/g" PBS-temp3.txt > PBS-temp4.txt
             sed -e "s/gauss-log/${1}-${new_filenamef}_${3}/g" PBS-temp4.txt > PBS-${2}-${new_filenamef}.txt
 
             rm PBS-temp*
