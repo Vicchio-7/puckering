@@ -45,8 +45,14 @@ elif [ ${status_build} == "0" ]; then
 
     if [ ! -d ${results_dirct}/${new_results}/ ]; then
         mkdir ${results_dirct}/${new_results}/
-        mkdir ${results_dirct}/${new_results}/log-files
-        mkdir ${results_dirct}/${new_results}/hartree-files
+    fi
+
+    if [ ! -d mkdir ${results_dirct}/${new_results}/hartree-files ]; then
+        mkdir mkdir ${results_dirct}/${new_results}/hartree-files
+    fi
+
+    if [ ! -d  mkdir ${results_dirct}/${new_results}/log-files ]; then
+        mkdir  mkdir ${results_dirct}/${new_results}/log-files
     fi
 
     cp ../9_hartree_norm/*.txt ${results_dirct}/${new_results}/hartree-files
