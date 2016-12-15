@@ -81,8 +81,7 @@ input_list=$( column -t -s '' ${results_dirct}/${new_results}/z_norm_analysis_li
 
     for file in ${input_list}; do
 
-        file1=${file%.log\"}
-        file_org=${file1##\"}
+        file1=${file%.log}
 
         echo ${file} ${file1} ${file_org}
 
