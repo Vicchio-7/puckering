@@ -94,6 +94,7 @@ input_list=$( column -t -s '' ${results_dirct}/${new_results}/z_norm_analysis_li
             ######## Moves over the checkpoint to create the new checkpoint file
 
             cp /scratch/hbmayes_fluxod/vicchio/${1}-norm_${3}/${file1}.chk /scratch/hbmayes_fluxod/vicchio/${1}-${2}_${3}-forward/${new_filenamef}_${3}.chk
+            echo /scratch/hbmayes_fluxod/vicchio/${1}-norm_${3}/${file1}.chk /scratch/hbmayes_fluxod/vicchio/${1}-${2}_${3}-forward/${new_filenamef}_${3}.chk
 
             ######## The section below updates the Gaussian Input File
 
@@ -115,13 +116,15 @@ input_list=$( column -t -s '' ${results_dirct}/${new_results}/z_norm_analysis_li
 
             rm PBS-temp*
 
-            new_filenamer=${file_org}-ircr
+
+
+            new_filenamer=${file1}-ircr
 
             ########## IRC Information for the Forward Direction ##########
 
             ######## Moves over the checkpoint to create the new checkpoint file
 
-            cp /scratch/hbmayes_fluxod/vicchio/${1}-norm_${3}/${file_org}.chk /scratch/hbmayes_fluxod/vicchio/${1}-${2}_${3}-reverse/${new_filenamer}_${3}.chk
+            cp /scratch/hbmayes_fluxod/vicchio/${1}-norm_${3}/${file1}.chk /scratch/hbmayes_fluxod/vicchio/${1}-${2}_${3}-reverse/${new_filenamer}_${3}.chk
 
             ######## The section below updates the Gaussian Input File
 

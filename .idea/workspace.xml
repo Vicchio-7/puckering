@@ -25,7 +25,7 @@
       <file leaf-file-name="z26_hartree_norm_run" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/z26_hartree_norm_run">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="209">
+            <state relative-caret-position="-46">
               <caret line="95" column="69" lean-forward="false" selection-start-line="95" selection-start-column="69" selection-end-line="95" selection-end-column="69" />
               <folding />
             </state>
@@ -660,12 +660,12 @@
       <workItem from="1480792228541" duration="775000" />
       <workItem from="1481039468636" duration="697000" />
       <workItem from="1481308808863" duration="20800000" />
-      <workItem from="1481761217124" duration="5121000" />
+      <workItem from="1481761217124" duration="5139000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="45682000" />
+    <option name="totallyTimeSpent" value="45700000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -926,7 +926,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/z26_hartree_norm_run">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="209">
+        <state relative-caret-position="-46">
           <caret line="95" column="69" lean-forward="false" selection-start-line="95" selection-start-column="69" selection-end-line="95" selection-end-column="69" />
           <folding />
         </state>
