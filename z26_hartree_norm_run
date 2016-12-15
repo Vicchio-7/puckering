@@ -51,22 +51,29 @@ elif [ ${status_build} == "0" ]; then
     cp ../8_norm/*.log ${results_dirct}/${new_results}/log-files
 fi
 
+
+norm_loc=/home/vicchio/codes/qm_utils/qm_utils/norm_analysis.py
+list_file=$(ls ../9_hartree_norm/*.txt > z_hartree_norm_analysis_${level_theory})
+
+python ${norm_loc} -s list_files -r '8,1,9,13,17,5'
+
 # This part of the script will now look at the different outputs to ID which structures matter.
 
-ts_hartree_file=/home/vicchio/puckering/zz_results/${mole_folder}/z_cluster-sorted-TS-${molecule}-${level_theory}.csv
+#ts_hartree_file=/home/vicchio/puckering/zz_results/${mole_folder}/z_cluster-sorted-TS-${molecule}-${level_theory}.csv
 
-input_list=$( column -t -s ',' ${ts_hartree_file} | awk '{print $1}' )
+#input_list=$( column -t -s ',' ${ts_hartree_file} | awk '{print $1}' )
 
-for file in ${input_list}; do
+#for file in ${input_list}; do
 
-    file1=${file%.log\"}
-    file_org=${file1##\"}
+#    file1=${file%.log\"}
+#    file_org=${file1##\"}
 
-   if [ "${file_org}" != "File" ]; then
+#   if [ "${file_org}" != "File" ]; then
 
-        raw_data=$(cat ../9_hartree_norm/${file_org}_norm-norm.txt | head -n 15 | tail -n 10)
-        echo ""
-        echo ${raw_data}
-        echo
-   fi
-done
+#        raw_data=$(cat ../9_hartree_norm/${file_org}_norm-norm.txt | head -n 15 | tail -n 10)
+#        echo ""
+#        echo ${raw_data}
+#        echo
+#   fi
+#done
+
