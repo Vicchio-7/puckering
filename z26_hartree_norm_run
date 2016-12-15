@@ -56,14 +56,11 @@ elif [ ${status_build} == "0" ]; then
     cp ../8_norm/*.log ${results_dirct}/${new_results}/log-files
 fi
 
-
-norm_loc=/home/vicchio/codes/qm_utils/qm_utils/norm_analysis.py
-
 cd ../9_hartree_norm/
 
 ls *norm.txt > z_hartree_norm_analysis_${level_theory}.txt
 
-python ${norm_loc} -s z_hartree_norm_analysis_${level_theory}.txt -r '8,1,9,13,17,5'
+norm_analysis -s z_hartree_norm_analysis_${level_theory}.txt -r '8,1,9,13,17,5'
 
 mv z_norm-analysis_TS_exo_puckers_z_hartree_norm_analysis_am1.txt z_norm_analysis_list_exo-TS_${molecule}_${level_theory}.txt
 mv z_norm-analysis_TS_ring_puckers_z_hartree_norm_analysis_am1.txt z_norm_analysis_list_ring-TS_${molecule}_${level_theory}.txt
@@ -91,7 +88,7 @@ input_list=$( column -t -s '' ${results_dirct}/${new_results}/z_norm_analysis_li
 
         file1=${file%.log}
 
-       if [ "${file1}" != "File" ]; then
+       if [ "${file1}" = "File" ]; then
 
             new_filenamef=${file1}-ircf
 
@@ -134,7 +131,7 @@ input_list=$( column -t -s '' ${results_dirct}/${new_results}/z_norm_analysis_li
             ######## The section below updates the Gaussian Input File
 
             sed -e "s/\$chkfile/${new_filenamer}_${3}.chk/g" $tpl/${template_file_reverse} > file-temp.com
-            sed -e "s/\$folder/${molecule}-$irc_${3}-reverse/g" file-temp.com >> file-temp1.com
+            sed -e "s/\$folder/${molecule}-irc_${3}-reverse/g" file-temp.com >> file-temp1.com
             sed -e "s/level_of_theory/${level_of_theory}/g" file-temp1.com >> file-temp2.com
 
             mv file-temp2.com ${new_filenamer}.com
