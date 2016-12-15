@@ -85,9 +85,9 @@ input_list=$( column -t -s '' ${results_dirct}/${new_results}/z_norm_analysis_li
 
         file1=${file%.log}
 
-       if [ "${file_org}" != "File" ]; then
+       if [ "${file1}" != "File" ]; then
 
-            new_filenamef=${file_org}-ircf
+            new_filenamef=${file1}-ircf
 
             ########## IRC Information for the Forward Direction ##########
 
