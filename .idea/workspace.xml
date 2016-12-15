@@ -3,6 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="ed68f2d3-7d18-4709-9142-bdbed46d01b2" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/z26_hartree_norm_run" afterPath="$PROJECT_DIR$/z26_hartree_norm_run" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -24,8 +25,8 @@
       <file leaf-file-name="z26_hartree_norm_run" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/z26_hartree_norm_run">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="495">
-              <caret line="152" column="10" lean-forward="false" selection-start-line="152" selection-start-column="10" selection-end-line="152" selection-end-column="10" />
+            <state relative-caret-position="-529">
+              <caret line="82" column="0" lean-forward="false" selection-start-line="82" selection-start-column="0" selection-end-line="82" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -659,12 +660,12 @@
       <workItem from="1480792228541" duration="775000" />
       <workItem from="1481039468636" duration="697000" />
       <workItem from="1481308808863" duration="20800000" />
-      <workItem from="1481761217124" duration="8771000" />
+      <workItem from="1481761217124" duration="8802000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="49332000" />
+    <option name="totallyTimeSpent" value="49363000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -925,8 +926,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/z26_hartree_norm_run">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="495">
-          <caret line="152" column="10" lean-forward="false" selection-start-line="152" selection-start-column="10" selection-end-line="152" selection-end-column="10" />
+        <state relative-caret-position="-529">
+          <caret line="82" column="0" lean-forward="false" selection-start-line="82" selection-start-column="0" selection-end-line="82" selection-end-column="0" />
           <folding />
         </state>
       </provider>
