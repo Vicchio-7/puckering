@@ -56,6 +56,8 @@ norm_loc=/home/vicchio/codes/qm_utils/qm_utils/norm_analysis.py
 
 (ls ../9_hartree_norm/*.txt > z_hartree_norm_analysis_${level_theory})
 
+cd ../9_hartree_norm/
+
 python ${norm_loc} -s z_hartree_norm_analysis_${level_theory} -r '8,1,9,13,17,5'
 
 # This part of the script will now look at the different outputs to ID which structures matter.
