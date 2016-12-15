@@ -89,6 +89,8 @@ input_list=$( column -t -s '' ${results_dirct}/${new_results}/z_norm_analysis_li
 
         file1=${file%.log}
 
+        echo ${file1}
+
        if [ "${file1}" = "File" ]; then
 
             new_filenamef=${file1}-ircf
@@ -105,7 +107,7 @@ input_list=$( column -t -s '' ${results_dirct}/${new_results}/z_norm_analysis_li
             sed -e "s/\$folder/${molecule}-irc_${3}-forward/g" file-temp.com >> file-temp1.com
             sed -e "s/level_of_theory/${level_of_theory}/g" file-temp1.com >> file-temp2.com
 
-            mv file-temp2.com ${new_filenamef}.com
+            mv file-temp2.com ${folder_location}/6_prod-run_IRC/${new_filenamef}.com
 
             rm file-temp*.com
 
@@ -115,7 +117,7 @@ input_list=$( column -t -s '' ${results_dirct}/${new_results}/z_norm_analysis_li
             sed -e "s/study/${2}/g" PBS-temp1.txt >> PBS-temp2.txt
             sed -e "s/level_of_theory_short/${short_level_of_theory}/g" PBS-temp2.txt >> PBS-temp3.txt
             sed -e "s/conform/${new_filenamef}/g" PBS-temp3.txt > PBS-temp4.txt
-            sed -e "s/gauss-log/${new_filenamef}_${3}/g" PBS-temp4.txt > PBS-${2}-${new_filenamef}.txt
+            sed -e "s/gauss-log/${new_filenamef}_${3}/g" PBS-temp4.txt > ${folder_location}/6_prod-run_IRCPBS-${2}-${new_filenamef}.txt
 
             rm PBS-temp*
 
@@ -135,7 +137,7 @@ input_list=$( column -t -s '' ${results_dirct}/${new_results}/z_norm_analysis_li
             sed -e "s/\$folder/${molecule}-irc_${3}-reverse/g" file-temp.com >> file-temp1.com
             sed -e "s/level_of_theory/${level_of_theory}/g" file-temp1.com >> file-temp2.com
 
-            mv file-temp2.com ${new_filenamer}.com
+            mv file-temp2.com ${folder_location}/6_prod-run_IRC/${new_filenamer}.com
 
             rm file-temp*.com
 
@@ -145,7 +147,7 @@ input_list=$( column -t -s '' ${results_dirct}/${new_results}/z_norm_analysis_li
             sed -e "s/study/${2}/g" PBS-temp1.txt >> PBS-temp2.txt
             sed -e "s/level_of_theory_short/${level_theory}/g" PBS-temp2.txt >> PBS-temp3.txt
             sed -e "s/conform/${new_filenamer}/g" PBS-temp3.txt > PBS-temp4.txt
-            sed -e "s/gauss-log/${new_filenamer}_${3}/g" PBS-temp4.txt > PBS-${2}-${new_filenamer}.txt
+            sed -e "s/gauss-log/${new_filenamer}_${3}/g" PBS-temp4.txt > ${folder_location}/6_prod-run_IRC/PBS-${2}-${new_filenamer}.txt
 
             rm PBS-temp*
         fi
