@@ -56,7 +56,7 @@ norm_loc=/home/vicchio/codes/qm_utils/qm_utils/norm_analysis.py
 
 cd ../9_hartree_norm/
 
-ls *.txt > z_hartree_norm_analysis_${level_theory}.txt
+ls *norm.txt > z_hartree_norm_analysis_${level_theory}.txt
 
 python ${norm_loc} -s z_hartree_norm_analysis_${level_theory}.txt -r '8,1,9,13,17,5'
 
