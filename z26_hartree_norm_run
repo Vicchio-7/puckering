@@ -75,3 +75,16 @@ cp z_norm_analysis_list_exo-TS_${molecule}_${level_theory}.txt ${results_dirct}/
 cd ${results_dirct}/${new_results}/log_norm_analysis
 
 
+#############
+
+input_list=$( column -t -s '' ${results_dirct}/${new_results}/z_norm_analysis_list_ring-TS_${molecule}_${level_theory}.txt | awk '{print $1}' )
+
+    for file in ${input_list}; do
+
+        file1=${file%.log\"}
+        file_org=${file1##\"}
+
+        echo ${file_org}
+
+
+    done

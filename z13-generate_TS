@@ -60,7 +60,7 @@ if [ ${molecule} == "oxane" ]; then
 		rm PBS-$2-${file}-temp*
 
 	done
-else 
+else
 	for file_unedit in $( <$input_list); do
                 file=${file_unedit%.xyz}
 
