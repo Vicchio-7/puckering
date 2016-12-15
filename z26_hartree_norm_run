@@ -67,7 +67,7 @@ if [ ! -d ${results_dirct}/${new_results}/log_norm_analysis/ ]; then
     mkdir ${results_dirct}/${new_results}/log_norm_analysis
 fi
 
-input_list_puck=$( column -t -s ',' z_norm_analysis_list_puck-TS_${molecule}_${level_theory}.txt | awk '{print $1}' )
+input_list_puck=$( column -t -s ',' ../9_hartree_norm/z_norm_analysis_list_puck-TS_${molecule}_${level_theory}.txt | awk '{print $1}' )
 
 echo ${input_list_puck}
 
