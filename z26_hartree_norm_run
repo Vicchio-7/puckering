@@ -14,6 +14,11 @@ results_dirct=/home/vicchio/puckering/zz_results/2_bxyl
 new_results=${molecule}-${job_type}-${level_theory}
 out_dirct=9_hartree_norm
 
+tpl=/home/vicchio/puckering/z_tpl
+template_file_forward=gaussian-chk_run-IRC-forward.txt
+template_file_reverse=gaussian-chk_run-IRC-reverse.txt
+
+
 if [ "${molecule}" == 'oxane' ] ; then
     status_build=0
     mole_folder=1_oxane
