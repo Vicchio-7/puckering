@@ -60,23 +60,16 @@ ls *.txt > z_hartree_norm_analysis_${level_theory}
 
 python ${norm_loc} -s z_hartree_norm_analysis_${level_theory} -r '8,1,9,13,17,5'
 
-# This part of the script will now look at the different outputs to ID which structures matter.
+mv z_norm-analysis_TS_exo_puckers_z_hartree_norm_analysis_am1.txt z_norm_analysis_list_exo-TS_${molecule}_${level_theory}.txt
+mv z_norm-analysis_TS_ring_puckers_z_hartree_norm_analysis_am1.txt z_norm_analysis_list_ring-TS_${molecule}_${level_theory}.txt
 
-#ts_hartree_file=/home/vicchio/puckering/zz_results/${mole_folder}/z_cluster-sorted-TS-${molecule}-${level_theory}.csv
+if [ ! -d ${results_dirct}/${new_results}/ ]; then
+    mkdir mkdir ${results_dirct}/${new_results}/log_norm_analysis
+fi
 
-#input_list=$( column -t -s ',' ${ts_hartree_file} | awk '{print $1}' )
+cp z_norm_analysis_list_ring-TS_${molecule}_${level_theory}.txt ${results_dirct}/${new_results}/log_norm_analysis
+cp z_norm_analysis_list_exo-TS_${molecule}_${level_theory}.txt ${results_dirct}/${new_results}/log_norm_analysis
 
-#for file in ${input_list}; do
+cd ${results_dirct}/${new_results}/log_norm_analysis
 
-#    file1=${file%.log\"}
-#    file_org=${file1##\"}
-
-#   if [ "${file_org}" != "File" ]; then
-
-#        raw_data=$(cat ../9_hartree_norm/${file_org}_norm-norm.txt | head -n 15 | tail -n 10)
-#        echo ""
-#        echo ${raw_data}
-#        echo
-#   fi
-#done
-
+echo $PWD
