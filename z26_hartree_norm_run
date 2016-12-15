@@ -31,6 +31,7 @@ else
 	status_build=1
 fi
 
+folder_location=/home/vicchio/puckering/${mole_folder}/${level_theory}
 
 if [ ${status_build} == "1" ]; then
 	echo
@@ -52,11 +53,11 @@ elif [ ${status_build} == "0" ]; then
         mkdir ${results_dirct}/${new_results}/log-files
     fi
 
-    cp ../9_hartree_norm/*.txt ${results_dirct}/${new_results}/hartree-files
-    cp ../8_norm/*.log ${results_dirct}/${new_results}/log-files
+    cp ${folder_location}/9_hartree_norm/*.txt ${results_dirct}/${new_results}/hartree-files
+    cp ${folder_location}/8_norm/*.log ${results_dirct}/${new_results}/log-files
 fi
 
-cd ../9_hartree_norm/
+cd ${folder_location}/9_hartree_norm/
 
 ls *norm.txt > z_hartree_norm_analysis_${level_theory}.txt
 
@@ -76,9 +77,12 @@ cp z_norm_analysis_list_exo-TS_${molecule}_${level_theory}.txt ${results_dirct}/
 
 #############
 
-mkdir /scratch/hbmayes_fluxod/vicchio/${1}-irc_${3}
+if [ ! -d /scratch/hbmayes_fluxod/vicchio/${1}-irc_${3} ]; then
+    mkdir /scratch/hbmayes_fluxod/vicchio/${1}-irc_${3}
+fi
 
-cd ../6_prod-run_IRC
+
+cd ${folder_location}/6_prod-run_IRC
 
 echo $PWD
 
