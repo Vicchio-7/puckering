@@ -86,6 +86,8 @@ mkdir /scratch/hbmayes_fluxod/vicchio/${1}-irc_${3}
 
 cd ../6_prod-run_IRC
 
+echo $PWD
+
 input_list=$( column -t -s '' ${results_dirct}/${new_results}/z_norm_analysis_list_ring-TS_${molecule}_${level_theory}.txt | awk '{print $1}' )
 
     for file in ${input_list}; do
