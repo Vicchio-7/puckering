@@ -43,8 +43,8 @@ elif [ ${status_build} == "0" ]; then
 
     if [ ! -d ${results_dirct}/${new_results}/ ]; then
         mkdir ${results_dirct}/${new_results}/
-        mkdir mkdir ${results_dirct}/${new_results}/hartree-files
-        mkdir  mkdir ${results_dirct}/${new_results}/log-files
+        mkdir ${results_dirct}/${new_results}/hartree-files
+        mkdir ${results_dirct}/${new_results}/log-files
     fi
 
     cp ../9_hartree_norm/*.txt ${results_dirct}/${new_results}/hartree-files
@@ -63,8 +63,9 @@ python ${norm_loc} -s z_hartree_norm_analysis_${level_theory}.txt -r '8,1,9,13,1
 mv z_norm-analysis_TS_exo_puckers_z_hartree_norm_analysis_am1.txt z_norm_analysis_list_exo-TS_${molecule}_${level_theory}.txt
 mv z_norm-analysis_TS_ring_puckers_z_hartree_norm_analysis_am1.txt z_norm_analysis_list_ring-TS_${molecule}_${level_theory}.txt
 
-if [ ! -d ${results_dirct}/${new_results}/log_norm_analysis ]; then
+if [ ! -d ${results_dirct}/${new_results}/log_norm_analysis/ ]; then
     mkdir ${results_dirct}/${new_results}/log_norm_analysis
+    echo "I MADE IT HERE"
 fi
 
 cp z_norm_analysis_list_ring-TS_${molecule}_${level_theory}.txt ${results_dirct}/${new_results}/log_norm_analysis
