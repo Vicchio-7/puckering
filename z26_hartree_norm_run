@@ -81,8 +81,6 @@ fi
 
 cd ${folder_location}/6_prod-run_IRC
 
-echo $PWD
-
 input_list=$( column -t -s '' ${results_dirct}/${new_results}/z_norm_analysis_list_ring-TS_${molecule}_${level_theory}.txt | awk '{print $1}' )
 
     for file in ${input_list}; do
@@ -91,7 +89,7 @@ input_list=$( column -t -s '' ${results_dirct}/${new_results}/z_norm_analysis_li
 
         echo ${file1}
 
-       if [ "${file1}" = "File" ]; then
+       if [ "${file1}" != "File" ]; then
 
             new_filenamef=${file1}-ircf
 
