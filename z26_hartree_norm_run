@@ -6,15 +6,10 @@
 # that can be easiler seen.
 #
 
-folder_location=/home/vicchio/puckering/${mole_folder}/${short_level_theory}
 
 molecule=${1}
 job_type=${2}
 short_level_theory=${3}
-
-level_theory=${folder_location}/y0-level_of_theory_basis_set.txt
-
-echo ${level_theory}
 
 results_dirct=/home/vicchio/puckering/zz_results/2_bxyl
 new_results=${molecule}-${job_type}-${short_level_theory}
@@ -44,6 +39,14 @@ if [ ${status_build} == "1" ]; then
 	echo
 	exit
 elif [ ${status_build} == "0" ]; then
+
+
+
+    folder_location=/home/vicchio/puckering/${mole_folder}/${short_level_theory}
+    level_theory=${folder_location}/y0-level_of_theory_basis_set.txt
+
+    echo ${level_theory}
+
 
     if [ ! -d ../${out_dirct} ]; then
         mkdir ../9_hartree_norm
