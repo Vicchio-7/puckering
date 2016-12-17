@@ -40,10 +40,8 @@ if [ ${status_build} == "1" ]; then
 	exit
 elif [ ${status_build} == "0" ]; then
 
-
-
     folder_location=/home/vicchio/puckering/${mole_folder}/${short_level_theory}
-    level_theory=${folder_location}/y0-level_of_theory_basis_set.txt
+    level_theory=$(head -n 1 ${folder_location}/y0-level_of_theory_basis_set.txt)
 
     echo ${level_theory}
 
@@ -79,9 +77,6 @@ fi
 
 cp z_norm_analysis_list_ring-TS_${molecule}_${short_level_theory}.txt ${results_dirct}/${new_results}
 cp z_norm_analysis_list_exo-TS_${molecule}_${short_level_theory}.txt ${results_dirct}/${new_results}
-
-
-
 
 
 #################
