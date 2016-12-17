@@ -6,12 +6,18 @@
 # that can be easiler seen.
 #
 
+folder_location=/home/vicchio/puckering/${mole_folder}/${short_level_theory}
+
 molecule=${1}
 job_type=${2}
-level_theory=${3}
+short_level_theory=${3}
+
+level_theory=${folder_location}/y0-level_of_theory_basis_set.txt
+
+echo ${level_theory}
 
 results_dirct=/home/vicchio/puckering/zz_results/2_bxyl
-new_results=${molecule}-${job_type}-${level_theory}
+new_results=${molecule}-${job_type}-${short_level_theory}
 out_dirct=9_hartree_norm
 
 tpl=/home/vicchio/puckering/z_tpl
@@ -30,8 +36,6 @@ else
 	echo "The molecule type is not found in this script"
 	status_build=1
 fi
-
-folder_location=/home/vicchio/puckering/${mole_folder}/${level_theory}
 
 if [ ${status_build} == "1" ]; then
 	echo
@@ -59,21 +63,27 @@ fi
 
 cd ${folder_location}/9_hartree_norm/
 
-ls *norm.txt > z_hartree_norm_analysis_${level_theory}.txt
+ls *norm.txt > z_hartree_norm_analysis_${short_level_theory}.txt
 
-norm_analysis -s z_hartree_norm_analysis_${level_theory}.txt -r '8,1,9,13,17,5'
+norm_analysis -s z_hartree_norm_analysis_${short_level_theory}.txt -r '8,1,9,13,17,5'
 
-mv z_norm-analysis_TS_exo_puckers_z_hartree_norm_analysis_am1.txt z_norm_analysis_list_exo-TS_${molecule}_${level_theory}.txt
-mv z_norm-analysis_TS_ring_puckers_z_hartree_norm_analysis_am1.txt z_norm_analysis_list_ring-TS_${molecule}_${level_theory}.txt
+mv z_norm-analysis_TS_exo_puckers_z_hartree_norm_analysis_am1.txt z_norm_analysis_list_exo-TS_${molecule}_${short_level_theory}.txt
+mv z_norm-analysis_TS_ring_puckers_z_hartree_norm_analysis_am1.txt z_norm_analysis_list_ring-TS_${molecule}_${short_level_theory}.txt
 
 if [ ! -d ${results_dirct}/${new_results}/log_norm_analysis/ ]; then
     mkdir ${results_dirct}/${new_results}/log_norm_analysis
 fi
 
-cp z_norm_analysis_list_ring-TS_${molecule}_${level_theory}.txt ${results_dirct}/${new_results}
-cp z_norm_analysis_list_exo-TS_${molecule}_${level_theory}.txt ${results_dirct}/${new_results}
+cp z_norm_analysis_list_ring-TS_${molecule}_${short_level_theory}.txt ${results_dirct}/${new_results}
+cp z_norm_analysis_list_exo-TS_${molecule}_${short_level_theory}.txt ${results_dirct}/${new_results}
 
-#############
+
+
+
+
+#################
+
+# This part of the script prepares for the IRC calculations.
 
 if [ ! -d /scratch/hbmayes_fluxod/vicchio/${1}-irc_${3} ]; then
     mkdir /scratch/hbmayes_fluxod/vicchio/${1}-irc_${3}
@@ -81,7 +91,7 @@ fi
 
 cd ${folder_location}/6_prod-run_IRC
 
-input_list=$( column -t -s '' ${results_dirct}/${new_results}/z_norm_analysis_list_ring-TS_${molecule}_${level_theory}.txt | awk '{print $1}' )
+input_list=$( column -t -s '' ${results_dirct}/${new_results}/z_norm_analysis_list_ring-TS_${molecule}_${short_level_theory}.txt | awk '{print $1}' )
 
     for file in ${input_list}; do
 
@@ -103,7 +113,7 @@ input_list=$( column -t -s '' ${results_dirct}/${new_results}/z_norm_analysis_li
 
             sed -e "s/\$chkfile/${new_filenamef}_${3}.chk/g" $tpl/${template_file_forward} > file-temp.com
             sed -e "s/\$folder/${molecule}-irc_${3}-forward/g" file-temp.com >> file-temp1.com
-            sed -e "s/level_of_theory/${level_of_theory}/g" file-temp1.com >> file-temp2.com
+            sed -e "s/level_of_theory/${level_theory}/g" file-temp1.com >> file-temp2.com
 
             mv file-temp2.com ${folder_location}/6_prod-run_IRC/${new_filenamef}.com
 
@@ -113,7 +123,7 @@ input_list=$( column -t -s '' ${results_dirct}/${new_results}/z_norm_analysis_li
 
             sed -e "s/molecule/${molecule}/g" $tpl/gaussian-PBS-tpl.txt > PBS-temp1.txt
             sed -e "s/study/${2}/g" PBS-temp1.txt >> PBS-temp2.txt
-            sed -e "s/level_of_theory_short/${short_level_of_theory}/g" PBS-temp2.txt >> PBS-temp3.txt
+            sed -e "s/level_of_theory_short/${short_level_theory}/g" PBS-temp2.txt >> PBS-temp3.txt
             sed -e "s/conform/${new_filenamef}/g" PBS-temp3.txt > PBS-temp4.txt
             sed -e "s/gauss-log/${new_filenamef}_${3}/g" PBS-temp4.txt > ${folder_location}/6_prod-run_IRC/PBS-${2}-${new_filenamef}.txt
 
@@ -131,7 +141,7 @@ input_list=$( column -t -s '' ${results_dirct}/${new_results}/z_norm_analysis_li
 
             sed -e "s/\$chkfile/${new_filenamer}_${3}.chk/g" $tpl/${template_file_reverse} > file-temp.com
             sed -e "s/\$folder/${molecule}-irc_${3}-reverse/g" file-temp.com >> file-temp1.com
-            sed -e "s/level_of_theory/${level_of_theory}/g" file-temp1.com >> file-temp2.com
+            sed -e "s/level_of_theory/${level_theory}/g" file-temp1.com >> file-temp2.com
 
             mv file-temp2.com ${folder_location}/6_prod-run_IRC/${new_filenamer}.com
 
@@ -141,7 +151,7 @@ input_list=$( column -t -s '' ${results_dirct}/${new_results}/z_norm_analysis_li
 
             sed -e "s/molecule/${molecule}/g" $tpl/gaussian-PBS-tpl.txt > PBS-temp1.txt
             sed -e "s/study/${2}/g" PBS-temp1.txt >> PBS-temp2.txt
-            sed -e "s/level_of_theory_short/${level_theory}/g" PBS-temp2.txt >> PBS-temp3.txt
+            sed -e "s/level_of_theory_short/${short_level_theory}/g" PBS-temp2.txt >> PBS-temp3.txt
             sed -e "s/conform/${new_filenamer}/g" PBS-temp3.txt > PBS-temp4.txt
             sed -e "s/gauss-log/${new_filenamer}_${3}/g" PBS-temp4.txt > ${folder_location}/6_prod-run_IRC/PBS-${2}-${new_filenamer}.txt
 
