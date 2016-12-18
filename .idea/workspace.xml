@@ -3,8 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="ed68f2d3-7d18-4709-9142-bdbed46d01b2" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/z11-generate_optall-localmin" afterPath="$PROJECT_DIR$/z11-generate_optall-localmin" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/z16-generate_local_min-IRC" afterPath="$PROJECT_DIR$/z16-generate_local_min-IRC" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -36,8 +34,8 @@
       <file leaf-file-name="z16-generate_local_min-IRC" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/z16-generate_local_min-IRC">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-157">
-              <caret line="22" column="33" lean-forward="false" selection-start-line="22" selection-start-column="33" selection-end-line="22" selection-end-column="33" />
+            <state relative-caret-position="593">
+              <caret line="60" column="22" lean-forward="true" selection-start-line="60" selection-start-column="22" selection-end-line="60" selection-end-column="22" />
               <folding />
             </state>
           </provider>
@@ -123,8 +121,8 @@
         <option value="$PROJECT_DIR$/z25_norm_analysis_TS" />
         <option value="$PROJECT_DIR$/z13-generate_TS" />
         <option value="$PROJECT_DIR$/z26_hartree_norm_run" />
-        <option value="$PROJECT_DIR$/z16-generate_local_min-IRC" />
         <option value="$PROJECT_DIR$/z11-generate_optall-localmin" />
+        <option value="$PROJECT_DIR$/z16-generate_local_min-IRC" />
       </list>
     </option>
   </component>
@@ -685,12 +683,12 @@
       <workItem from="1480792228541" duration="775000" />
       <workItem from="1481039468636" duration="697000" />
       <workItem from="1481308808863" duration="20800000" />
-      <workItem from="1481761217124" duration="16156000" />
+      <workItem from="1481761217124" duration="16426000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="56717000" />
+    <option name="totallyTimeSpent" value="56987000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -953,8 +951,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/z16-generate_local_min-IRC">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-157">
-          <caret line="22" column="33" lean-forward="false" selection-start-line="22" selection-start-column="33" selection-end-line="22" selection-end-column="33" />
+        <state relative-caret-position="593">
+          <caret line="60" column="22" lean-forward="true" selection-start-line="60" selection-start-column="22" selection-end-line="60" selection-end-column="22" />
           <folding />
         </state>
       </provider>

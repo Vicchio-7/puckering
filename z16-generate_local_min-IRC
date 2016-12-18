@@ -47,12 +47,12 @@ while IFS= read -r cmd; do
     if [[ ${file_orgin} == *"ircf"* ]]; then
         folder_loc_old=${molecule}-irc_${short_level_of_theory}-forward
         folder_loc_new=${molecule}-${test_type}_${short_level_of_theory}
-        echo ${scratch}/${folder_loc_old}/${file_orgin}.chk ${scratch}/${folder_loc_new}/${file_orgin}.chk
+        cp ${scratch}/${folder_loc_old}/${file_orgin}.chk ${scratch}/${folder_loc_new}/${file_orgin}.chk
 
     elif [[ ${file_orgin} == *"ircr"* ]]; then
         folder_loc_old=${molecule}-irc_${short_level_of_theory}-reverse
         folder_loc_new=${molecule}-${test_type}_${short_level_of_theory}
-        echo ${scratch}/${folder_loc_old}/${file_orgin}.chk ${scratch}/${folder_loc_new}/${file_orgin}.chk
+        cp ${scratch}/${folder_loc_old}/${file_orgin}.chk ${scratch}/${folder_loc_new}/${file_orgin}.chk
 
     else
         echo "Something is wrong"
