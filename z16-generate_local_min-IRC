@@ -27,6 +27,7 @@ molecule=$1
 test_type=$2
 short_level_of_theory=$3 
 
+scratch=/scratch/hbmayes_fluxod/vicchio
 
 
 if [ ! -d /scratch/hbmayes_fluxod/vicchio/${1}-${2}_${3} ]; then
@@ -38,19 +39,16 @@ while IFS= read -r cmd; do
 ######## Organizes the file naming information
 	file_orgin_long=$(printf '%s\n' "$cmd" | cut -c 19-100 | sed 's/-$//' ) 
 	file_orgin=${file_orgin_long%.log}	
-        structure_id=$(printf '%s\n' "$cmd" | cut -c 25-60 | sed 's/-$//')
-	file_long=${structure_id}
 
-    echo ${cmd}
     echo ${file_orgin}
 
 ######## Moves over the checkpoint to create the new checkpoint file 
 
-if [[ ${file_long} == *"forward"* ]]; then 
-	structure_id_f=$(printf '%s\n' "${file_long}" | cut -c 1-3 | sed 's/-$//')
-	structure_id_s=""$structure_id_f""-f""
+if [[ ${file_orgin} == *"forward"* ]]; then
+    folder_loc_old=${molecule}-irc_${short_level_of_theory}-forward
+    folder_loc_new=${scratch}/${molecule}-${test_type}_${short_level_of_theory}
 
-    echo ${structure_id_s}
+    echo ${scratch}/${folder_loc}/${file_orgin} ${scratch}/${folder_loc_new}/${file_orgin}
 
        #echo /scratch/hbmayes_fluxod/vicchio/${1}-IRC_${3}-forward/${1}-${structure_id_f}-freeze_${3}-IRC-f_${3}.chk /scratch/hbmayes_fluxod/vicchio/${1}-${2}_${3}/${1}-${structure_id_f}-freeze_${3}-IRC-f_${3}-minIRC-f_${3}.chk
 		
