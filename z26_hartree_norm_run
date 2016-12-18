@@ -68,8 +68,8 @@ ls *norm.txt > z_hartree_norm_analysis_${short_level_theory}.txt
 
 norm_analysis -s z_hartree_norm_analysis_${short_level_theory}.txt -r '8,1,9,13,17,5'
 
-mv z_norm-analysis_TS_exo_puckers_z_hartree_norm_analysis_am1.txt z_norm_analysis_list_exo-TS_${molecule}_${short_level_theory}.txt
-mv z_norm-analysis_TS_ring_puckers_z_hartree_norm_analysis_am1.txt z_norm_analysis_list_ring-TS_${molecule}_${short_level_theory}.txt
+mv z_norm-analysis_TS_exo_puckers_z_hartree_norm_analysis_${short_level_theory}.txt z_norm_analysis_list_exo-TS_${molecule}_${short_level_theory}.txt
+mv z_norm-analysis_TS_ring_puckers_z_hartree_norm_analysis_${short_level_theory}.txt z_norm_analysis_list_ring-TS_${molecule}_${short_level_theory}.txt
 
 if [ ! -d ${results_dirct}/${new_results}/log_norm_analysis/ ]; then
     mkdir ${results_dirct}/${new_results}/log_norm_analysis
