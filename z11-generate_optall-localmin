@@ -26,7 +26,6 @@ molecule=$1
 test_type=$2
 short_level_of_theory=$3 
 
-
 mkdir /scratch/hbmayes_fluxod/vicchio/${1}-${2}_${3}
 
 if [ ${molecule} == "oxane" ] ; then 
