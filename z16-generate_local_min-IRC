@@ -48,15 +48,15 @@ if [[ ${file_orgin} == *"ircf"* ]]; then
     folder_loc_old=${molecule}-irc_${short_level_of_theory}-forward
     folder_loc_new=${molecule}-${test_type}_${short_level_of_theory}
 
-    echo ${scratch}/${folder_loc}/${file_orgin}.chk ${scratch}/${folder_loc_new}/${file_orgin}.chk
+    echo ${scratch}/${folder_loc_old}/${file_orgin}.chk ${scratch}/${folder_loc_new}/${file_orgin}.chk
 
        #echo /scratch/hbmayes_fluxod/vicchio/${1}-IRC_${3}-forward/${1}-${structure_id_f}-freeze_${3}-IRC-f_${3}.chk /scratch/hbmayes_fluxod/vicchio/${1}-${2}_${3}/${1}-${structure_id_f}-freeze_${3}-IRC-f_${3}-minIRC-f_${3}.chk
 		
-elif [[ ${file_long} == *"reverse"* ]]; then 
-	structure_id_r=$(printf '%s\n' "${file_long}" | cut -c 1-3 | sed 's/-$//')
-	structure_id_s=""$structure_id_r""-r""
+elif [[ ${file_long} == *"ircr"* ]]; then
+	folder_loc_old=${molecule}-irc_${short_level_of_theory}-reverse
+    folder_loc_new=${molecule}-${test_type}_${short_level_of_theory}
 
-    echo ${structure_id_s}
+    echo ${scratch}/${folder_loc_old}/${file_orgin}.chk ${scratch}/${folder_loc_new}/${file_orgin}.chk
 
        #echo /scratch/hbmayes_fluxod/vicchio/${1}-IRC_${3}-reverse/${1}-${structure_id_f}-freeze_${3}-IRC-r_${3}.chk /scratch/hbmayes_fluxod/vicchio/${1}-${2}_${3}/${1}-${structure_id_f}-freeze_${3}-IRC-r_${3}-minIRC-r_${3}.chk
 
