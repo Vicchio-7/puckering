@@ -36,7 +36,7 @@
         <entry file="file://$PROJECT_DIR$/z16-generate_local_min-IRC">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="480">
-              <caret line="43" column="15" lean-forward="false" selection-start-line="43" selection-start-column="15" selection-end-line="43" selection-end-column="15" />
+              <caret line="43" column="14" lean-forward="false" selection-start-line="43" selection-start-column="14" selection-end-line="43" selection-end-column="14" />
               <folding />
             </state>
           </provider>
@@ -674,12 +674,12 @@
       <workItem from="1480792228541" duration="775000" />
       <workItem from="1481039468636" duration="697000" />
       <workItem from="1481308808863" duration="20800000" />
-      <workItem from="1481761217124" duration="14888000" />
+      <workItem from="1481761217124" duration="14924000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="55449000" />
+    <option name="totallyTimeSpent" value="55485000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -942,7 +942,7 @@
     <entry file="file://$PROJECT_DIR$/z16-generate_local_min-IRC">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="480">
-          <caret line="43" column="15" lean-forward="false" selection-start-line="43" selection-start-column="15" selection-end-line="43" selection-end-column="15" />
+          <caret line="43" column="14" lean-forward="false" selection-start-line="43" selection-start-column="14" selection-end-line="43" selection-end-column="14" />
           <folding />
         </state>
       </provider>

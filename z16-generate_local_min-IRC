@@ -42,7 +42,7 @@ while IFS= read -r cmd; do
 	file_long=${structure_id}
 
     echo ${cmd}
-    echo ${file_long}
+    echo ${file_orgin}
 
 ######## Moves over the checkpoint to create the new checkpoint file 
 
