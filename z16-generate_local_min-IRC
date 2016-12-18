@@ -41,7 +41,7 @@ while IFS= read -r cmd; do
         structure_id=$(printf '%s\n' "$cmd" | cut -c 25-60 | sed 's/-$//')
 	file_long=${structure_id}
 
-    echo ${CMD}
+    echo ${cmd}
     echo ${file_long}
 
 ######## Moves over the checkpoint to create the new checkpoint file 
