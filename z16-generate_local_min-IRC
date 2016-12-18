@@ -44,7 +44,7 @@ while IFS= read -r cmd; do
 
 ######## Moves over the checkpoint to create the new checkpoint file 
 
-if [[ ${file_orgin} == *"forward"* ]]; then
+if [[ ${file_orgin} == *"ircf"* ]]; then
     folder_loc_old=${molecule}-irc_${short_level_of_theory}-forward
     folder_loc_new=${scratch}/${molecule}-${test_type}_${short_level_of_theory}
 
