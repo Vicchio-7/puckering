@@ -44,37 +44,31 @@ while IFS= read -r cmd; do
 
 ######## Moves over the checkpoint to create the new checkpoint file 
 
-if [[ ${file_orgin} == *"ircf"* ]]; then
-    folder_loc_old=${molecule}-irc_${short_level_of_theory}-forward
-    folder_loc_new=${molecule}-${test_type}_${short_level_of_theory}
+    if [[ ${file_orgin} == *"ircf"* ]]; then
+        folder_loc_old=${molecule}-irc_${short_level_of_theory}-forward
+        folder_loc_new=${molecule}-${test_type}_${short_level_of_theory}
+        echo ${scratch}/${folder_loc_old}/${file_orgin}.chk ${scratch}/${folder_loc_new}/${file_orgin}.chk
 
-    echo ${scratch}/${folder_loc_old}/${file_orgin}.chk ${scratch}/${folder_loc_new}/${file_orgin}.chk
+    elif [[ ${file_orgin} == *"ircr"* ]]; then
+        folder_loc_old=${molecule}-irc_${short_level_of_theory}-reverse
+        folder_loc_new=${molecule}-${test_type}_${short_level_of_theory}
+        echo ${scratch}/${folder_loc_old}/${file_orgin}.chk ${scratch}/${folder_loc_new}/${file_orgin}.chk
 
-       #echo /scratch/hbmayes_fluxod/vicchio/${1}-IRC_${3}-forward/${1}-${structure_id_f}-freeze_${3}-IRC-f_${3}.chk /scratch/hbmayes_fluxod/vicchio/${1}-${2}_${3}/${1}-${structure_id_f}-freeze_${3}-IRC-f_${3}-minIRC-f_${3}.chk
-		
-elif [[ ${file_orgin} == *"ircr"* ]]; then
-	folder_loc_old=${molecule}-irc_${short_level_of_theory}-reverse
-    folder_loc_new=${molecule}-${test_type}_${short_level_of_theory}
+    else
+        echo "Something is wrong"
+    fi
 
-    echo ${scratch}/${folder_loc_old}/${file_orgin}.chk ${scratch}/${folder_loc_new}/${file_orgin}.chk
-
-       #echo /scratch/hbmayes_fluxod/vicchio/${1}-IRC_${3}-reverse/${1}-${structure_id_f}-freeze_${3}-IRC-r_${3}.chk /scratch/hbmayes_fluxod/vicchio/${1}-${2}_${3}/${1}-${structure_id_f}-freeze_${3}-IRC-r_${3}-minIRC-r_${3}.chk
-
-else 
-	echo "Something is wrong"
-fi 
-
-#	file=${structure_id_s}
+	file=${file_orgin}
 
 ######## The section below updates the Gaussian Input File
 
-#	sed -e "s/\$chkfile/${1}-${structure_id_f}-freeze_${3}-IRC-r_${3}-minIRC-r_${3}.chk/g" $tpl/${template_file} > ${file}.com
-#  	sed -e "s/\$folder/${molecule}-${test_type}_${3}/g" ${file}.com >> ${file}-temp1.com
-#	sed -e "s/level_of_theory/${level_of_theory}/g" ${file}-temp1.com >> ${file}-temp.com
+	sed -e "s/\$chkfile/${file_orgin}.chk/g" $tpl/${template_file} > ${file}.com
+  	sed -e "s/\$folder/${folder_loc_new}}/g" ${file}.com >> ${file}-temp1.com
+	sed -e "s/level_of_theory/${level_of_theory}/g" ${file}-temp1.com >> ${file}-temp.com
 
-#	mv ${file}-temp.com ${file}.com
+	mv ${file}-temp.com ${file}.com
 	
-#	rm ${file}-temp1.com
+	rm ${file}-temp1.com
 
 ######## The section below creates the PBS file for submission on flux
 
