@@ -83,8 +83,12 @@ cp z_norm_analysis_list_exo-TS_${molecule}_${short_level_theory}.txt ${results_d
 
 # This part of the script prepares for the IRC calculations.
 
-if [ ! -d /scratch/hbmayes_fluxod/vicchio/${1}-irc_${3} ]; then
-    mkdir /scratch/hbmayes_fluxod/vicchio/${1}-irc_${3}
+if [ ! -d /scratch/hbmayes_fluxod/vicchio/${molecule}-irc_${3}-forward ]; then
+    mkdir /scratch/hbmayes_fluxod/vicchio/${molecule}-irc_${3}-forward
+fi
+
+if [ ! -d /scratch/hbmayes_fluxod/vicchio/${molecule}-irc_${3}-reverse ]; then
+    mkdir /scratch/hbmayes_fluxod/vicchio/${molecule}-irc_${3}-reverse
 fi
 
 cd ${folder_location}/6_prod-run_IRC
