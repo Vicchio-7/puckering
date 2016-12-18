@@ -51,8 +51,8 @@ else
 	echo 'There is a file that did not run properly!' 
 fi
 
-mv z_cluster_z_hartree_out-unsorted-${molecule}-${short_level_of_theory}.csv z_cluster-sorted-localmin-${molecule}-${short_level_of_theory}.csv
+mv z_cluster_z_hartree_out-unsorted-${molecule}-${short_level_of_theory}.csv z_cluster-sorted-${test_type}-${molecule}-${short_level_of_theory}.csv
  
-cp z_cluster-sorted-localmin-${molecule}-${short_level_of_theory}.csv /home/vicchio/puckering/zz_results/${results_folder}/. 
+cp z_cluster-sorted-${test_type}-${molecule}-${short_level_of_theory}.csv /home/vicchio/puckering/zz_results/${results_folder}/.
  
 

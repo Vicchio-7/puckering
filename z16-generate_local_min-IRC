@@ -59,7 +59,6 @@ while IFS= read -r cmd; do
     fi
 
 	file=${file_orgin}
-    echo ${folder_loc_new}
 
 ######## The section below updates the Gaussian Input File
 
