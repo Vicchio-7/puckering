@@ -30,6 +30,8 @@ if [ ${1} == "oxane" ]; then
 
     for file_unedit in $( <$input_list); do
 
+    echo "I also made it here"
+
     file=${file_unedit%.com}
 
     ########                CREATES THE PBS FILE                #########
