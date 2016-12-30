@@ -22,15 +22,11 @@ tpl=/home/vicchio/puckering/z_tpl
 tpl_file=gaussian-bxyl_hm_issue_freeze.txt
 
 if [ ${1} == "oxane" ]; then
-    echo "I made it here"
     input_list=../y0-input_list.txt
     input=$(head -n 1 ../y1-level_of_theory_basis_set.txt)
-
     cp ../0_initial-coordinates/*.com .
 
     for file_unedit in $( <$input_list); do
-
-    echo "I also made it here"
 
     file=${file_unedit%.com}
 

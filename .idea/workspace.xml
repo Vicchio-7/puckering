@@ -55,8 +55,8 @@
       <file leaf-file-name="z02-generate-freeze-files" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/z02-generate-freeze-files">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="360">
-              <caret line="24" column="25" lean-forward="false" selection-start-line="24" selection-start-column="25" selection-end-line="24" selection-end-column="25" />
+            <state relative-caret-position="480">
+              <caret line="32" column="30" lean-forward="false" selection-start-line="32" selection-start-column="30" selection-end-line="32" selection-end-column="30" />
               <folding />
             </state>
           </provider>
@@ -715,12 +715,12 @@
       <workItem from="1481039468636" duration="697000" />
       <workItem from="1481308808863" duration="20800000" />
       <workItem from="1481761217124" duration="26762000" />
-      <workItem from="1483128456620" duration="397000" />
+      <workItem from="1483128456620" duration="470000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="67720000" />
+    <option name="totallyTimeSpent" value="67793000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -995,8 +995,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/z02-generate-freeze-files">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="360">
-          <caret line="24" column="25" lean-forward="false" selection-start-line="24" selection-start-column="25" selection-end-line="24" selection-end-column="25" />
+        <state relative-caret-position="480">
+          <caret line="32" column="30" lean-forward="false" selection-start-line="32" selection-start-column="30" selection-end-line="32" selection-end-column="30" />
           <folding />
         </state>
       </provider>
