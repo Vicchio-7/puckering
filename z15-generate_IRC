@@ -68,17 +68,17 @@ if [ ${molecule} == "oxane" ] ; then
 
         ######## Moves over the checkpoint to create the new checkpoint file
 
-        #cp /scratch/hbmayes_fluxod/vicchio/${1}-TS_${3}/${1}-${file}-freeze_${3}-TS_${3}.chk /scratch/hbmayes_fluxod/vicchio/${1}-${2}_${3}-forward/${1}-${file}-freeze_${3}-${2}-f_${3}.chk
+        cp /scratch/hbmayes_fluxod/vicchio/${1}-TS_${3}/${file_org}.chk /scratch/hbmayes_fluxod/vicchio/${1}-${2}_${3}-forward/${file_org}-${2}-f_${3}.chk
 
         ######## The section below updates the Gaussian Input File
 
-        #sed -e "s/\$chkfile/${1}-${file}-freeze_${3}-${2}-f_${3}.chk/g" $tpl/${template_file_forward} > ${file}.com
-        #sed -e "s/\$folder/${molecule}-${test_type}_${3}-forward/g" ${file}.com >> ${file}-temp1.com
-        #sed -e "s/level_of_theory/${level_of_theory}/g" ${file}-temp1.com >> ${file}-temp.com
+        sed -e "s/\$chkfile/${file_org}-${2}-f_${3}.chk/g" $tpl/${template_file_forward} > ${file}.com
+        sed -e "s/\$folder/${molecule}-${test_type}_${3}-forward/g" ${file}.com >> ${file}-temp1.com
+        sed -e "s/level_of_theory/${level_of_theory}/g" ${file}-temp1.com >> ${file}-temp.com
 
-        #mv ${file}-temp.com ${file}-f.com
+        mv ${file}-temp.com ${file}-f.com
 
-        #rm ${file}-temp1.com
+        rm ${file}-temp1.com
 
         ######## The section below creates the PBS file for submission on flux
 
