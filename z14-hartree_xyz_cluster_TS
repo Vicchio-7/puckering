@@ -49,7 +49,7 @@ if [ ! -f ${failure} ]; then
 		results_folder=2_bxyl
 		hartree cpsnap -d $PWD > z_hartree_out-unsorted-${molecule}-${short_level_of_theory}.csv
 		z05-grab_xyz_oxane ${molecule}
-		xyz_cluster -s z_hartree_out-unsorted-${molecule}-${short_level_of_theory}.csv -t 0.1 -r '0,8,12,16,4,7'
+		xyz_cluster -s z_hartree_out-unsorted-${molecule}-${short_level_of_theory}.csv -t 0.01 -r '0,8,12,16,4,7'
 
 	else
 		echo "Need to add the molecule to the script!"
