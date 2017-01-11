@@ -15,23 +15,13 @@ list_delete=$(seq ${total_files_to_delete})
 
 echo ${list_delete}
 
-for file_number in ${list_delete}; do
-
-    echo ${file_number}
-
-done
-
-> list_count.txt
 
 echo "I am outside"
-for file_number in $( $list_count.txt); do
+for file_number in ${list_delete}; do
     echo "I am inside"
     echo ${file_number}
     echo ${lowerbound}
 #    current_file_delete=$( ${file_number} + ${lowerbound})
     current_file_delete=$( echo "${lowerbound}+${file_number}-1" | bc )
     echo ${current_file_delete}
-
 done
-
-#rm list_count.txt
