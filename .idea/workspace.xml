@@ -3,7 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="ed68f2d3-7d18-4709-9142-bdbed46d01b2" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/z14-hartree_xyz_cluster_TS" afterPath="$PROJECT_DIR$/z14-hartree_xyz_cluster_TS" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/z15-generate_IRC" afterPath="$PROJECT_DIR$/z15-generate_IRC" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -102,7 +102,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="z14-hartree_xyz_cluster_TS" pinned="false" current-in-tab="true">
+      <file leaf-file-name="z14-hartree_xyz_cluster_TS" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/z14-hartree_xyz_cluster_TS">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="325">
@@ -112,11 +112,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="z15-generate_IRC" pinned="false" current-in-tab="false">
+      <file leaf-file-name="z15-generate_IRC" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/z15-generate_IRC">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="340">
-              <caret line="55" column="4" lean-forward="false" selection-start-line="55" selection-start-column="4" selection-end-line="55" selection-end-column="4" />
+            <state relative-caret-position="295">
+              <caret line="63" column="0" lean-forward="true" selection-start-line="63" selection-start-column="0" selection-end-line="63" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -163,8 +163,8 @@
         <option value="$PROJECT_DIR$/z12-hartree_xyz-optall-localmin" />
         <option value="$PROJECT_DIR$/z26_hartree_norm_run" />
         <option value="$PROJECT_DIR$/z02-generate-freeze-files" />
-        <option value="$PROJECT_DIR$/z15-generate_IRC" />
         <option value="$PROJECT_DIR$/z14-hartree_xyz_cluster_TS" />
+        <option value="$PROJECT_DIR$/z15-generate_IRC" />
       </list>
     </option>
   </component>
@@ -728,12 +728,12 @@
       <workItem from="1481761217124" duration="26762000" />
       <workItem from="1483128456620" duration="2816000" />
       <workItem from="1483629568572" duration="6000" />
-      <workItem from="1484145123173" duration="634000" />
+      <workItem from="1484145123173" duration="1147000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="70779000" />
+    <option name="totallyTimeSpent" value="71292000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1150,18 +1150,18 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/z15-generate_IRC">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="340">
-          <caret line="55" column="4" lean-forward="false" selection-start-line="55" selection-start-column="4" selection-end-line="55" selection-end-column="4" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/z14-hartree_xyz_cluster_TS">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="325">
           <caret line="45" column="93" lean-forward="false" selection-start-line="45" selection-start-column="93" selection-end-line="45" selection-end-column="93" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/z15-generate_IRC">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="295">
+          <caret line="63" column="0" lean-forward="true" selection-start-line="63" selection-start-column="0" selection-end-line="63" selection-end-column="0" />
           <folding />
         </state>
       </provider>

@@ -55,67 +55,70 @@ if [ ${molecule} == "oxane" ] ; then
 
     input_list=$( column -t -s ',' ${ts_hartree_file} | awk '{print $1}' )
 
-    while IFS= read -r cmd; do
-        structure_id=$(printf '%s\n' "$cmd" | cut -c 7-9 | sed 's/-$//')
-        echo ${structure_id}
-        file=${structure_id}
+     for file in ${input_list}; do
+
+        file1=${file%.log\"}
+        file_org=${file1##\"}
+
+          if [ "${file_org}" != "File" ]; then
 
     ########## IRC Information for the Forward Direction ##########
 
     ######## Moves over the checkpoint to create the new checkpoint file
 
-    cp /scratch/hbmayes_fluxod/vicchio/${1}-TS_${3}/${1}-${file}-freeze_${3}-TS_${3}.chk /scratch/hbmayes_fluxod/vicchio/${1}-${2}_${3}-forward/${1}-${file}-freeze_${3}-${2}-f_${3}.chk
+    #cp /scratch/hbmayes_fluxod/vicchio/${1}-TS_${3}/${1}-${file}-freeze_${3}-TS_${3}.chk /scratch/hbmayes_fluxod/vicchio/${1}-${2}_${3}-forward/${1}-${file}-freeze_${3}-${2}-f_${3}.chk
 
     ######## The section below updates the Gaussian Input File
 
-    sed -e "s/\$chkfile/${1}-${file}-freeze_${3}-${2}-f_${3}.chk/g" $tpl/${template_file_forward} > ${file}.com
-    sed -e "s/\$folder/${molecule}-${test_type}_${3}-forward/g" ${file}.com >> ${file}-temp1.com
-    sed -e "s/level_of_theory/${level_of_theory}/g" ${file}-temp1.com >> ${file}-temp.com
+    #sed -e "s/\$chkfile/${1}-${file}-freeze_${3}-${2}-f_${3}.chk/g" $tpl/${template_file_forward} > ${file}.com
+    #sed -e "s/\$folder/${molecule}-${test_type}_${3}-forward/g" ${file}.com >> ${file}-temp1.com
+    #sed -e "s/level_of_theory/${level_of_theory}/g" ${file}-temp1.com >> ${file}-temp.com
 
-    mv ${file}-temp.com ${file}-f.com
+    #mv ${file}-temp.com ${file}-f.com
 
-    rm ${file}-temp1.com
+    #rm ${file}-temp1.com
 
     ######## The section below creates the PBS file for submission on flux
 
-    sed -e "s/molecule/${molecule}/g" $tpl/gaussian-PBS-tpl.txt > PBS-$2-${file}.txt
-    sed -e "s/study/${2}/g" PBS-$2-${file}.txt >> PBS-$2-${file}-temp1.txt
-    sed -e "s/level_of_theory_short/${short_level_of_theory}/g" PBS-$2-${file}-temp1.txt >> PBS-$2-${file}-temp2.txt
-    sed -e "s/conform/${file}-f/g" PBS-$2-${file}-temp2.txt > PBS-$2-${file}-temp3.txt
-    sed -e "s/gauss-log/${1}-${file}-freeze_${3}-${2}-forward-${3}/g" PBS-${2}-${file}-temp3.txt > PBS-${2}-${file}-f.txt
+    #sed -e "s/molecule/${molecule}/g" $tpl/gaussian-PBS-tpl.txt > PBS-$2-${file}.txt
+    #sed -e "s/study/${2}/g" PBS-$2-${file}.txt >> PBS-$2-${file}-temp1.txt
+    #sed -e "s/level_of_theory_short/${short_level_of_theory}/g" PBS-$2-${file}-temp1.txt >> PBS-$2-${file}-temp2.txt
+    #sed -e "s/conform/${file}-f/g" PBS-$2-${file}-temp2.txt > PBS-$2-${file}-temp3.txt
+    #sed -e "s/gauss-log/${1}-${file}-freeze_${3}-${2}-forward-${3}/g" PBS-${2}-${file}-temp3.txt > PBS-${2}-${file}-f.txt
 
-    rm PBS-$2-${file}-temp*
+    #rm PBS-$2-${file}-temp*
 
     ########## IRC Information for the Reverse Direction ##########
 
     ######## Moves over the checkpoint to create the new checkpoint file
 
-    cp /scratch/hbmayes_fluxod/vicchio/${1}-TS_${3}/${1}-${file}-freeze_${3}-TS_${3}.chk /scratch/hbmayes_fluxod/vicchio/${1}-${2}_${3}-reverse/${1}-${file}-freeze_${3}-${2}-r_${3}.chk
+    #cp /scratch/hbmayes_fluxod/vicchio/${1}-TS_${3}/${1}-${file}-freeze_${3}-TS_${3}.chk /scratch/hbmayes_fluxod/vicchio/${1}-${2}_${3}-reverse/${1}-${file}-freeze_${3}-${2}-r_${3}.chk
 
     ######## The section below updates the Gaussian Input File
 
-    sed -e "s/\$chkfile/${1}-${file}-freeze_${3}-${2}-r_${3}.chk/g" $tpl/${template_file_reverse} > ${file}.com
-    sed -e "s/\$folder/${molecule}-${test_type}_${3}-reverse/g" ${file}.com >> ${file}-temp1.com
-    sed -e "s/level_of_theory/${level_of_theory}/g" ${file}-temp1.com >> ${file}-temp.com
+    #sed -e "s/\$chkfile/${1}-${file}-freeze_${3}-${2}-r_${3}.chk/g" $tpl/${template_file_reverse} > ${file}.com
+    #sed -e "s/\$folder/${molecule}-${test_type}_${3}-reverse/g" ${file}.com >> ${file}-temp1.com
+    #sed -e "s/level_of_theory/${level_of_theory}/g" ${file}-temp1.com >> ${file}-temp.com
 
-    mv ${file}-temp.com ${file}-r.com
+    #mv ${file}-temp.com ${file}-r.com
 
-    rm ${file}-temp1.com
+    #rm ${file}-temp1.com
 
     ######## The section below creates the PBS file for submission on flux
 
-    sed -e "s/molecule/${molecule}/g" $tpl/gaussian-PBS-tpl.txt > PBS-$2-${file}.txt
-    sed -e "s/study/${2}/g" PBS-$2-${file}.txt >> PBS-$2-${file}-temp1.txt
-    sed -e "s/level_of_theory_short/${short_level_of_theory}/g" PBS-$2-${file}-temp1.txt >> PBS-$2-${file}-temp2.txt
-    sed -e "s/conform/${file}-r/g" PBS-$2-${file}-temp2.txt > PBS-$2-${file}-temp3.txt
-    sed -e "s/gauss-log/${1}-${file}-freeze_${3}-${2}-reverse_${3}/g" PBS-${2}-${file}-temp3.txt > PBS-${2}-${file}-r.txt
+    #sed -e "s/molecule/${molecule}/g" $tpl/gaussian-PBS-tpl.txt > PBS-$2-${file}.txt
+    #sed -e "s/study/${2}/g" PBS-$2-${file}.txt >> PBS-$2-${file}-temp1.txt
+    #sed -e "s/level_of_theory_short/${short_level_of_theory}/g" PBS-$2-${file}-temp1.txt >> PBS-$2-${file}-temp2.txt
+    #sed -e "s/conform/${file}-r/g" PBS-$2-${file}-temp2.txt > PBS-$2-${file}-temp3.txt
+    #sed -e "s/gauss-log/${1}-${file}-freeze_${3}-${2}-reverse_${3}/g" PBS-${2}-${file}-temp3.txt > PBS-${2}-${file}-r.txt
 
-    rm PBS-$2-${file}-temp*
+    #rm PBS-$2-${file}-temp*
 
-    rm PBS-${2}-${file}.txt
-    rm ${file}.com
+    #rm PBS-${2}-${file}.txt
+    #rm ${file}.com
 
-    done < "${input_list}"
+        fi
+    done
 
 else
 
