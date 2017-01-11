@@ -11,10 +11,20 @@ total_files_to_delete=$( echo "${upperbound}-${lowerbound}" | bc )
 
 echo ${total_files_to_delete}
 
-seq ${total_files_to_delete} > list_count.txt
+list_delete=$(seq ${total_files_to_delete})
+
+echo ${list_delete}
+
+for file_number in ${list_delete}; do
+
+    echo ${file_number}
+
+done
+
+> list_count.txt
 
 echo "I am outside"
-for file_number in ($list_count.txt); do
+for file_number in $( $list_count.txt); do
     echo "I am inside"
     echo ${file_number}
     echo ${lowerbound}
