@@ -68,6 +68,7 @@ if [ ${molecule} == "oxane" ] ; then
         ########## IRC Information for the Forward Direction ##########
 
             new_filenamef=${file_org}-ircf
+            echo $new_filenamef
 
             ######## Moves over the checkpoint to create the new checkpoint file
 
