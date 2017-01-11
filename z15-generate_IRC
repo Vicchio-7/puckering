@@ -63,6 +63,7 @@ if [ ${molecule} == "oxane" ] ; then
           if [ "${file_org}" != "File" ]; then
 
             echo ${file_org}
+            echo "THIS IS THE UPDATED SCRIPT I AM RUNNING"
 
         ########## IRC Information for the Forward Direction ##########
 
