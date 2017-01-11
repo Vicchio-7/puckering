@@ -74,23 +74,23 @@ if [ ${molecule} == "oxane" ] ; then
 
            ######## The section below updates the Gaussian Input File
 
-            sed -e "s/\$chkfile/${file_org}-${2}-f_${3}.chk/g" $tpl/${template_file_forward} > ${file}.com
-            sed -e "s/\$folder/${molecule}-${test_type}_${3}-forward/g" ${file}.com >> ${file}-temp1.com
-            sed -e "s/level_of_theory/${level_of_theory}/g" ${file}-temp1.com >> ${file}-temp.com
+            sed -e "s/\$chkfile/${file_org}-${2}-f_${3}.chk/g" $tpl/${template_file_forward} > temp1.com
+            sed -e "s/\$folder/${molecule}-${test_type}_${3}-forward/g" temp1.com >> temp2.com
+            sed -e "s/level_of_theory/${level_of_theory}/g" temp2.com >> temp3.com
 
-            mv ${file}-temp.com ${new_filenamef}.com
+            mv temp3.com ${new_filenamef}.com
 
-            rm ${file}-temp1.com
+            rm *temp*
 
            ######## The section below creates the PBS file for submission on flux
 
-            sed -e "s/molecule/${molecule}/g" $tpl/gaussian-PBS-tpl.txt > PBS-$2-${file}.txt
-            sed -e "s/study/${2}/g" PBS-$2-${file}.txt >> PBS-$2-${file}-temp1.txt
-            sed -e "s/level_of_theory_short/${short_level_of_theory}/g" PBS-$2-${file}-temp1.txt >> PBS-$2-${file}-temp2.txt
-            sed -e "s/conform/${new_filenamef}/g" PBS-$2-${file}-temp2.txt > PBS-$2-${file}-temp3.txt
-            sed -e "s/gauss-log/${new_filenamef}_${3}/g" PBS-${2}-${file}-temp3.txt > PBS-${2}-${new_filenamef}.txt
+            sed -e "s/molecule/${molecule}/g" $tpl/gaussian-PBS-tpl.txt > PBS-temp1.txt
+            sed -e "s/study/${2}/g" PBS-temp1.txt >> PBS-temp2.txt
+            sed -e "s/level_of_theory_short/${short_level_of_theory}/g" PBS-temp2.txt >> PBS-temp3.txt
+            sed -e "s/conform/${new_filenamef}/g" PBS-temp3.txt >> PBS-temp4.txt
+            sed -e "s/gauss-log/${new_filenamef}_${3}/g" PBS-temp4.txt > PBS-${2}-${new_filenamef}.txt
 
-            rm PBS-$2-${file}-temp*
+            rm PBS-temp*.txt
 
 
         ########## IRC Information for the Reverse Direction ##########
