@@ -11,7 +11,7 @@ total_files_to_delete=$( echo "${upperbound}-${lowerbound}" | bc )
 
 echo ${total_files_to_delete}
 
-seq ${total_files_to_delete} > count.txt
+seq ${total_files_to_delete} > list_count.txt
 
 for file_number in $( <$list_count.txt); do
     echo ${file_number}
@@ -22,4 +22,4 @@ for file_number in $( <$list_count.txt); do
 
 done
 
-#rm count.txt
+#rm list_count.txt
