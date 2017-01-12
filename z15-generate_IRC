@@ -70,7 +70,7 @@ if [ ${molecule} == "oxane" ] ; then
 
             ######## Moves over the checkpoint to create the new checkpoint file
 
-            cp /scratch/hbmayes_fluxod/vicchio/${1}-TS_${3}/${file_org}.chk /scratch/hbmayes_fluxod/vicchio/${1}-${2}_${3}-forward/${file_org}-${2}-f_${3}.chk
+            cp /scratch/hbmayes_fluxod/vicchio/${1}-TS_${3}/${file_org}.chk /scratch/hbmayes_fluxod/vicchio/${1}-${2}_${3}-forward/${new_filenamef}_${3}.chk
 
            ######## The section below updates the Gaussian Input File
 
@@ -99,7 +99,7 @@ if [ ${molecule} == "oxane" ] ; then
 
         ######## Moves over the checkpoint to create the new checkpoint file
 
-            cp /scratch/hbmayes_fluxod/vicchio/${1}-TS_${3}/${file_org}.chk /scratch/hbmayes_fluxod/vicchio/${1}-${2}_${3}-reverse/${file_org}-${2}-r_${3}.chk
+            cp /scratch/hbmayes_fluxod/vicchio/${1}-TS_${3}/${file_org}.chk /scratch/hbmayes_fluxod/vicchio/${1}-${2}_${3}-reverse/${new_filenamer}_${3}.chk
 
          ######## The section below updates the Gaussian Input File
 
