@@ -83,6 +83,9 @@ if [ ${molecule} == "oxane" ] ; then
             old_check_file=/scratch/hbmayes_fluxod/vicchio/${1}-TS_${3}/${file_org}.chk
             new_check_file=/scratch/hbmayes_fluxod/vicchio/${1}-${2}_${3}-forward/${new_filenamef}_${3}.chk
 
+            echo ${old_check_file}
+            echo ${new_check_file}
+
             sed -e "s/\$memory/${memory_job}/g" $tpl/${template_file_forward} > temp4.com
             sed -e "s/\$num_procs/${cores_per_node}/g" temp4.com >> temp5.com
             sed -e "s/\$chkfile/HI mom/g" temp5.com >> temp1.com
