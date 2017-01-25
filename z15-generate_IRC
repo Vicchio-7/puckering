@@ -87,14 +87,14 @@ if [ ${molecule} == "oxane" ] ; then
 
             sed -e "s/\$memory/${memory_job}/g" $tpl/${template_file_forward} > temp4.com
             sed -e "s/\$num_procs/${cores_per_node}/g" temp4.com >> temp5.com
-#            sed -e "s/\$old_check/${old_check_file}/g" temp5.com >> temp6.com
-#            sed -e "s/\$chkfile/${new_check_file}/g" temp6.com >> temp1.com
-#            sed -e "s/\$folder/${molecule}-${test_type}_${3}-forward/g" temp1.com >> temp2.com
-#            sed -e "s/level_of_theory/${level_of_theory}/g" temp2.com >> temp3.com
-#
-#            mv temp3.com ${new_filenamef}.com
-#
-#            rm *temp*
+            sed -e "s/\$old_check/${old_check_file}/g" temp5.com >> temp6.com
+            sed -e "s/\$chkfile/${new_check_file}/g" temp6.com >> temp1.com
+            sed -e "s/\$folder/${molecule}-${test_type}_${3}-forward/g" temp1.com >> temp2.com
+            sed -e "s/level_of_theory/${level_of_theory}/g" temp2.com >> temp3.com
+
+            mv temp3.com ${new_filenamef}.com
+
+            rm *temp*
 
            ######## The section below creates the PBS file for submission on flux
 
