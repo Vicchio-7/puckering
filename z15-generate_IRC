@@ -81,7 +81,7 @@ if [ ${molecule} == "oxane" ] ; then
            ######## The section below updates the Gaussian Input File
 
             old_check_file=/scratch/hbmayes_fluxod/vicchio/${1}-TS_${3}/${file_org}.chk
-            new_check_file="/scratch/hbmayes_fluxod/vicchio/${1}-${2}_${3}-forward/${new_filenamef}_${3}.chk"
+            new_check_file=\/scratch\/hbmayes_fluxod\/vicchio\/${1}-${2}_${3}-forward\/${new_filenamef}_${3}.chk
 
             echo ${old_check_file}
             echo ${new_check_file}
