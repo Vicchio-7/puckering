@@ -25,8 +25,12 @@ tpl=/home/vicchio/puckering/z_tpl
 template_file_forward=gaussian-chk_run-IRC-forward.txt
 template_file_reverse=gaussian-chk_run-IRC-reverse.txt
 
-cores_per_nodes=1
+cores_per_node=1
 memory_job=25
+
+total_memory=$(echo ${cores_per_node} ${memory_job} | awk '{ print $1*$2 }' )
+
+echo ${total_memory}
 
 if [ "${molecule}" == 'oxane' ] ; then
     mole_folder=1_oxane
@@ -103,8 +107,8 @@ if [ ${molecule} == "oxane" ] ; then
             sed -e "s/level_of_theory_short/${short_level_of_theory}/g" PBS-temp2.txt >> PBS-temp3.txt
             sed -e "s/conform/${new_filenamef}/g" PBS-temp3.txt >> PBS-temp4.txt
             sed -e "s/\$num_proc/${cores_per_node}/g" PBS-temp4.txt >> PBS-temp5.txt
-
-            sed -e "s/gauss-log/${new_filenamef}_${3}/g" PBS-temp5.txt > PBS-${2}-${new_filenamef}.txt
+            sed -e "s/\$pmemory/${sd}/g" PBS-temp5.txt >> PBS-temp6.txt
+            sed -e "s/gauss-log/${new_filenamef}_${3}/g" PBS-temp6.txt > PBS-${2}-${new_filenamef}.txt
 
             rm PBS-temp*.txt
 
