@@ -22,12 +22,15 @@ level_of_theory=$(head -n 1 ../y0-level_of_theory_basis_set.txt)
 
 tpl=/home/vicchio/puckering/z_tpl
 template_file=gaussian-chk_run-optall_localmin-tpl_lmirc.txt
+scratch=/scratch/hbmayes_fluxod/vicchio
 
 molecule=$1
 test_type=$2
 short_level_of_theory=$3 
 
-scratch=/scratch/hbmayes_fluxod/vicchio
+cores_per_node=1
+
+
 
 
 if [ ! -d /scratch/hbmayes_fluxod/vicchio/${1}-${2}_${3} ]; then
@@ -62,6 +65,7 @@ while IFS= read -r cmd; do
 
 ######## The section below updates the Gaussian Input File
 
+    sed -e "s/\$chkfile/${file_orgin}.chk/g"
 	sed -e "s/\$chkfile/${file_orgin}.chk/g" $tpl/${template_file} > ${file}.com
   	sed -e "s/\$folder/${folder_loc_new}/g" ${file}.com >> ${file}-temp1.com
 	sed -e "s/level_of_theory/${level_of_theory}/g" ${file}-temp1.com >> ${file}-temp.com

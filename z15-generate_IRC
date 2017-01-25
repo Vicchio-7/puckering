@@ -25,6 +25,9 @@ tpl=/home/vicchio/puckering/z_tpl
 template_file_forward=gaussian-chk_run-IRC-forward.txt
 template_file_reverse=gaussian-chk_run-IRC-reverse.txt
 
+cores_per_nodes=1
+
+
 if [ "${molecule}" == 'oxane' ] ; then
     mole_folder=1_oxane
 elif [ "${molecule}" == 'bxyl' ] ;  then
@@ -74,7 +77,10 @@ if [ ${molecule} == "oxane" ] ; then
 
            ######## The section below updates the Gaussian Input File
 
-            sed -e "s/\$chkfile/${file_org}-${2}-f_${3}.chk/g" $tpl/${template_file_forward} > temp1.com
+            sed -e "s/\$memory/${memory_job}/g" $tpl/${template_file_forward} > temp4.com
+            sed -e "s/\$num_procs/${cores_per_node}/g" temp4.com >> temp5.com
+            sed -e "s/\$old_check/${file_org}/g" temp5.com >> temp6.com
+            sed -e "s/\$chkfile/${file_org}-${2}-f_${3}.chk/g" temp6.com >> temp1.com
             sed -e "s/\$folder/${molecule}-${test_type}_${3}-forward/g" temp1.com >> temp2.com
             sed -e "s/level_of_theory/${level_of_theory}/g" temp2.com >> temp3.com
 
