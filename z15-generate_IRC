@@ -62,6 +62,8 @@ if [ ${molecule} == "oxane" ] ; then
 
      for file in ${input_list}; do
 
+        echo ${input_list}
+
         file1=${file%.log\"}
         file_org=${file1##\"}
 
