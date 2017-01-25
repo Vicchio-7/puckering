@@ -91,12 +91,12 @@ if [ ${molecule} == "oxane" ] ; then
             sed -e "s/\$folder_old/${1}-TS_${3}/g" temp2.com >> temp3.com
             sed -e "s/\$old_check/${file_org}.chk/g" temp3.com >> temp4.com
             sed -e "s/\$chkfile/${new_check_file}/g" temp4.com >> temp5.com
-            sed -e "s/\$folder/${molecule}-${test_type}_${3}-forward/g" temp5.com >> temp2.com
-            sed -e "s/level_of_theory/${level_of_theory}/g" temp2.com >> temp3.com
+            sed -e "s/\$folder/${molecule}-${test_type}_${3}-forward/g" temp5.com >> temp6.com
+            sed -e "s/level_of_theory/${level_of_theory}/g" temp6.com >> temp7.com
 
 
 
-            mv temp3.com ${new_filenamef}.com
+            mv temp7.com ${new_filenamef}.com
 
             rm *temp*
 
