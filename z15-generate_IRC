@@ -60,9 +60,9 @@ if [ ${molecule} == "oxane" ] ; then
 
     input_list=$( column -t -s ',' ${ts_hartree_file} | awk '{print $1}' )
 
-     for file in ${input_list}; do
+    echo ${input_list}
 
-        echo ${input_list}
+     for file in ${input_list}; do
 
         file1=${file%.log\"}
         file_org=${file1##\"}
