@@ -55,6 +55,7 @@ echo ${molecule}
 
 if [ ${molecule} == "oxane" ] ; then
 
+    echo 'I made it here'
     #input_list=../6_prod-run_TS/z_list_cluster-sorted-TS-${molecule}-${short_level_of_theory}.txt
 
     input_list=$( column -t -s ',' ${ts_hartree_file} | awk '{print $1}' )
