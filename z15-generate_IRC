@@ -25,7 +25,7 @@ tpl=/home/vicchio/puckering/z_tpl
 template_file_forward=gaussian-chk_run-IRC-forward.txt
 template_file_reverse=gaussian-chk_run-IRC-reverse.txt
 
-cores_per_node=1
+cores_per_node=2
 memory_job=25
 
 total_memory=$(echo ${cores_per_node} ${memory_job} | awk '{ print $1*$2 }' )
