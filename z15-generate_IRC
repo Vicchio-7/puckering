@@ -55,7 +55,6 @@ echo ${molecule}
 
 if [ ${molecule} == "oxane" ] ; then
 
-    echo 'I made it here'
     #input_list=../6_prod-run_TS/z_list_cluster-sorted-TS-${molecule}-${short_level_of_theory}.txt
 
     echo ${ts_hartree_file}
@@ -79,20 +78,23 @@ if [ ${molecule} == "oxane" ] ; then
 
             ######## Moves over the checkpoint to create the new checkpoint file
 
-            cp /scratch/hbmayes_fluxod/vicchio/${1}-TS_${3}/${file_org}.chk /scratch/hbmayes_fluxod/vicchio/${1}-${2}_${3}-forward/${new_filenamef}_${3}.chk
+            #cp /scratch/hbmayes_fluxod/vicchio/${1}-TS_${3}/${file_org}.chk /scratch/hbmayes_fluxod/vicchio/${1}-${2}_${3}-forward/${new_filenamef}_${3}.chk
 
            ######## The section below updates the Gaussian Input File
 
-#            sed -e "s/\$memory/${memory_job}/g" $tpl/${template_file_forward} > temp4.com
-#            sed -e "s/\$num_procs/${cores_per_node}/g" temp4.com >> temp5.com
-#            sed -e "s/\$old_check/${file_org}/g" temp5.com >> temp6.com
-#            sed -e "s/\$chkfile/${file_org}-${2}-f_${3}.chk/g" temp6.com >> temp1.com
-#            sed -e "s/\$folder/${molecule}-${test_type}_${3}-forward/g" temp1.com >> temp2.com
-#            sed -e "s/level_of_theory/${level_of_theory}/g" temp2.com >> temp3.com
-#
-#            mv temp3.com ${new_filenamef}.com
-#
-#            rm *temp*
+            old_check_file=/scratch/hbmayes_fluxod/vicchio/${1}-TS_${3}/${file_org}.chk
+            new_check_file=/scratch/hbmayes_fluxod/vicchio/${1}-${2}_${3}-forward/${new_filenamef}_${3}.chk
+
+            sed -e "s/\$memory/${memory_job}/g" $tpl/${template_file_forward} > temp4.com
+            sed -e "s/\$num_procs/${cores_per_node}/g" temp4.com >> temp5.com
+            sed -e "s/\$old_check/${old_check_file}/g" temp5.com >> temp6.com
+            sed -e "s/\$chkfile/${new_check_file}/g" temp6.com >> temp1.com
+            sed -e "s/\$folder/${molecule}-${test_type}_${3}-forward/g" temp1.com >> temp2.com
+            sed -e "s/level_of_theory/${level_of_theory}/g" temp2.com >> temp3.com
+
+            mv temp3.com ${new_filenamef}.com
+
+            rm *temp*
 
            ######## The section below creates the PBS file for submission on flux
 
@@ -100,7 +102,9 @@ if [ ${molecule} == "oxane" ] ; then
             sed -e "s/study/${2}/g" PBS-temp1.txt >> PBS-temp2.txt
             sed -e "s/level_of_theory_short/${short_level_of_theory}/g" PBS-temp2.txt >> PBS-temp3.txt
             sed -e "s/conform/${new_filenamef}/g" PBS-temp3.txt >> PBS-temp4.txt
-            sed -e "s/gauss-log/${new_filenamef}_${3}/g" PBS-temp4.txt > PBS-${2}-${new_filenamef}.txt
+            sed -e "s/$num_proc/${cores_per_node}/g" PBS-temp4.txt >> PBS-temp5.txt
+
+            sed -e "s/gauss-log/${new_filenamef}_${3}/g" PBS-temp5.txt > PBS-${2}-${new_filenamef}.txt
 
             rm PBS-temp*.txt
 
