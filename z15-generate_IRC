@@ -86,7 +86,7 @@ if [ ${molecule} == "oxane" ] ; then
             new_check_file=/scratch/hbmayes_fluxod/vicchio/${1}-${2}_${3}-forward/${new_filenamef}_${3}.chk
 
             sed -e "s/\$memory/${memory_job}/g" $tpl/${template_file_forward} > temp4.com
-#            sed -e "s/\$num_procs/${cores_per_node}/g" temp4.com >> temp5.com
+            sed -e "s/\$num_procs/${cores_per_node}/g" temp4.com >> temp5.com
 #            sed -e "s/\$old_check/${old_check_file}/g" temp5.com >> temp6.com
 #            sed -e "s/\$chkfile/${new_check_file}/g" temp6.com >> temp1.com
 #            sed -e "s/\$folder/${molecule}-${test_type}_${3}-forward/g" temp1.com >> temp2.com
@@ -99,14 +99,14 @@ if [ ${molecule} == "oxane" ] ; then
            ######## The section below creates the PBS file for submission on flux
 
             sed -e "s/molecule/${molecule}/g" $tpl/gaussian-PBS-tpl_IRC.txt > PBS-temp1.txt
-#            sed -e "s/study/${2}/g" PBS-temp1.txt >> PBS-temp2.txt
-#            sed -e "s/level_of_theory_short/${short_level_of_theory}/g" PBS-temp2.txt >> PBS-temp3.txt
-#            sed -e "s/conform/${new_filenamef}/g" PBS-temp3.txt >> PBS-temp4.txt
-#            sed -e "s/\$num_proc/${cores_per_node}/g" PBS-temp4.txt >> PBS-temp5.txt
-#
-#            sed -e "s/gauss-log/${new_filenamef}_${3}/g" PBS-temp5.txt > PBS-${2}-${new_filenamef}.txt
-#
-#            rm PBS-temp*.txt
+            sed -e "s/study/${2}/g" PBS-temp1.txt >> PBS-temp2.txt
+            sed -e "s/level_of_theory_short/${short_level_of_theory}/g" PBS-temp2.txt >> PBS-temp3.txt
+            sed -e "s/conform/${new_filenamef}/g" PBS-temp3.txt >> PBS-temp4.txt
+            sed -e "s/\$num_proc/${cores_per_node}/g" PBS-temp4.txt >> PBS-temp5.txt
+
+            sed -e "s/gauss-log/${new_filenamef}_${3}/g" PBS-temp5.txt > PBS-${2}-${new_filenamef}.txt
+
+            rm PBS-temp*.txt
 
 
 #        ########## IRC Information for the Reverse Direction ##########
