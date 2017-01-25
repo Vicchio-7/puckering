@@ -25,12 +25,10 @@ tpl=/home/vicchio/puckering/z_tpl
 template_file_forward=gaussian-chk_run-IRC-forward.txt
 template_file_reverse=gaussian-chk_run-IRC-reverse.txt
 
-cores_per_node=2
+cores_per_node=1
 memory_job=25
 
 total_memory=$(echo ${cores_per_node} ${memory_job} | awk '{ print $1*$2 }' )
-
-echo ${total_memory}
 
 if [ "${molecule}" == 'oxane' ] ; then
     mole_folder=1_oxane
@@ -88,13 +86,13 @@ if [ ${molecule} == "oxane" ] ; then
             sed -e "s/\$memory/${memory_job}/g" $tpl/${template_file_forward} > temp4.com
             sed -e "s/\$num_procs/${cores_per_node}/g" temp4.com >> temp5.com
             sed -e "s/\$old_check/${old_check_file}/g" temp5.com >> temp6.com
-            sed -e "s/\$chkfile/${new_check_file}/g" temp6.com >> temp1.com
-            sed -e "s/\$folder/${molecule}-${test_type}_${3}-forward/g" temp1.com >> temp2.com
-            sed -e "s/level_of_theory/${level_of_theory}/g" temp2.com >> temp3.com
-
-            mv temp3.com ${new_filenamef}.com
-
-            rm *temp*
+#            sed -e "s/\$chkfile/${new_check_file}/g" temp6.com >> temp1.com
+#            sed -e "s/\$folder/${molecule}-${test_type}_${3}-forward/g" temp1.com >> temp2.com
+#            sed -e "s/level_of_theory/${level_of_theory}/g" temp2.com >> temp3.com
+#
+#            mv temp3.com ${new_filenamef}.com
+#
+#            rm *temp*
 
            ######## The section below creates the PBS file for submission on flux
 
