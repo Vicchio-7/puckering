@@ -56,7 +56,7 @@ if [ ${molecule} == "oxane" ] ; then
 
 		mv temp7.com ${file}.com
 	
-		rm temp*.com
+#		rm temp*.com
 
 ######## The section below creates the PBS file for submission on flux
 
