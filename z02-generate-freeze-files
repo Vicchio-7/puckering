@@ -23,7 +23,7 @@ tpl_file=gaussian-bxyl_hm_issue_freeze.txt
 
 
 cores_per_node=1
-memory_job=25
+memory_job=15
 total_memory=$(echo ${cores_per_node} ${memory_job} | awk '{ print $1*$2 }' )
 
 if [ ${1} == "oxane" ]; then
