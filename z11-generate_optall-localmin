@@ -54,9 +54,9 @@ if [ ${molecule} == "oxane" ] ; then
   		sed -e "s/\$folder/${molecule}-${test_type}_${3}/g" temp5.com >> temp6.com
 		sed -e "s/level_of_theory/${level_of_theory}/g" temp6.com >> $temp7.com
 
-		#mv temp7.com ${file}.com
+		mv temp7.com ${file}.com
 	
-#		rm temp*.com
+		rm temp*.com
 
 ######## The section below creates the PBS file for submission on flux
 
