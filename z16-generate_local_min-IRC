@@ -30,6 +30,7 @@ short_level_of_theory=$3
 
 cores_per_node=1
 memory_job=25
+total_memory=$(echo ${cores_per_node} ${memory_job} | awk '{ print $1*$2 }' )
 
 if [ ! -d /scratch/hbmayes_fluxod/vicchio/${1}-${2}_${3} ]; then
     mkdir /scratch/hbmayes_fluxod/vicchio/${1}-${2}_${3}
