@@ -27,7 +27,7 @@ test_type=$2
 short_level_of_theory=$3 
 
 cores_per_node=1
-memory_job=25
+memory_job=15
 total_memory=$(echo ${cores_per_node} ${memory_job} | awk '{ print $1*$2 }' )
 
 mkdir /scratch/hbmayes_fluxod/vicchio/${1}-${2}_${3}
