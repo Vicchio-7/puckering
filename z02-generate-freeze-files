@@ -97,8 +97,8 @@ if [ ${1} == "oxane" ]; then
         sed -i "3s/.*/%chk=\/scratch\/hbmayes_fluxod\/vicchio\/${1}-${2}_${3}\/${1}-${file}-${2}_${3}.chk/" ${file}.com
         sed -i "4s/.*/${input}/" ${file}.com
         sed -i "4s/$/\n/" ${file}.com
-        sed -i "5s/$/\nFrom '{file}'.sdf\n/" ${file}.com
-        sed -i "5s/$/\n/" ${file}.com
+        sed -i "6s/$/\nFrom '{file}'.sdf\n/" ${file}.com
+        sed -i "6s/$/\n/" ${file}.com
 
 
         sed -i '$d' ${file}.com
