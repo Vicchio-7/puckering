@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ed68f2d3-7d18-4709-9142-bdbed46d01b2" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/z11-generate_optall-localmin" afterPath="$PROJECT_DIR$/z11-generate_optall-localmin" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -42,8 +42,8 @@
       <file leaf-file-name="z11-generate_optall-localmin" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/z11-generate_optall-localmin">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="480">
-              <caret line="45" column="52" lean-forward="true" selection-start-line="45" selection-start-column="52" selection-end-line="45" selection-end-column="52" />
+            <state relative-caret-position="532">
+              <caret line="64" column="19" lean-forward="false" selection-start-line="64" selection-start-column="19" selection-end-line="64" selection-end-column="27" />
               <folding />
             </state>
           </provider>
@@ -72,8 +72,8 @@
       <file leaf-file-name="z16-generate_local_min-IRC" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/z16-generate_local_min-IRC">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="235">
-              <caret line="66" column="0" lean-forward="false" selection-start-line="66" selection-start-column="0" selection-end-line="69" selection-end-column="69" />
+            <state relative-caret-position="505">
+              <caret line="84" column="0" lean-forward="false" selection-start-line="84" selection-start-column="0" selection-end-line="85" selection-end-column="71" />
               <folding />
             </state>
           </provider>
@@ -90,7 +90,11 @@
       <find>file</find>
       <find>-e</find>
       <find>memory_job</find>
+      <find>.com</find>
     </findStrings>
+    <replaceStrings>
+      <replace>.txt</replace>
+    </replaceStrings>
     <dirStrings>
       <dir>$PROJECT_DIR$</dir>
     </dirStrings>
@@ -123,8 +127,8 @@
         <option value="$PROJECT_DIR$/z23_flux_delete_files_range" />
         <option value="$PROJECT_DIR$/z15-generate_IRC" />
         <option value="$PROJECT_DIR$/z16-generate_local_min-IRC" />
-        <option value="$PROJECT_DIR$/z11-generate_optall-localmin" />
         <option value="$PROJECT_DIR$/z02-generate-freeze-files" />
+        <option value="$PROJECT_DIR$/z11-generate_optall-localmin" />
       </list>
     </option>
   </component>
@@ -691,12 +695,12 @@
       <workItem from="1484513480864" duration="811000" />
       <workItem from="1484970617182" duration="459000" />
       <workItem from="1485272265705" duration="595000" />
-      <workItem from="1485294358798" duration="12543000" />
+      <workItem from="1485294358798" duration="12937000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="93636000" />
+    <option name="totallyTimeSpent" value="94030000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1108,16 +1112,16 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/z16-generate_local_min-IRC">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="235">
-          <caret line="66" column="0" lean-forward="false" selection-start-line="66" selection-start-column="0" selection-end-line="69" selection-end-column="69" />
+        <state relative-caret-position="505">
+          <caret line="84" column="0" lean-forward="false" selection-start-line="84" selection-start-column="0" selection-end-line="85" selection-end-column="71" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/z11-generate_optall-localmin">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="480">
-          <caret line="45" column="52" lean-forward="true" selection-start-line="45" selection-start-column="52" selection-end-line="45" selection-end-column="52" />
+        <state relative-caret-position="532">
+          <caret line="64" column="19" lean-forward="false" selection-start-line="64" selection-start-column="19" selection-end-line="64" selection-end-column="27" />
           <folding />
         </state>
       </provider>

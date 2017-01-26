@@ -53,14 +53,20 @@ if [ ${molecule} == "oxane" ] ; then
 		rm temp*.com
 
 ######## The section below creates the PBS file for submission on flux
+
+
 	
-		sed -e "s/molecule/${molecule}/g" $tpl/gaussian-PBS-tpl.txt > PBS-$2-${file}.txt 
-  		sed -e "s/study/${2}/g" PBS-$2-${file}.txt >> PBS-$2-${file}-temp1.txt
-		sed -e "s/level_of_theory_short/${short_level_of_theory}/g" PBS-$2-${file}-temp1.txt >> PBS-$2-${file}-temp2.txt
-		sed -e "s/conform/${file}/g" PBS-$2-${file}-temp2.txt > PBS-$2-${file}-temp3.txt
- 		sed -e "s/gauss-log/${1}-${file}-freeze_${3}-${2}_${3}/g" PBS-${2}-${file}-temp3.txt > PBS-${2}-${file}.txt
-	
-		rm PBS-$2-${file}-temp*
+		sed -e "s/molecule/${molecule}/g" $tpl/gaussian-PBS-tpl.txt > temp1.txt
+  		sed -e "s/study/${2}/g" temp1.txt >> temp2.txt
+		sed -e "s/level_of_theory_short/${short_level_of_theory}/g" temp2.txt >> temp3.txt
+		sed -e "s/conform/${file}/g" temp3.txt >> temp4.txt
+ 		sed -e "s/gauss-log/${1}-${file}-freeze_${3}-${2}_${3}/g" temp4.txt >> temp5.txt
+ 		sed -e "s/\$num_proc/${cores_per_node}/g" temp5.txt >> temp6.txt
+        sed -e "s/\$pmemory/${memory_job}/g" temp6.txt >> temp7.txt
+
+	    mv temp7.txt PBS-${2}-${file}.txt
+
+		rm temp*.txt
 	done
 
 else 
