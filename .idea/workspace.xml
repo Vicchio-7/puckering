@@ -3,6 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="ed68f2d3-7d18-4709-9142-bdbed46d01b2" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/z02-generate-freeze-files" afterPath="$PROJECT_DIR$/z02-generate-freeze-files" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -43,7 +44,7 @@
         <entry file="file://$PROJECT_DIR$/z02-generate-freeze-files">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="397">
-              <caret line="99" column="40" lean-forward="false" selection-start-line="99" selection-start-column="40" selection-end-line="99" selection-end-column="40" />
+              <caret line="99" column="17" lean-forward="false" selection-start-line="99" selection-start-column="17" selection-end-line="99" selection-end-column="17" />
               <folding />
             </state>
           </provider>
@@ -681,12 +682,12 @@
       <workItem from="1484513480864" duration="811000" />
       <workItem from="1484970617182" duration="459000" />
       <workItem from="1485272265705" duration="595000" />
-      <workItem from="1485294358798" duration="11295000" />
+      <workItem from="1485294358798" duration="11346000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="92388000" />
+    <option name="totallyTimeSpent" value="92439000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1107,7 +1108,7 @@
     <entry file="file://$PROJECT_DIR$/z02-generate-freeze-files">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="397">
-          <caret line="99" column="40" lean-forward="false" selection-start-line="99" selection-start-column="40" selection-end-line="99" selection-end-column="40" />
+          <caret line="99" column="17" lean-forward="false" selection-start-line="99" selection-start-column="17" selection-end-line="99" selection-end-column="17" />
           <folding />
         </state>
       </provider>
