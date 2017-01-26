@@ -3,8 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="ed68f2d3-7d18-4709-9142-bdbed46d01b2" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/z02-generate-freeze-files" afterPath="$PROJECT_DIR$/z02-generate-freeze-files" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/z16-generate_local_min-IRC" afterPath="$PROJECT_DIR$/z16-generate_local_min-IRC" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -672,12 +670,12 @@
       <workItem from="1484513480864" duration="811000" />
       <workItem from="1484970617182" duration="459000" />
       <workItem from="1485272265705" duration="595000" />
-      <workItem from="1485294358798" duration="9437000" />
+      <workItem from="1485294358798" duration="9473000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="90530000" />
+    <option name="totallyTimeSpent" value="90566000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">

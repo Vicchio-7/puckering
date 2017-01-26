@@ -38,19 +38,6 @@ if [ ${1} == "oxane" ]; then
     ########                CREATES THE PBS FILE                #########
 
 
-        sed -e "s/molecule/${molecule}/g" $tpl/gaussian-PBS-tpl_IRC.txt > PBS-temp1.txt
-        sed -e "s/study/${test_type}/g" PBS-temp1.txt >> PBS-temp2.txt
-        sed -e "s/level_of_theory_short/${short_level_of_theory}/g" PBS-temp2.txt >> PBS-temp3.txt
-        sed -e "s/conform/${file}/g" PBS-temp3.txt >> PBS-temp4.txt
-        sed -e "s/\$num_proc/${cores_per_node}/g" PBS-temp4.txt >> PBS-temp5.txt
-        sed -e "s/\$pmemory/${memory_job}/g" PBS-temp5.txt >> PBS-temp6.txt
-        sed -e "s/gauss-log/${file_orgin}-minIRC_${short_level_of_theory}/g" PBS-temp6.txt > PBS-${2}-${file}.txt
-
-        rm PBS-temp*
-
-
-
-
         PBS_file=PBS-${2}-${file}.txt # creates the PBS file
         run=${1}-${2}-${file} # creates the name of the run
 
@@ -107,9 +94,9 @@ if [ ${1} == "oxane" ]; then
         sed -i "1s/.*/%mem=${total_memory}MW" ${file}.com
         sed -i "2s/.*/%nprocshared=${cores_per_node}" ${file}.com
 
-        sed -i "1s/.*/%chk=\/scratch\/hbmayes_fluxod\/vicchio\/${1}-${2}_${3}\/${1}-${file}-${2}_${3}.chk/" ${file}.com
-        sed -i "2s/.*/${input}/" ${file}.com
-        sed -i "2s/$/\n/" ${file}.com
+        sed -i "3s/.*/%chk=\/scratch\/hbmayes_fluxod\/vicchio\/${1}-${2}_${3}\/${1}-${file}-${2}_${3}.chk/" ${file}.com
+        sed -i "4s/.*/${input}/" ${file}.com
+        sed -i "4s/$/\n/" ${file}.com
 
         sed -i '$d' ${file}.com
 
