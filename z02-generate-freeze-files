@@ -54,7 +54,7 @@ if [ ${1} == "oxane" ]; then
 
         echo >> ${PBS_file}
 
-        echo "#PBS -l nodes=1:ppn=${cores_per_node},pmem=${memory_job}MW,walltime=03:30:00" >> ${PBS_file}
+        echo "#PBS -l nodes=1:ppn=${cores_per_node},pmem=${memory_job}GB,walltime=03:30:00" >> ${PBS_file}
         echo "#PBS -j oe" >> ${PBS_file}
         echo "#PBS -o out-${2}-${file}.err" >> ${PBS_file}
         echo '#PBS -V' >> ${PBS_file}
@@ -91,7 +91,7 @@ if [ ${1} == "oxane" ]; then
 
         # This part of the script modifies the Gaussian Input (.com) file:
 
-        sed -i "1s/.*/%mem=${total_memory}MW/" ${file}.com
+        sed -i "1s/.*/%mem=${total_memory}GB/" ${file}.com
         sed -i "2s/.*/%nprocshared=${cores_per_node}/" ${file}.com
 
         sed -i "3s/.*/%chk=\/scratch\/hbmayes_fluxod\/vicchio\/${1}-${2}_${3}\/${1}-${file}-${2}_${3}.chk/" ${file}.com
