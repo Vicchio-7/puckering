@@ -71,8 +71,8 @@ while IFS= read -r cmd; do
     sed -e "s/\$memory/${total_memory}/g" $tpl/${template_file} > temp1.com
     sed -e "s/\$num_procs/${cores_per_node}/g" temp1.com >> temp2.com
     sed -e "s/\$folder_old/${folder_loc_old}/g" temp2.com >> temp3.com
-    sed -e "s/\$old_check/${file_org}.chk/g" temp3.com >> temp4.com
-    sed -e "s/\$chkfile/${file_orgin}.chk/g" temp4.com >> temp5.com
+    sed -e "s/\$old_check/${file_orgin}.chk/g" temp3.com >> temp4.com
+    sed -e "s/\$chkfile/${file_orgin}-lmirc.chk/g" temp4.com >> temp5.com
     sed -e "s/\$folder/${folder_loc_new}/g" temp5.com >> temp6.com
     sed -e "s/level_of_theory/${level_of_theory}/g" temp6.com >> temp7.com
 
