@@ -21,6 +21,11 @@ short_level_of_theory=$3
 tpl=/home/vicchio/puckering/z_tpl
 tpl_file=gaussian-bxyl_hm_issue_freeze.txt
 
+
+cores_per_node=1
+memory_job=25
+total_memory=$(echo ${cores_per_node} ${memory_job} | awk '{ print $1*$2 }' )
+
 if [ ${1} == "oxane" ]; then
     input_list=../y0-input_list.txt
     input=$(head -n 1 ../y1-level_of_theory_basis_set.txt)
@@ -31,6 +36,20 @@ if [ ${1} == "oxane" ]; then
     file=${file_unedit%.com}
 
     ########                CREATES THE PBS FILE                #########
+
+
+        sed -e "s/molecule/${molecule}/g" $tpl/gaussian-PBS-tpl_IRC.txt > PBS-temp1.txt
+        sed -e "s/study/${test_type}/g" PBS-temp1.txt >> PBS-temp2.txt
+        sed -e "s/level_of_theory_short/${short_level_of_theory}/g" PBS-temp2.txt >> PBS-temp3.txt
+        sed -e "s/conform/${file}/g" PBS-temp3.txt >> PBS-temp4.txt
+        sed -e "s/\$num_proc/${cores_per_node}/g" PBS-temp4.txt >> PBS-temp5.txt
+        sed -e "s/\$pmemory/${memory_job}/g" PBS-temp5.txt >> PBS-temp6.txt
+        sed -e "s/gauss-log/${file_orgin}-minIRC_${short_level_of_theory}/g" PBS-temp6.txt > PBS-${2}-${file}.txt
+
+        rm PBS-temp*
+
+
+
 
         PBS_file=PBS-${2}-${file}.txt # creates the PBS file
         run=${1}-${2}-${file} # creates the name of the run
@@ -48,7 +67,7 @@ if [ ${1} == "oxane" ]; then
 
         echo >> ${PBS_file}
 
-        echo '#PBS -l nodes=1:ppn=2,pmem=10gb,walltime=03:30:00' >> ${PBS_file}
+        echo "#PBS -l nodes=1:ppn=${cores_per_node},pmem=${memory_job}MW,walltime=03:30:00" >> ${PBS_file}
         echo "#PBS -j oe" >> ${PBS_file}
         echo "#PBS -o out-${2}-${file}.err" >> ${PBS_file}
         echo '#PBS -V' >> ${PBS_file}
@@ -56,10 +75,10 @@ if [ ${1} == "oxane" ]; then
         echo >> ${PBS_file}
 
         echo '#PBS -A hbmayes_fluxod' >> ${PBS_file}
-            echo '#PBS -q fluxod' >> ${PBS_file}
-            echo '#PBS -l qos=flux' >> ${PBS_file}
+        echo '#PBS -q fluxod' >> ${PBS_file}
+        echo '#PBS -l qos=flux' >> ${PBS_file}
 
-            echo >> ${PBS_file}
+        echo >> ${PBS_file}
 
         echo '####  End PBS preamble' >> ${PBS_file}
 
@@ -85,6 +104,9 @@ if [ ${1} == "oxane" ]; then
 
         # This part of the script modifies the Gaussian Input (.com) file:
 
+        sed -i "1s/.*/%mem=${total_memory}MW" ${file}.com
+        sed -i "2s/.*/%nprocshared=${cores_per_node}" ${file}.com
+
         sed -i "1s/.*/%chk=\/scratch\/hbmayes_fluxod\/vicchio\/${1}-${2}_${3}\/${1}-${file}-${2}_${3}.chk/" ${file}.com
         sed -i "2s/.*/${input}/" ${file}.com
         sed -i "2s/$/\n/" ${file}.com
@@ -95,6 +117,8 @@ if [ ${1} == "oxane" ]; then
         sed -i '$s/$/\nD   2    3    4    5 F/' ${file}.com
         sed -i '$s/$/\nD   3    4    5    6 F/' ${file}.com
         sed -i '$s/$/\nD   4    5    6    1 F/' ${file}.com
+        sed -i '$s/$/\nD   5    6    1    2 F/' ${file}.com
+        sed -i '$s/$/\nD   6    1    2    3 F/' ${file}.com
 
         sed -i '$s/$/\n/' ${file}.com
         sed -i '$s/$/\n/' ${file}.com
