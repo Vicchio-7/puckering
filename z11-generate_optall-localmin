@@ -24,7 +24,13 @@ template_file_prefrozen=gaussian-chk_run-optall_localmin-tpl_prefrozen.txt
 
 molecule=$1
 test_type=$2
-short_level_of_theory=$3 
+short_level_of_theory=$3
+
+cores_per_node=1
+memory_job=15
+total_memory=$(echo ${cores_per_node} ${memory_job} | awk '{ print $1*$2 }' )
+
+
 
 mkdir /scratch/hbmayes_fluxod/vicchio/${1}-${2}_${3}
 
@@ -54,8 +60,6 @@ if [ ${molecule} == "oxane" ] ; then
 
 ######## The section below creates the PBS file for submission on flux
 
-
-	
 		sed -e "s/molecule/${molecule}/g" $tpl/gaussian-PBS-tpl.txt > temp1.txt
   		sed -e "s/study/${2}/g" temp1.txt >> temp2.txt
 		sed -e "s/level_of_theory_short/${short_level_of_theory}/g" temp2.txt >> temp3.txt
