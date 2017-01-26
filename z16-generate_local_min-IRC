@@ -29,9 +29,7 @@ test_type=$2
 short_level_of_theory=$3 
 
 cores_per_node=1
-
-
-
+memory_job=25
 
 if [ ! -d /scratch/hbmayes_fluxod/vicchio/${1}-${2}_${3} ]; then
     mkdir /scratch/hbmayes_fluxod/vicchio/${1}-${2}_${3}
@@ -50,25 +48,35 @@ while IFS= read -r cmd; do
     if [[ ${file_orgin} == *"ircf"* ]]; then
         folder_loc_old=${molecule}-irc_${short_level_of_theory}-forward
         folder_loc_new=${molecule}-${test_type}_${short_level_of_theory}
-        cp ${scratch}/${folder_loc_old}/${file_orgin}.chk ${scratch}/${folder_loc_new}/${file_orgin}.chk
+#        cp ${scratch}/${folder_loc_old}/${file_orgin}.chk ${scratch}/${folder_loc_new}/${file_orgin}.chk
 
     elif [[ ${file_orgin} == *"ircr"* ]]; then
         folder_loc_old=${molecule}-irc_${short_level_of_theory}-reverse
         folder_loc_new=${molecule}-${test_type}_${short_level_of_theory}
-        cp ${scratch}/${folder_loc_old}/${file_orgin}.chk ${scratch}/${folder_loc_new}/${file_orgin}.chk
+#        cp ${scratch}/${folder_loc_old}/${file_orgin}.chk ${scratch}/${folder_loc_new}/${file_orgin}.chk
 
     else
         echo "Something is wrong"
     fi
 
+
+    echo ${folder_loc_old}
+    echo ${folder_loc_new}
+
 	file=${file_orgin}
 
 ######## The section below updates the Gaussian Input File
 
-    sed -e "s/\$chkfile/${file_orgin}.chk/g"
+    sed -e "s/\$memory/${total_memory}/g" $tpl/${template_file_reverse} > temp1.com
+    sed -e "s/\$num_procs/${cores_per_node}/g" temp1.com >> temp2.com
+    sed -e "s/\$folder_old/${folder_loc_old}/g" temp2.com >> temp3.com
+    sed -e "s/\$old_check/${file_org}.chk/g" temp3.com >> temp4.com
+    sed -e "s/\$chkfile/${file_orgin}.chk/g" temp4.com >> temp5.com
+    sed -e "s/\$folder/${folder_loc_new}/g" temp5.com >> temp6.com
+    sed -e "s/level_of_theory/${level_of_theory}/g" temp6.com >> temp7.com
+
+
 	sed -e "s/\$chkfile/${file_orgin}.chk/g" $tpl/${template_file} > ${file}.com
-  	sed -e "s/\$folder/${folder_loc_new}/g" ${file}.com >> ${file}-temp1.com
-	sed -e "s/level_of_theory/${level_of_theory}/g" ${file}-temp1.com >> ${file}-temp.com
 
 	mv ${file}-temp.com ${file}.com
 	
@@ -76,14 +84,15 @@ while IFS= read -r cmd; do
 
 ######## The section below creates the PBS file for submission on flux
 
-	sed -e "s/molecule/${molecule}/g" $tpl/gaussian-PBS-tpl.txt > PBS-$2-${file}.txt
-  	sed -e "s/study/${test_type}/g" PBS-$2-${file}.txt >> PBS-$2-${file}-temp1.txt
-	sed -e "s/level_of_theory_short/${short_level_of_theory}/g" PBS-$2-${file}-temp1.txt >> PBS-$2-${file}-temp2.txt
-	sed -e "s/conform/${file}/g" PBS-$2-${file}-temp2.txt > PBS-$2-${file}-temp3.txt
- 	sed -e "s/gauss-log/${file_orgin}-minIRC_${short_level_of_theory}/g" PBS-${2}-${file}-temp3.txt > PBS-${2}-${file}.txt
+    sed -e "s/molecule/${molecule}/g" $tpl/gaussian-PBS-tpl_IRC.txt > PBS-temp1.txt
+    sed -e "s/study/${test_type}/g" PBS-temp1.txt >> PBS-temp2.txt
+    sed -e "s/level_of_theory_short/${short_level_of_theory}/g" PBS-temp2.txt >> PBS-temp3.txt
+    sed -e "s/conform/${file}/g" PBS-temp3.txt >> PBS-temp4.txt
+    sed -e "s/\$num_proc/${cores_per_node}/g" PBS-temp4.txt >> PBS-temp5.txt
+    sed -e "s/\$pmemory/${memory_job}/g" PBS-temp5.txt >> PBS-temp6.txt
+    sed -e "s/gauss-log/${file_orgin}-minIRC_${short_level_of_theory}/g" PBS-temp6.txt > PBS-${2}-${file}.txt
 
-
-	rm PBS-$2-${file}-temp*
+	rm PBS-temp*
 
 done < "${input_list}"
 

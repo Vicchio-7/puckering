@@ -83,7 +83,7 @@ if [ ${molecule} == "oxane" ] ; then
             old_check_file=${file_org}.chk
             new_check_file=${new_filenamef}_${3}.chk
 
-            sed -e "s/\$memory/${memory_job}/g" $tpl/${template_file_forward} > temp1.com
+            sed -e "s/\$memory/${total_memory}/g" $tpl/${template_file_forward} > temp1.com
             sed -e "s/\$num_procs/${cores_per_node}/g" temp1.com >> temp2.com
             sed -e "s/\$folder_old/${1}-TS_${3}/g" temp2.com >> temp3.com
             sed -e "s/\$old_check/${file_org}.chk/g" temp3.com >> temp4.com
@@ -102,7 +102,7 @@ if [ ${molecule} == "oxane" ] ; then
             sed -e "s/level_of_theory_short/${short_level_of_theory}/g" PBS-temp2.txt >> PBS-temp3.txt
             sed -e "s/conform/${new_filenamef}/g" PBS-temp3.txt >> PBS-temp4.txt
             sed -e "s/\$num_proc/${cores_per_node}/g" PBS-temp4.txt >> PBS-temp5.txt
-            sed -e "s/\$pmemory/${sd}/g" PBS-temp5.txt >> PBS-temp6.txt
+            sed -e "s/\$pmemory/${memory_job}/g" PBS-temp5.txt >> PBS-temp6.txt
             sed -e "s/gauss-log/${new_filenamef}_${3}/g" PBS-temp6.txt > PBS-${2}-${new_filenamef}.txt
 
             rm PBS-temp*.txt
@@ -123,7 +123,7 @@ if [ ${molecule} == "oxane" ] ; then
             old_check_file=${file_org}.chk
             new_check_file=${new_filenamer}_${3}.chk
 
-            sed -e "s/\$memory/${memory_job}/g" $tpl/${template_file_reverse} > temp1.com
+            sed -e "s/\$memory/${total_memory}/g" $tpl/${template_file_reverse} > temp1.com
             sed -e "s/\$num_procs/${cores_per_node}/g" temp1.com >> temp2.com
             sed -e "s/\$folder_old/${1}-TS_${3}/g" temp2.com >> temp3.com
             sed -e "s/\$old_check/${file_org}.chk/g" temp3.com >> temp4.com
@@ -142,7 +142,7 @@ if [ ${molecule} == "oxane" ] ; then
             sed -e "s/level_of_theory_short/${short_level_of_theory}/g" PBS-temp2.txt >> PBS-temp3.txt
             sed -e "s/conform/${new_filenamer}/g" PBS-temp3.txt >> PBS-temp4.txt
             sed -e "s/\$num_proc/${cores_per_node}/g" PBS-temp4.txt >> PBS-temp5.txt
-            sed -e "s/\$pmemory/${sd}/g" PBS-temp5.txt >> PBS-temp6.txt
+            sed -e "s/\$pmemory/${memory_job}/g" PBS-temp5.txt >> PBS-temp6.txt
             sed -e "s/gauss-log/${new_filenamer}_${3}/g" PBS-temp6.txt > PBS-${2}-${new_filenamer}.txt
 
             rm PBS-temp*.txt
